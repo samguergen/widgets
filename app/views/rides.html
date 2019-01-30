@@ -1,0 +1,54 @@
+<div class="portal rides" ng-init="getRidesData()">
+  <div class="container-fluid">
+
+    <h2>Monthly Rides Data</h2>
+
+    <table class="table table-responsive table-bordered table-hover" style="font-size:25px;font-weight:bold;width:90%;margin:auto">
+      <thead>
+        <tr>
+          <th>Affiliate Name</th>
+          <th>Total Rides Given</th>
+          <th>Total Miles Driven</th>
+          <th>Current Members</th>
+          <th>Current Volunteers</th>
+          <th>Edit Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="affiliateData in ridesData" ng-include="getTemplateWithAuth(affiliateData)"></tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+
+<script type="text/ng-template" id="display">
+    <td>ITN<em>{{affiliateData.affiliateName}}</em></td>
+    <td>{{affiliateData.totalRideCount}}</td>
+    <td >{{affiliateData.totalMiles}}</td>
+    <td>{{affiliateData.totalActiveMembers}}</td>
+    <td>{{affiliateData.totalActiveVolunteers}}</td>
+    <td class="ta-center">
+      <!-- <button type="button" ng-click="editRidesData(affiliateData)" class="btn edit-btn btn-sm"> -->
+      <button type="button" ng-click="authWallPopup('admins','Master',affiliateData,'ridesData')" class="btn edit-btn btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+    </td>
+
+</script>
+
+
+<script type="text/ng-template" ng-include="switchTemplates()" id="edit">
+    <td>ITN<em>{{affiliateData.affiliateName}}</em></td>
+    <td><input type="text" ng-model="selected.totalRideCount" /></td>
+    <td><input type="text" ng-model="selected.totalMiles" /></td>
+    <td><input type="text" ng-model="selected.totalActiveMembers" /></td>
+    <td><input type="text" ng-model="selected.totalActiveVolunteers" /></td>
+    <td style="min-width:200px;text-align:center">
+        <button ng-click="saveRidesData($index)" class="btn btn-success">Save</button>
+        <button ng-click="selected = {}" class="btn btn-info">Reset</button>
+        <!-- <button ng-click="switchTemplates('edit')" class="btn btn-danger">Cancel</button> -->
+    </td>
+</script>

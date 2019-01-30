@@ -1,0 +1,84 @@
+<div class="portal company-analytics web-traffic" ng-init="parseAffiliateNameToList()">
+  <div class="container ta-center">
+    <h2>ITN<em>{{itnAffiliate.name}}</em> Web Traffic</h2>
+    
+    
+    
+    <p class="analytics-warning">
+      To view web traffic for ITN<em>{{itnAffiliate.name}}</em> (code: <span id="gaViewCode">{{itnAffiliate.gaViewCode}}</span>), you must log in from an active Gmail account. <br>
+      If you do not have a Gmail account, please create one at <em><a href="https://www.gmail.com" target="_blank">www.gmail.com</a></em>
+    </p>
+
+    <button id="loading-btn">Loading graph...</button>
+
+    <div class="ga-wrap" style="display:block;width:80%;margin:auto">
+      <section id="auth-button"></section>
+      <section id="view-selector"></section>
+      <section id="timeline" style="margin-left:22%"></section>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="back-btn-wrap">
+  <a ui-sref="affiliate-landing" class="back-btn">
+    <h3>Back to Previous Page</h3>
+  </a>
+  <a ui-sref="portal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>
+
+
+
+<!-- Step 2: Load the library. -->
+
+<script>
+(function(w,d,s,g,js,fjs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+  js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+}(window,document,'script'));
+</script>
+
+<script>
+
+
+gapi.analytics.ready(function() {
+
+  $('#loading-btn').css('display','none');
+
+  // Step 3: Authorize the user.
+
+  var CLIENT_ID = '633525844243-1r4ea74q27960sf6l7abko81l1o4tvoj.apps.googleusercontent.com';
+
+  gapi.analytics.auth.authorize({
+    container: 'auth-button',
+    clientid: CLIENT_ID,
+  });
+
+  var gaViewCode = document.getElementById("gaViewCode").innerText;
+  console.log('gaviewcode2is ',gaViewCode);
+
+  var timeline = new gapi.analytics.googleCharts.DataChart({
+    reportType: 'ga',
+    query: {
+      'ids': 'ga:'+gaViewCode+'',
+      'dimensions': 'ga:date',
+      'metrics': 'ga:sessions',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+    },
+    chart: {
+      type: 'LINE',
+      container: 'timeline'
+    }
+  });
+
+  timeline.execute();
+
+});
+
+</script>

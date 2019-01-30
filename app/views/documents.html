@@ -1,0 +1,76 @@
+<div class="important-docs portal" ng-init="catchDocFilter();getCommentsPhotoPerAffiliate(docFilter)">
+  <div class="container ta-center">
+
+    <h2>Document Library</h2>
+    <h5 ng-show="docFilter && docFilter !== 'upload'" style="margin-top:-50px"><em>Filter: {{docFilter}} documents</em></h5>
+
+    <div class="upload-doc">
+      <button type="button" class="btn btn-lg" ngf-select="upload($file, docFilter)">Upload a Document</button>
+    </div><!--upload-doc-->
+
+    <div ng-hide="fileUploadsAffiliate" class="loading-msg"><em>Please wait a few seconds while your files are loading on the page.</em></div>
+
+    <div class="all-docs">
+      <h5 class="title">All Documents:</h5>
+      <div class="dropdown" style="color:black;float:left;margin-left:2%">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+          Filter by category
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" style="font-size:16px;margin-left: 40%">
+          <li ng-repeat="category in fileCategories"><a ng-click="assignFileCategoryFilter(category)" ng-class="{'no-border': $last}">{{category.name}}</a></li>
+        </ul>
+      </div><!--dropodown-->
+
+      <h5 ng-show="hideLibrary" class="loading-msg" style="clear:both"><em>{{serverMessage}}</em></h5>
+    <div><!--all-docs-->
+
+
+        <div class="row ta-center" style="margin:auto;padding:1;clear:both" ng-hide="hideLibrary">
+          <div ng-repeat="file in fileUploadsAffiliate | filter: fileCategoryFilter.name" ng-click="downloadImgFull(file.data)" class="repeat-img col-sm-3">
+            <div class="clearfix" ng-if="$index % 4 == 0"></div>
+            <div class="col-sm-3">
+
+              <a ng-click="downloadFile(file, $index)" ng-init="displayThumbnailImg(file)" ng-attr-id="{{'file-' + $index }}">
+                <img ng-src="{{filePathArray[$index]}}"/>
+              </a><br />
+
+
+              <div class="img-legend" style="font-size:14px;margin-top:-30px">
+                <p class="file-name">{{file.name}}</p>
+                <button class="btn btn-itn-sm" ng-click="viewEditOptions = !viewEditOptions" ng-hide="viewEditOptions">Edit</button>
+                <div ng-if="viewEditOptions" class="cat-options">
+                    <em>Category: </em>  {{file.category}}
+                    <div class="dropdown">
+                      <button class="btn btn-itn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        Change Category<span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" style="font-size:14px">
+                        <li ng-repeat="category in fileCategories"><a ng-click="addCategory(file, docFilter, category); viewEditOptions = false" ng-class="{'no-border': $last}">{{category.name}}</a></li>
+                      </ul>
+                    </div><!--dropdown-->
+
+                    <button ng-click="removeFile(file, docFilter); viewEditOptions = false" class="btn-itn-sm" style="margin-top:10px">
+                      Delete file <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+
+
+                </div><!--viewEditOptions-->
+
+              </div><!--img-legend-->
+            </div><!--col-sm-3-->
+
+          </div><!--ngRepeat/repeat-img-->
+      </div><!-- row-->
+
+  </div><!--container-->
+</div><!--important-docs-->
+
+
+<div class="back-btn-wrap">
+  <a ui-sref="documents({filter: docFilter})" class="back-btn">
+    <h3 style="margin-left:65px">Back to Previous Page</h3>
+  </a>
+  <a ui-sref="portal" class="back-btn" style="margin-top:-5%">
+    <h3>Back to Portal</h3>
+  </a>
+</div>

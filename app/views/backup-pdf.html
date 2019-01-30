@@ -1,0 +1,588 @@
+<div class="container" id="backupPdf">
+  
+  <div ng-if="formType === 'memberapp'">
+    <h3 class="app-title">Application for Transportation Service</h3>
+    
+    <br><label for="Membership Type">Membership Type: <span style="color:red">*</span></label><br>
+    {{formData.membership}}
+    <br><label for="rider name">Rider's Name: <span style="color:red">*</span></label><br>
+    {{formData.riderName}}
+    <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
+    {{formData.streetAddress}}
+    <br><label for="street">City: <span style="color:red">*</span></label><br>
+    {{formData.city}}
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
+    {{formData.state}}
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
+    {{formData.zip}}
+    <br><label for="years at address">Years at Address: <span style="color:red">*</span></label><br>
+    {{formData.yearsAtAddress}}
+    <br><label for="Mailing Adress Yes or No">Is this your Mailing Address?<span style="color:red">*</span>:  </label><br>
+    {{formData.isMailingAddress}}
+    <br><label for="Billing Adress Yes or No">Is this your Billing Address?<span style="color:red">*</span>:  </label><br>
+    {{formData.isBillingAddress}}
+    <br><label for="Year-round Residence Yes or No">Is this your Year-round Residence?<span style="color:red">*</span>:  </label><br>
+    {{formData.isYearRoundResidence}}
+    <br><label for="primary phone">Primary Phone: <span style="color:red">*</span></label><br>
+    {{formData.primaryPhone}}
+    <br><label for="secondary phone">Secondary Phone: </label><br>
+    {{formData.secondaryPhone}}
+    <br><label for="email">Email: </label><br>
+    {{formData.email}}
+    
+    <div ng-if="familyMembership">
+      <h3>Second Rider Information</h3>
+      
+      <br><label for="second rider name">Second Rider's Name: <span style="color:red">*</span></label><br>
+      {{formData.secondRiderName}}
+      <br><label for="second rider name">Second Rider's Date of Birth: <span style="color:red">*</span></label><br>
+      {{formData.secondRiderDob}}
+      <br><label for="second rider special needs">Second Rider's Special Needs and Mobility Assistance: <span style="color:red">*</span></label><br>
+      {{formData.secondRiderSpecialNeeds | inputSelected}}
+      
+    </div>
+    
+    <h3>First Emergency Contact</h3>
+    
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.name}}
+    <br><label for="relationship">Relationship: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.relationship}}
+    <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.street}}
+    <br><label for="city">City: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.city}}
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.state}}
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.zip}}
+    <br><label for="home phone">Best Phone Number: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.bestPhone}}
+    <br><label for="cell phone">Other Phone Number: </label><br>
+    {{formData.firstEmergencyContact.otherPhone}}
+    <br><label for="email">Email: </label><br>
+    {{formData.firstEmergencyContact.email}}
+    
+    <h3>Second Emergency Contact</h3>
+    
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.name}}
+    <br><label for="relationship">Relationship: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.relationship}}
+    <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.street}}
+    <br><label for="city">City: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.city}}
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.state}}
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.zip}}
+    <br><label for="best phone">Best Phone Number: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.bestPhone}}
+    <br><label for="other phone">Other Phone Number: </label><br>
+    {{formData.secondEmergencyContact.otherPhone}}
+    <br><label for="email">Email: </label><br>
+    {{formData.secondEmergencyContact.email}}
+    
+    
+    <br><label for="Heard about ITN">How did you hear about ITN?: <span style="color:red">*</span></label><br>
+    {{formData.heardAboutItn | inputSelected }}
+    
+    <br><label for="send info">Would you like us to send information about ITN to a relative, friend, or business? <span style="color:red">*</span> </label><br>
+    {{formData.sendInfoToRelativeFriendBiz}}
+    
+    <br><div ng-if="sendInfo">
+      <br><label for="name">Name: <span style="color:red">*</span></label><br>
+      {{formData.sendInfoTo.name}}
+      <br><label for="relationship">Relationship: <span style="color:red">*</span></label><br>
+      {{formData.sendInfoTo.relationship}}
+      <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
+      {{formData.sendInfoTo.street}}
+      <br><label for="state">State: <span style="color:red">*</span></label><br>
+      {{formData.sendInfoTo.state}}
+      <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
+      {{formData.sendInfoTo.zip}}
+      <br><label for="phone">Phone: <span style="color:red">*</span></label><br>
+      {{formData.sendInfoTo.phone}}
+      <br><label for="email">Email: </label><br>
+      {{formData.sendInfoTo.email}}
+    </div>
+    
+    <p>ITNAmerica respects your privacy and will keep all customer information confidential. The following information allows us to provide better service to our customers, and helps us better understand the circumstances that customers face when they apply to use the ITN for rides.</p>
+    
+    <h3>Customer Information</h3>
+    
+    <br><label for="gender">Gender: <span style="color:red">*</span> </label><br>
+    {{formData.customerInfo.gender}}
+    <br><label for="dob">Date of Birth: <span style="color:red">*</span> - </label><br>
+    {{formData.customerInfo.dateOfBirth}}
+    <br><label for="marital status">Marital Status: <span style="color:red">*</span> </label><br>
+    {{formData.customerInfo.maritalStatus}}
+    <br><label for="living">Living Arrangements: <span style="color:red">*</span> </label><br>
+    {{formData.customerInfo.livingArrangement}}
+    <br><label for="dwelling">Dwelling Arrangements: <span style="color:red">*</span> </label><br>
+    {{formData.customerInfo.dwellingArrangement}} {{formData.customerInfo.otherDwellingArrangement}}
+    <br><label for="languages">Languages Spoken: <span style="color:red">*</span></label><br>
+    {{formData.customerInfo.languages | inputSelected}}
+    <br><label for="transportation means">Current primary means of getting around: <span style="color:red">*</span> </label><br>
+    {{formData.customerInfo.currentTransportationMeans}}
+    
+    <h3>Civic Engagement</h3>
+    
+    <br><label for="member of any organization">Are you a member of any of the following organizations?:</label><br>
+    {{formData.customerInfo.memberOfOrganization | inputSelected}}
+    <br><label for="professional organization or labor union">Are you part of any professional organizations or labor unions?: <span style="color:red">*</span> </label><br>
+    {{formData.memberOfProfessionalOrgOrUnion}} - {{formData.memberOfProfessionalOrgOrUnions}} 
+    <br><label for="served in armed forces">Have you ever served on active duty in the U.S. Armed Forces, Military Reserves, or National Guard: <span style="color:red">*</span></label><br>
+    {{formData.customerInfo.servedInMilitary}}
+    <br><label for="special needs">Special Needs and Mobility Assistance: <span style="color:red">*</span></label><br>
+    {{formData.customerInfo.specialNeeds | inputSelected }}
+  
+    <h3>Driving Information</h3>
+    
+    <br><label for="license">Do you have a current driver's license?: <span style="color:red">*</span></label><br>
+    {{formData.drivingInfo.hasLicense}}
+    <br><label for="own vehicle">Do you own a vehicle?: <span style="color:red">*</span></label><br>
+    {{formData.drivingInfo.ownVehicle}}
+    <br><label for="driver improvement">Have you tried any driver improvement activities or classes to help you keep driving safely longer?: <span style="color:red">*</span></label><br>
+    {{formData.drivingInfo.driverImprovementClasses}}
+    <br><label for="driven in last 10 years">Have you driven in the last ten years?: <span style="color:red">*</span></label><br>
+    {{formData.drivingInfo.drivenLast10Years}}
+    <br><label for="currently driving">Do you currently drive?: <span style="color:red">*</span></label><br>
+    {{formData.drivingInfo.currentlyDrive}}
+    
+    <div ng-if="currentDriver">
+      <h3>If you drive...</h3>
+      <br><label for="how often do you drive">How often do you drive?:</label><br>
+      {{formData.drivingInfo.howOftenYouDrive}}
+      <br><label for="restricted your driving">Have you restricted your own driving?:</label><br>
+      {{formData.drivingInfo.restrictedOwnDriving}}
+      <h3>How often do you do the following:</h3>
+        <br><label for="avoid driving at night">Avoid driving at night?:</label><br>
+        {{formData.drivingInfo.avoidDrivingAtNight}}
+        <br><label for="avoid highway driving">Avoid highway driving?:</label><br>
+        {{formData.drivingInfo.avoidHighwayDriving}}
+        <br><label for="avoid left turns on incoming traffic">Avoid making left turns across incoming traffic?:</label><br>
+        {{formData.drivingInfo.avoidLeftTurnsIncomingTraffic}}
+        <br><label for="avoid driving bad weather">Avoid driving in bad weather?:</label><br>
+        {{formData.drivingInfo.avoidDrivingBadWeather}}
+        <br><label for="avoid driving alone">Avoid driving alone?:</label><br>
+        {{formData.drivingInfo.avoidDrivingAlone}}
+        <br><label for="avoid driving high traffic">Avoid driving on high traffic roads?:</label><br>
+        {{formData.drivingInfo.avoidDrivingHighTrafficRoads}}
+        <br><label for="avoid driving unfamiliar areas">Avoid driving in unfamiliar areas?:</label><br>
+        {{formData.drivingInfo.avoidDrivingUnfamiliarAreas}}
+        <br><label for="pass up fun because of driving concerns">Pass up opportunities to go shopping, visit friends, etc., because of concerns about driving?:</label><br>
+        {{formData.drivingInfo.passOpportunitiesBecauseDriveConcerns}}
+    </div>
+    
+    <div ng-if="!currentDriver">  
+      <h3>If you do not drive...</h3>
+        <br><label for="check reason why no drive">Please check a reason:</label><br>
+        {{formData.drivingInfo.whyNoDrive | inputSelected }}  {{formData.drivingInfo.whyNoDrive.other }}
+    </div>
+    
+      <br><label for="reduce ITN cost with rideshare">Would you like to reduce the cost of ITN trips by sharing rides with others when it's convenient?: <span style="color:red">*</span></label><br>
+      {{formData.drivingInfo.reduceCostWithRideshare}}
+      <br><label for="info on programs">Would you like information on any of these ITN programs?:</label><br>
+      {{formData.wantInfoOnPrograms | inputSelected}}
+      
+      <h3 class="mt-50 mb-25">Personal Transportation Account Agreement</h3>
+      
+      <p>A personal ITN transportation account is like a personal bank account. It is debited whenever you take an ITN ride, and when you make a payment to ITN, it is like making a deposit into your account.  At the end of each month, you receive a statement that details your rides and any other account activity, such as payments, gift certificates, Ride & Shop™ or Healthy Miles™, volunteer credits, CarTrade™ credits, or payment of membership dues.</p>
+
+      <p>ITN is a charitable nonprofit service supported by your fares and voluntary local community support. Because fares cover only half the true cost of rides, the ITN affiliate may include family members and any others you have listed as contacts in its fundraising campaigns, including the Family Membership Campaign, Walk for Rides and Annual Appeal. Participation in these campaigns is voluntary. A contact’s decision not to participate will not affect the quality of your service or your eligibility to use ITN for rides.</p>
+      
+      <p><strong>Your signature below indicates that you agree to the following policies:</strong></p>
+      
+      <div class="form-group">
+        <ol>
+          <li>You will maintain a balance in your account sufficient to cover your monthly rides;</li>
+          <li>Your membership dues will be automatically debited on the anniversary of your membership;</li>
+          <li>If you have an unpaid balance greater than $200 for longer than 60 days, your account will be paused until you have deposited sufficient funds to again achieve a positive balance;</li>
+          <li>If there is no activity in your account for one year and we have made three documented unsuccessful attempts to reach you, you agree that the balance in our account will become a charitable gift to ITN;</li>
+          <li>Your contacts may receive a limited number of mailings (via regular mail or e-mail) for the ITN affiliate’s fundraising events/campaigns, as well as up to four quarterly ITN Newsletters. Their names will not be shared with any other party or organization.</li>
+        </ol>
+      </div>
+      
+      <label>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label><br>
+      <br><label for="name">Name: <span style="color:red">*</span></label><br>
+      {{formData.agreement.name1}}
+      <br><label for="signature">Agreement Signature: <span style="color:red">*</span></label><br>
+      {{formData.agreement.signature1}}
+      <br><label for="date">Agreement Date: <span style="color:red">*</span></label><br>
+      {{formData.agreement.date1}}
+      
+      
+      <h3 class="mt-50 mb-25">Informed Consent</h3>
+      
+      <p>The Independent Transportation Network (ITN) is a nonprofit, community-based organization providing dignified, consumer-oriented transportation for seniors and people with visual impairments. </p>
+
+      <p>As an ITNAmerica affiliate community, your ITN benefits from more than a decade of research to develop a model for economically sustainable transportation. Among the public and private organizations that have supported this research are the Federal Transit Administration, the Transportation Research Board (National Academies of Science), AARP, the Great Bay Foundation for Social Entrepreneurs, and the Atlantic Philanthropies. Thousands of private individuals and their families have participated in this research and development, without which, this service would not be possible.</p>
+
+      <p>In the spirit of this public/private effort, to continue the development and analysis that will allow ITNAmerica to better understand the mobility needs of older Americans, their families and their communities, and to continuously improve the quality and sustainability of the service, we routinely collect data about riders and the rides we deliver. The identity of our riders is kept entirely confidential in all reports we use for these purposes.</p>
+
+      <p>In addition to this routine data collection, ITNAmerica also conducts research. From time to time, we may ask you to participate in a research project. Your participation in the ITNAmerica research studies is voluntary and confidential. If you prefer not to participate in the research studies, your decision will not affect the quality of your service or your eligibility to use ITN for rides.</p>
+
+      <p>Your signature indicates that you understand that routinely-collected ITNAmerica data will be used to study and improve transportation for seniors, and that you may, from time to time, be asked questions about your use of the service. We will do our best to provide rides for you and we will always strive to inform you when we cannot provide a ride. However, we are not responsible for any costs or expenses you may incur when we are unable to provide a ride for a specific time and place.</p>
+      
+      <label>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label><br>
+      <br><label for="signature">Agreement Signature: <span style="color:red">*</span></label><br>
+      {{formData.agreement.signature2}}
+      <br><label for="date">Agreement Date: <span style="color:red">*</span></label><br>
+      {{formData.agreement.date2}}
+    
+  </div>
+
+
+
+
+
+  
+<div ng-if="formType === 'volunteerapp'">
+    
+    <h3 class="app-title">Volunteer Driver Application</h3>
+    
+    <br><label for="rider name">Name: <span style="color:red">*</span></label><br>
+    {{formData.riderName}}
+    <br><label for="gender">Gender: <span style="color:red">*</span> </label><br>
+    {{formData.riderGender}}
+    <br><label for="gender">Street Address: <span style="color:red">*</span> </label><br>
+    {{formData.streetAddress}}
+    <br><label for="gender">City: <span style="color:red">*</span> </label><br>
+    {{formData.city}}
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
+    {{formData.state}}
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
+    {{formData.zip}}
+    <br><label for="home phone">Preferred Phone: <span style="color:red">*</span></label><br>
+    {{formData.preferredPhone}}
+    <br><label for="cell phone">Other Phone:</label><br>
+    {{formData.otherPhone}}
+    <br><label for="email">Email: </label><br>
+    {{formData.email}}
+    
+    <h3>First Emergency Contact</h3>
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.name}}
+    <br><label for="relationship">Relationship: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.relationship}}
+    <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.street}}
+    <br><label for="city">City: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.city}}
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.state}}
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.zip}}
+    <br><label for="home phone">Preferred Phone: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.preferredPhone}}
+    <br><label for="cell phone">Other Phone: </label><br>
+    {{formData.firstEmergencyContact.otherPhone}}
+    <br><label for="email">Email: </label><br>
+    {{formData.firstEmergencyContact.email}}
+    
+    <h3>Driving Experience</h3>
+    <br><label for="years of driving experience">Years of Driving experience:</label><br>
+    {{formData.drivingExperience.years}}
+    <br><label for="Estimated miles driven last year">Estimated miles driven last year:</label><br>
+    {{formData.drivingExperience.milesDrivenLastYr}}
+    <br><label for="vision last examined">When was your vision last examined:</label><br>
+    {{formData.drivingExperience.visionLastExamined}}
+    <br><label for="vision adequate driving">Is your vision adequate for driving: <span style="color:red">*</span></label><br>
+    {{formData.drivingExperience.adequateVision}} {{formData.drivingExperience.adequateVisionLimitations}}
+    <br><label for="current job">Current Employment Status: <span style="color:red">*</span></label><br>
+    {{formData.drivingExperience.currentEmployment}}
+    
+    
+    <h3>References</h3>
+    <br><label for="criminal conviction">Have you had any past criminal convictions, or do you have any charges pending against you in a court of law?<span style="color:red">*</span></label><br>
+    {{formData.criminalConviction}} - {{formData.criminalConvictionDetail}}
+    <br><label for="moving violation">Have you been convicted of any moving violations in the past three years? <span style="color:red">*</span> </label><br>
+    {{formData.movingViolation}}
+    
+    <h4>First Reference</h4>
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
+    {{formData.firstReference.name}}
+    <br><label for="phone">Phone (or Mailing Address): <span style="color:red">*</span></label><br>
+    {{formData.firstReference.phoneOrMailing}}
+    <br><label for="email">Email: </label><br>
+    {{formData.firstReference.email}}
+    <br><label for="acquainted">How are you acquainted: <span style="color:red">*</span></label><br>
+    {{formData.firstReference.acquainted}}
+    <br><label for="name">Years of acquaintance:</label><br>
+    {{formData.firstReference.yearAcquaintance}}
+    
+    <h4>Second Reference</h4>
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
+    {{formData.secondReference.name}}
+    <br><label for="phone">Phone (or Mailing Address): <span style="color:red">*</span></label><br>
+    {{formData.secondReference.phoneOrMailing}}
+    <br><label for="email">Email: </label><br>
+    {{formData.secondReference.email}}
+    <br><label for="acquainted">How are you acquainted: <span style="color:red">*</span></label><br>
+    {{formData.secondReference.acquainted}}
+    <br><label for="name">Years of acquaintance:</label><br>
+    {{formData.secondReference.yearAcquaintance}}
+    
+    <h4>Third Reference</h4>
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
+    {{formData.thirdReference.name}}
+    <br><label for="phone">Phone (or Mailing Address): <span style="color:red">*</span></label><br>
+    {{formData.thirdReference.phoneOrMailing}}
+    <br><label for="email">Email: </label><br>
+    {{formData.thirdReference.email}}
+    <br><label for="acquainted">How are you acquainted: <span style="color:red">*</span></label><br>
+    {{formData.thirdReference.acquainted}}
+    <br><label for="name">Years of acquaintance:</label><br>
+    {{formData.thirdReference.yearAcquaintance}}
+    
+    <p>This information is correct to the best of my knowledge. I give the Independent Transportation Network permission to check on this information, and to contact references.</p>
+    
+    <br><label for="signature">Signature: <span style="color:red">*</span></label><br>
+    {{formData.references.signature}}
+    <br><label for="date">Agreement Date: <span style="color:red">*</span></label><br>
+    {{formData.references.date}}
+    
+    
+    <h3>Volunteering with ITN</h3>
+    <br><label for="prior affiliation with ITN">Do you have any prior affiliation with ITN:</label><br>
+    {{formData.volunteering.priorAffiliationWithITN}}
+    <br><label for="learn about ITN">How did you learn about ITN:</label><br>
+    {{formData.volunteering.learnAboutITN}}
+    <br><label for="volunteered before">Have you volunteered before:</label><br>
+    {{formData.volunteering.volunteeredBefore}}
+    
+    <h4>Please rank your reasons for wanting to drive for the ITN, with " 1 " the most important reason, and " 6 " being the least:</h4>
+    
+    <br><label for="serve community">Serve the community:</label><br>
+    {{formData.reasons.serveCommunity}}
+    <br><label for="serve community">Enjoy driving:</label><br>
+    {{formData.reasons.enjoyDriving}}
+    <br><label for="serve community">Help elderly people:</label>
+    {{formData.reasons.helpElderly}}
+    <br><label for="serve community">Additional Income:</label>
+    {{formData.reasons.additionalIncome}}
+    <br><label for="serve community">Occupy your time:</label>
+    {{formData.reasons.occupyTime}}
+    <br><label for="serve community">Enjoy elderly people:</label>
+    {{formData.reasons.enjoyElderly}}
+    
+    <h3>Education</h3>
+    <br><label for="learn about ITN">Highest grade/degree completed:</label><br>
+    {{formData.education.highestDegree}}
+    <br><label for="learn about ITN">First aid training, if any:</label><br>
+    {{formData.reasons.firstAidTraining}}
+    
+    <h3>Ethnic Background</h3>
+    <br><label for="ethnicity">What is your ethnic background?:</label><br>
+    {{formData.ethnicBackground | inputSelected }}
+    
+    <h3>Civic Engagement</h3>
+    <br><label for="member of any organization">Are you a member of any of the following organizations?:</label><br>
+    {{formData.memberOfOrganization | inputSelected}}
+    <br><label for="professional organization or labor union">Are you part of any professional organizations or labor unions?: <span style="color:red">*</span> </label><br>
+    {{formData.memberOfProfessionalOrgOrUnion}} - {{formData.memberOfProfessionalOrgOrUnions}}
+    <br><label for="served in armed forces">Have you ever served on active duty in the U.S. Armed Forces, Military Reserves, or National Guard: <span style="color:red">*</span></label><br>
+    {{formData.servedInMilitary}}
+    
+    
+    <h4>Volunteer Driver Weekly Schedule</h4>
+    <p>ITN<em>{{affiliate}}</em> will work with your schedule.</p>
+    <p>We provide transportation 24 hours a day 7 days a week.</p>
+    
+    <br><label for="hours available">What hours are you available on these days? </label><br>
+    <br><label for="Monday">Monday</label><br>
+    {{formData.hoursAvailable.monday}}
+    <br><label for="Tuesday">Tuesday</label><br>
+    {{formData.hoursAvailable.tuesday}}
+    <br><label for="Wednesday">Wednesday</label><br>
+    {{formData.hoursAvailable.wednesday}}
+    <br><label for="Thursday">Thursday</label><br>
+    {{formData.hoursAvailable.thursday}}
+    <br><label for="Friday">Friday</label><br>
+    {{formData.hoursAvailable.friday}}
+    <br><label for="Saturday">Saturday</label><br>
+    {{formData.hoursAvailable.saturday}}
+    <br><label for="Sunday">Sunday</label><br>
+    {{formData.hoursAvailable.sunday}}
+    
+    <p>Each week the dispatcher contacts volunteers to provide the names, times, and directions for your rides.</p>
+    
+    
+    <h3>Authorization to Request Driver Record</h3>
+    <br><label for="name">Name <span style="color:red">*</span>:</label><br>
+    {{formData.requestDriverRecord.name}}
+    <br><label for="maiden name">Previous/Maiden name (if applicable):</label><br>
+    {{formData.requestDriverRecord.maidenName}}
+    <br><label for="date of birth">Date of Birth <span style="color:red">*</span>:</label><br>
+    {{formData.requestDriverRecord.dob}}
+    <br><label for="license number">Driver's License Number <span style="color:red">*</span>:</label><br>
+    {{formData.requestDriverRecord.licenseNumber}}
+    <br><label for="license number">I authorize ITN<em>{{affiliate}}</em> to request and receive my Driving Record from <span style="color:red">*</span>:</label>
+    {{formData.requestDriverRecord.authorize}}
+    
+    <p><strong>I certify that I have not been convicted or forfeited bond or collateral because of a moving violation during the last three years.</strong></p>
+    
+    <br><label for="signature"> Agreement Signature: <span style="color:red">*</span></label>
+    {{formData.requestDriverRecord.signature}}
+    <br><label for="date">Agreement Date: <span style="color:red">*</span></label>
+    {{formData.requestDriverRecord.date}}
+    
+    
+    <h3>Authorization to Request Criminal Record History</h3>
+    <br><label for="criminal record state">This authorization is required to check your Criminal History Record from: <span style="color:red">*</span></label>
+    {{formData.requestCriminalRecord.authorize}}
+    
+    <p><strong>Please fill in your complete name (please include any previous names used) and include date of birth, then sign below. The purpose of this background check will be for volunteer purposes.</strong></p>
+    
+    <br><label for="name">Name <span style="color:red">*</span>:</label><br>
+    {{formData.requestCriminalRecord.name}}
+    <br><label for="maiden name">Previous/maiden name (if applicable):</label><br>
+    {{formData.requestCriminalRecord.maidenName}}
+    <br><label for="date of birth">Date of Birth <span style="color:red">*</span>:</label><br>
+    {{formData.requestCriminalRecord.dob}}
+
+    
+    <p><strong>I authorize Independent Transportation Network® to request and receive any and all criminal history information about me held by the State Bureau of Identification. The purpose of this background check will be for volunteer purposes.</strong></p>
+    
+    <br><label for="signature">Signature <span style="color:red">*</span>:</label><br>
+    {{formData.requestCriminalRecord.signature}}
+    <br><label for="date">Date <span style="color:red">*</span>:</label><br>
+    {{formData.requestCriminalRecord.date}}
+    
+    
+    <h3>Vehicle Description Information</h3>
+    <br><label for="own vehicle">Do you own the vehicle?: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.vehicleOWner}}
+    
+    <h4>Vehicle Description</h4>
+    <br><label for="make">Make <span style="color:red">*</span>:</label><br>
+    {{formData.vehicleDescription.make}}
+    <br><label for="model">Model <span style="color:red">*</span>:</label><br>
+    {{formData.vehicleDescription.model}}
+    <br><label for="type">Type:</label><br>
+    {{formData.vehicleDescription.type}}
+    <br><label for="year">Year <span style="color:red">*</span>:</label><br>
+    {{formData.vehicleDescription.year}}
+    <br><label for="registration Plate">Registration plate <span style="color:red">*</span>:</label><br>
+    {{formData.vehicleDescription.registrationPlate}}
+    <br><label for="color">Color :</label><br>
+    {{formData.vehicleDescription.color}}
+    <br><label for="number Of Doors">Number of doors <span style="color:red">*</span>:</label><br>
+    {{formData.vehicleDescription.numberOfDoors}}
+    <br><label for="registration Expiration">Registration expiration date: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.registrationExpiration}}
+    <br><label for="insurance Company">Insurance company: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.insuranceCompany}}
+    <br><label for="agent">Agent: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.agent}}
+    <br><label for="agent address">Agent Email Address: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.agentEmailAddress}}
+    <br><label for="agent Phone">Agent Phone</label><br>
+    {{formData.vehicleDescription.agentPhone}}
+    <br><label for="can transport walker or wheelchair">Are you able to transport a folding walker<span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.canTransportWalker}}
+    <br><label for="can transport walker or wheelchair">Are you able to transport a wheel chair: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.canTransportWheelChair}}
+    
+    <br><label for="general condition">Please describe the general condition of the vehicle(s) and any known defects: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.generalCondition}}
+    <br><label for="passenger capacity">Passenger capacity: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.passengerCapacity}}
+    <br><label for="can Transport Pets">Are you willing to transport properly restrained pets: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.canTransportPets}}
+    <br><label for="has large trunk">Do you have a large trunk: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.hasLargeTrunk}}
+    <br><label for="has covered truck bed">Covered truck bed: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.hasCoveredTruckBed}}
+    <br><label for="only vehicle">Is this the only vehicle you will be using: <span style="color:red">*</span></label><br>
+    {{formData.vehicleDescription.onlyVehicle}}
+    
+    <div ng-show="secondVehicle">
+      <br><label for="make">Make <span style="color:red">*</span>:</label><br>
+      {{formData.secondVehicleDescription.make}}
+      <br><label for="model">Model <span style="color:red">*</span>:</label><br>
+      {{formData.secondVehicleDescription.model}}
+      <br><label for="type">Type:</label><br>
+      {{formData.secondVehicleDescription.type}}
+      <br><label for="year">Year <span style="color:red">*</span>:</label><br>
+      {{formData.secondVehicleDescription.year}}
+      <br><label for="registration Plate">Registration plate <span style="color:red">*</span>:</label><br>
+      {{formData.secondVehicleDescription.registrationPlate}}
+      <br><label for="color">Color :</label><br>
+      {{formData.secondVehicleDescription.color}}
+      <br><label for="number Of Doors">Number of doors <span style="color:red">*</span>:</label><br>
+      {{formData.secondVehicleDescription.numberOfDoors}}
+      <br><label for="registration Expiration">Registration expiration date: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.registrationExpiration}}
+      <br><label for="insurance Company">Insurance company: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.insuranceCompany}}
+      <br><label for="agent">Agent: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.agent}}
+      <br><label for="agent address">Agent Email Address: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.agentEmailAddress}}
+      <br><label for="agent Phone">Agent Phone</label><br>
+      {{formData.secondVehicleDescription.agentPhone}}
+      <br><label for="can transport walker or wheelchair">Are you able to transport a folding walker?<span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.canTransportWalker}}
+      <br><label for="can transport walker or wheelchair">Are you able to transport a wheelchair?<span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.canTransportWheelChair}}
+      
+      <br><label for="general condition">Please describe the general condition of the vehicle(s) and any known defects: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.generalCondition}}
+      <br><label for="passenger capacity">Passenger capacity: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.passengerCapacity}}
+      <br><label for="can Transport Pets">Are you willing to transport properly restrained pets: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.canTransportPets}}
+      <br><label for="has large trunk">Do you have a large trunk: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.hasLargeTrunk}}
+      <br><label for="has covered truck bed">Covered truck bed: <span style="color:red">*</span></label><br>
+      {{formData.secondVehicleDescription.hasCoveredTruckBed}}
+    </div>
+    
+    <br><label for="signature">Signature <span style="color:red">*</span>:</label><br>
+    {{formData.vehicleDescription.signature}}
+    <br><label for="date">Date <span style="color:red">*</span>:</label><br>
+    {{formData.vehicleDescription.date}}
+    
+    
+    <h3>Volunteer Driver Change of Status</h3>
+
+    <p>It is the responsibility of the Volunteer Driver to notify the Independent Transportation Network® of any changes in relevant driver information.
+    Please notify your ITN Representative of any incidents or changes related to the list below, and submit copies of new documents before their expiration dates.</p>
+
+    <ul>
+      <li>Change of insurance policy, agent, or carrier</li>
+      <li>Accidents</li>
+      <li>Moving Violations</li>
+      <li>New/different vehicles</li>
+      <li>Criminal convictions</li>
+      <li>Significant medical issues that affect driving</li>
+      <li>Change in license status</li>
+    </ul>
+
+    <p>I understand that I need to report any changes in the above to ITN, and agree to do so in a timely manner.</p>
+    
+    <br><label for="signature">Volunteer Driver Signature <span style="color:red">*</span>:</label><br>
+    {{formData.changeOfStatus.signature}}
+    <br><label for="date">Date: <span style="color:red">*</span></label><br>  
+    {{formData.changeOfStatus.date}}
+    <br><label for="itn Signature">ITN<em>America</em> Signature:</label><br>
+    <br><label for="itn date">Date:</label><br>
+    
+  </div>
+</div>
+
+
+<script type="x/kendo-template" id="page-template">
+  <div class="page-template">
+    <div class="header">
+    </div>
+    <div class="watermark"><img src="assetsPath/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+    <div class="watermark"><img src="assetsPath/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+    <div class="footer">
+      Page #: pageNum # of #: totalPages #
+    </div>
+  </div>
+</script>

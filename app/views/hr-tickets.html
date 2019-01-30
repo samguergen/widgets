@@ -1,0 +1,47 @@
+<div class="portal hr-tickets" ng-show="showPortal">
+  <div class="container">
+    
+    <h2>HR Tickets</h2>
+    
+    <div class="row mt-50 mb-25">
+
+      <div class="col-md-6">
+        <a ui-sref="contact({contact: 'hrcontactform'})">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/hr-ticket.png" alt="logo of a support ticket" style="object-fit:contain;width:180px;margin:0"/>
+            <h5 style="margin-top:-10px">File an HR ticket</h5>
+          </div>
+        </a>
+      </div><!--col-md-6-->
+      
+      <div class="col-md-6">
+        <a ui-sref="dashboard">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/hr-ticket2.png" alt="logo of a support ticket" style="object-fit:contain;width:180px;margin:0"/>
+            <h5 style="margin-top:-10px">HR Ticket Queue</h5>
+          </div>
+        </a>
+      </div><!--col-md-6-->
+      
+    </div><!--row-->
+
+
+    
+  </div>
+</div>
+
+
+<div class="back-btn-wrap">
+  <a ng-click="openAdditionalPage()" ng-hide="showPortal" class="back-btn">
+    <h3>Back to Previous Page</h3>
+  </a>
+  <a ui-sref="portal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>
+  
+  
+  
+  
+
+

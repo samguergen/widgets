@@ -1,0 +1,103 @@
+<div class="nda">
+  <div class="container-fluid">
+    <div class="form-area" id="formConfirmation" style="background: #c7dfe4;border:none;padding:5% 7%;font-size:25px">  
+          <form name="itnForm" novalidate ng-submit="submitNDAFormAsPDF()" role="non-disclosure form" ng-model="formData" ng-bind-html-unsafe="htmlNDA">
+            <br style="clear:both">
+            <div id="ndaForm">
+            <h2 style="text-align:center;margin-bottom:50px;">CONFIDENTIALITY AND NONDISCLOSURE AGREEMENT</h2>
+            
+            <p>THIS AGREEMENT, dated 2018-08-15 is between 
+              
+              <input type="text" class="form-control" id="name" name="name" ng-model="formData.name" ng-minlength="minlength" ng-maxlength="maxlength" style="width:30%;margin:1% 0" placeholder="Your first and last name" required> (“User”) of 
+              
+              <input type="text" class="form-control" id="itnAffiliate" name="itnAffiliate" ng-model="formData.itnAffiliate" ng-minlength="minlength" ng-maxlength="maxlength" style="width:20%;margin:1% 0" placeholder="Your company name" required> 
+              
+              and ITNAmerica (“ITNAmerica”).</p>
+              
+            <p>WHEREAS, ITNAmerica has developed software, data base models and directories (the “Confidential Information”);</p>
+              
+            <p>WHEREAS, User desires access to the Confidential Information; and</p>
+              
+            <p>WHEREAS, ITNAmerica is willing to share some of the Confidential Information, including transportation data, business planning tools and software, with User, for the limited purpose of planning and/or implementing a transportation service for joint development with ITNAmerica.</p>
+              
+            <p>NOW, THEREFORE, in consideration of the mutual promises set forth herein, the parties agree:</p>
+              
+            <p>Acknowledgement of Access. ITNAmerica agree to make available to User the Confidential Information as it may relate to the data dictionary, database designs and specifications and transportation data. User further acknowledges the ownership by ITNAmerica of the Confidential Information.</p>
+              
+            <p>Definition.   For the purpose of this Agreement, “Confidential Information” shall include, without limitation, the ITNRides! database the identity of, and any nonpublic information pertaining to, any former or existing customers or other parties transacting business with ITN or ITNAmerica; customer lists and customer files; nonpublic marketing materials and information of ITN or ITNAmerica; nonpublic business methods, strategies, or plans of ITN or ITNAmerica; operating procedures of ITN or ITNAmerica; financial statements, projections, budgets, or other accounting or financial information of ITN or ITNAmerica; proprietary computer software and systems of ITN or ITNAmerica, or software modifications and adaptations specific to ITN or ITNAmerica; designs, drawings, models, database models and directories, as well as, but not limited to, the concepts express and implied, associated with the individual grant applications, and relevant research, development, or ‘know-how’; grant applications in preparation or submitted to any foundation or other funding organization; any business plans or proposals in planning stages, in actual preparation or under negotiation, and any other competitively significant information relating to ITN or ITNAmerica and which is not readily ascertainable by proper means by others outside ITN or ITNAmerica; all documentation, advances, discoveries, concepts, ideas, work of authorship, and all other work product containing or relating to, or deriving from any of the above.</p>
+              
+            <p>Nondisclosure. User will not disclose the Confidential Information, directly or indirectly, under any circumstances or by any means, to others without the prior express written consent of ITN and ITNAmerica.</p>
+            
+            <p>Limitations on Use. User will not, without the prior written consent of ITN and ITNAmerica, copy, transmit, reproduce, summarize, quote, or make any use of the Confidential Information or any portion thereof for herself/himself or others, except to the extent necessary to collaborate with ITN and/or ITNAmerica and with the express written consent of ITN and ITNAmerica.</p>
+            
+            <p>Protection of Confidentiality. User will restrict access to the Confidential Information. user will use the highest degree of care in safeguarding the Confidential Information against loss, theft, or other inadvertent disclosure; and further agrees to use reasonable diligence in protecting the confidentiality of all Confidential Information.</p>
+            
+            <p>Return of Confidential Information. Upon the conclusion of research or services performed by user, or upon request of ITN or ITNAmerica, all materials and records user has received from ITN and ITNAmerica, including all materials and documents generated by user and derived from such Confidential Information in collaboration with ITN or ITNAmerica, shall be promptly returned to ITNA, unless user receives express written consent from ITN and ITNAmerica.</p>
+            
+            <p>Right to Injunctive Relief. User acknowledges that the Confidential Information is of the utmost importance to business of ITN and ITNAmerica and that disclosure or use of that Confidential Information contrary to the terms of this Agreement will cause irreparable harm to ITN and ITNAmerica, which may be difficult or impossible to measure in monetary terms. ITN and ITNAmerica will therefore be entitled to enforce such provision by temporary or permanent injunctive relief. ITN and/or ITNAmerica shall also be entitled to pursue any other remedies available for such violation in addition to, or in lieu of, the relief described above, including the recovery of actual or consequential damages. User agrees to pay all enforcement costs, including reasonable attorneys’ fees, incurred by ITN and ITNAmerica in enforcing the provisions set forth in this Agreement.</p>
+            
+            <p>Duration. The obligations set forth in this Agreement will continue for the duration of the project or collaboration and thereafter.</p>
+            
+            <p>Governing Law. The rights and obligations of the parties under or relating to this Agreement, in all respects, shall be governed by the laws of the State of Maine. ITN, ITNAmerica and user agree that any suit, action, or proceeding between them which concerns this Agreement shall be brought and heard in federal or state court in the State of Maine, and each party hereby consents to the personal jurisdiction of such courts in Maine and agrees to waive any objections to such venue, irrespective of their current or future residences.</p>
+            
+            <p>Severability. Whenever feasible, each provision of this Agreement shall be interpreted in such a manner as to be effective and valid under applicable law. If any provision hereof is held to be prohibited by or unenforceable under applicable law, such provision shall be ineffective to the extent of such prohibition or unenforceability without invalidating the remainder of such provision or the terminating provisions of this Agreement.</p>
+            
+            <p>In Witness Whereof, the parties hereto have caused this Confidentiality Agreement to be executed as of the date set forth herein by their duly authorized representatives.</p>
+            
+          </div><!--NDAform-->
+            
+            <div class="row mt-50">
+              <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.name.$invalid && !itnForm.name.$pristine }">
+                <label for="name">Print Name (required): <span style="color:red">*</span> </label><br>
+                <input type="text" class="form-control" id="name" name="name" ng-model="formData.name" ng-minlength="minlength" ng-maxlength="maxlength" required>
+                <span ng-if="itnForm.name.$error.required && !itnForm.name.$pristine" class="help-block">{{errorMessages.required}}</span>
+                <span ng-if="itnForm.name.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                <span ng-if="itnForm.name.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+              </div>
+              
+              <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.signature.$invalid && !itnForm.signature.$pristine }">
+                <label for="signature">Signature (prefix with /s/ ) (required): <span style="color:red">*</span> </label><br>
+                <input type="text" class="form-control" id="signature" signature="signature" ng-model="formData.signature" ng-minlength="minlength" ng-maxlength="maxlength" required>
+                <span ng-if="itnForm.signature.$error.required && !itnForm.signature.$pristine" class="help-block">{{errorMessages.required}}</span>
+                <span ng-if="itnForm.signature.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                <span ng-if="itnForm.signature.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.date.$invalid && !itnForm.date.$pristine }">
+                <label for="date">Agreement Date: <span style="color:red">*</span></label>
+                <input ng-model="formData.date" type="text" class="form-control" id="date" name="date" ng-pattern="datePattern" placeholder="Example: mm/dd/yyy" required>
+                <span ng-if="itnForm.date.$error.required && !itnForm.date.$pristine" class="help-block">{{errorMessages.required}}</span>
+                <span ng-if="itnForm.date.$error.pattern" class="help-block">{{errorMessages.date}}</span>
+              </div>
+              
+              <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.email.$invalid && !itnForm.email.$pristine }">
+                <label for="email">Your Email (required): </label><br>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Example: test@example.com" ng-model="formData.email" ng-pattern="emailPattern">
+                <span ng-if="itnForm.email.$error.pattern" class="help-block">{{errorMessages.email}}</span>
+              </div> 
+            </div>
+            
+            
+            <div class="form-group">
+              <label for="signature">ITNAmerica's signature<span style="color:red">*</span> </label><br>
+              <input type="text" class="form-control" id="itn-signature" name="itn-signature" ng-disabled="true" style="width:49%">
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : itnForm.agree1.$invalid && !itnForm.agree1.$pristine }">  
+              <label class="checkbox-inline"><input type="checkbox" value="agree" ng-model="formData.agree" name="agree1" ng-click="" required>By checking this box and submitting this form, you agree with the terms and condition of this Non-Disclosure Agreement.</label>
+              <span ng-if="itnForm.agree1.$error.required && !itnForm.agree1.$pristine" class="help-block">{{errorMessages.required}}</span>
+            </div>
+            
+            <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right itn-green-bg" value="Send" ng-disabled="itnForm.$invalid || loading" style="margin-left:2%">
+            <input type="reset" class="btn btn-lg btn-primary pull-left itn-green-bg" ng-click="formData = {}" value="Reset">
+            
+            </form>
+            
+            <p ng-if="loading"><em>Loading. Please wait</em></p>
+            <p style="color:red; margin-top:100px"><strong>{{serverMessage}}</strong></p>
+          
+        </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+.search {
+  display: inline-block;
+  position: relative; }
+  .search ::-webkit-input-placeholder {
+    font-style: italic; }
+  .search :-moz-placeholder {
+    font-style: italic; }
+  .search ::-moz-placeholder {
+    font-style: italic; }
+  .search :-ms-input-placeholder {
+    font-style: italic; }
+  .search input {
+    padding-left: 28px; }
+  .search .error-label {
+    display: block;
+    color: #ff0000; }
+  .search input[type=search].input-error {
+    border: 1px solid #ff0000; }
+  .search .turn-search {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><path d="M12,10l-0.5,0.5l-0.79-0.79C11.516,8.688,12,7.401,12,6c0-3.313-2.687-6-6-6S0,2.687,0,6s2.687,6,6,6c1.401,0,2.688-0.484,3.71-1.29l0.79,0.79L10,12l4,4l2-2L12,10z M6,10c-2.209,0-4-1.791-4-4s1.791-4,4-4s4,1.791,4,4S8.209,10,6,10z"/></svg>') 0 0 no-repeat;
+    height: 16px;
+    opacity: .5;
+    position: absolute;
+    left: 8px;
+    top: 7px;
+    width: 16px; }
+    .search .turn-search:hover {
+      opacity: .6; }
+  .search .turn-clear {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><path d="M17.499,8.583c0,4.832-3.917,8.75-8.75,8.75S0,13.415,0,8.583s3.917-8.75,8.75-8.75S17.499,3.75,17.499,8.583z M5.833,4.208 L4.375,5.666l2.917,2.917l-2.917,2.917l1.458,1.458l2.917-2.917l2.917,2.917l1.458-1.458l-2.917-2.917l2.917-2.917l-1.458-1.458 L8.75,7.125L5.833,4.208z"/></svg>') 0 0 no-repeat;
+    display: block;
+    height: 23px;
+    opacity: .3;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    width: 23px; }
+    .search .turn-clear:before {
+      display: block;
+      height: 50px; }
+    .search .turn-clear:hover {
+      opacity: .4; }
+  .search .press-enter {
+    color: #bbb;
+    display: block;
+    font-size: 11px;
+    line-height: 26px;
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+    .search .press-enter kbd {
+      background: #bbb;
+      box-shadow: none;
+      cursor: default;
+      text-transform: uppercase; }
+      .search .press-enter kbd:hover {
+        background: #aeaeae; }
+
+/*# sourceMappingURL=search.css.map */

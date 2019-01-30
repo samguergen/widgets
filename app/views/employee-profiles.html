@@ -1,0 +1,106 @@
+<div class="employee portal" ng-init="getEmployeesPromise()">
+  
+  <div class="container">
+    <h2>Select an Employee</h2>
+    
+    <div class="dropdown ta-center">
+      <button class="btn btn-lg dropdown-toggle" type="button" data-toggle="dropdown">ITN Employees
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li ng-repeat="employee in employees"><a ng-click="toggleEmployee(employee)" ng-class="{'no-border': $last}">{{employee.firstName}} {{employee.lastName}}</a></li>
+      </ul>
+    </div>
+    
+    <div class="row mt-25">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6 ta-center">
+        <button class="btn btn-red" ng-click="addEmployee()">Add Employee</button>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+    
+  </div>
+
+  
+  <div class="container employee-profile" ng-if="employeeSelected && showDisplayProfile" ng-repeat="employee in employees | filter: {firstName: employeeSelected.firstName}" >
+    
+    <div class="employee-profile-display">
+    
+      <h2 style="margin:0;font-size:35px">{{employee.firstName}} {{employee.lastName}}</h2>
+      <h5 style="text-align:center">{{employee.position}}</h5>
+      <h6 style="text-align:center;color:#fc6f6d;font-size:20px">{{employee.email}}</h5>
+      
+      <div class="row mt-50">
+        <div class="col-sm-3">
+          <img ng-src="{{assetsPath}}/images/board/photo_soon.jpg" alt="icon of avatar" style="margin-left: -10%;height:200px;width:200px" class="img-responsive"/>
+        </div>
+        <div class="col-sm-offset-1 col-sm-8">
+          <p>Bio:</p>
+          <p>{{employee.bio}}</p>
+        </div>
+      </div><!--row-->
+      
+      <div class="row mt-50 mb-25">
+        <h5>Uploaded Files</h5>
+        <hr style="width:30%">
+        
+        <button class="btn btn-lg pull-right" style="margin-left:2%" ui-sref="contact({contact: employee})">Contact {{employee.firstName}}</button>
+        <button class="btn btn-lg pull-right" ng-click="authWallEmployee(employeeSelected)">Edit Profile</button>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  
+  
+  <div class="container employee-edit" ng-if="!showDisplayProfile && showEditProfile">
+    <form ng-show="showEditProfile" name="itnForm" novalidate ng-submit="editEmployee()" role="edit profile form" ng-model="employeeSelected">
+      <div class="row" style="width:70%;margin:auto">
+        <div class="form-group col-sm-6">
+          <input type="text" class="form-control" id="firstName" name="firstName" placeholder="{{employeeSelected.firstName}}" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="employeeSelected.firstName">
+        </div>
+        <div class="form-group col-sm-6">
+          <input type="text" class="form-control" id="lastName" name="lastName" placeholder="{{employeeSelected.lastName}}" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="employeeSelected.lastName">
+        </div>
+      </div>
+      <div class="form-group" style="width:50%;margin:auto;margin-top:-20px">
+        <input type="text" class="form-control" id="position" name="position" placeholder="{{employeeSelected.position}}" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="employeeSelected.position">
+      </div>
+      <div class="form-group" style="width:50%;margin:auto;">
+        <input type="text" class="form-control" id="email" name="email" placeholder="{{employeeSelected.email}}" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="employeeSelected.email">
+      </div>
+      
+      <div class="row mt-50">
+        <div class="col-sm-3" style="height:200px;width:200px;border: 1px solid white">
+          <img ng-src="{{assetsPath}}/images/board/photo_soon.jpg" alt="icon of avatar" style="margin-left: -10%;height:200px;width:200px" class="img-responsive"/>
+          <p><button class="btn btn-lg update-avatar" ng-click="updateEmployeeAvatar(employeeSelected)">Update Avatar</button></p>
+        </div>
+        <div class="col-sm-offset-1 col-sm-8">
+          <p>Bio:</p>
+          <div class="form-group">
+            <textarea class="form-control" type="textarea" id="bio" name="bio" placeholder="{{employeeSelected.bio}}" maxlength="2000" rows="7" ng-model="employeeSelected.bio"></textarea>
+          </div>
+        </div>
+      </div><!--row-->
+      
+      <div class="row mt-50 mb-25">
+        <h5>Uploaded Files</h5>
+        <hr style="width:30%">
+        
+        <p class="server-message"><strong>{{serverMessage}}</strong></p>
+
+        <button type="submit" class="btn btn-lg pull-right">Save Profile</button>
+        <button class="btn btn-lg pull-right" ng-click="toggleProfileType('display')">Cancel Edits</button>
+
+      </div>
+    </form>
+  </div><!--employee-edit-->
+
+</div><!--employees-->
+
+
+<!-- -contact email (+hr ticket)
+-edit profile (for person logged in)
+-add/rm employeeSelected? (for admin-dashboard)
+-how to read imgs -->

@@ -1,0 +1,330 @@
+<div class="portal itn-services" ng-show="showPortal" ng-init="getCommentsPhoto()">
+  <div class="container">
+
+    <h2>ITN Operations</h2>
+
+    <div class="row mt-50 mb-25">
+
+      <div class="col-md-4">
+        <a ui-sref="human-resources">
+          <div class="block" style="background:#3692cd">
+            <img ng-src="{{assetsPath}}/images/hr-icon.svg" alt="logo of human resources" style="object-fit:contain;width:20=50px;margin:0"/>
+            <h5 style="margin-top:-90px">Human </br> Resources</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+
+      <div class="col-md-4">
+        <a ng-click="openAdditionalPage('analytics')">
+          <div class="block" style="background:#ffcf51">
+            <img ng-src="{{assetsPath}}/images/analytics2-icon.svg" alt="icon of graphs" style="object-fit:contain;width:180px;margin:0"/>
+            <h5 style="margin-top:-30px">Company-wide Analytics</h5>
+          </div>
+        </a>
+      </div><!--col-md-4--><!--(add email to request access)-->
+
+
+      <div class="col-md-4">
+        <a ui-sref="important-docs-landing">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/folder-logo.jpg" alt="logo of a folder" style="object-fit:contain;width:200px;margin-top:40px"/>
+            <h5 style="margin-top:-12px">Resources & Documents</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+
+      <!-- <div class="col-md-4">
+        <a ng-click="openAdditionalPage('allComments')">
+          <div class="block" style="background:#83dbff">
+            <img ng-src="{{assetsPath}}/images/speaker-icon.svg" alt="icon of speaker" style="object-fit:contain;width:160px;margin:0;"/>
+            <h5 style="margin-top:-10px;color:white">Company-wide Announcements</h5>
+          </div>
+        </a>
+      </div> -->
+
+    </div><!--row-->
+
+
+    <div class="row mt-25 mb-25">
+
+      <div class="col-md-4">
+        <a ui-sref="calendar">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/calendar-icon.svg" alt="icon of calendar" style="object-fit:contain;width:260px;margin-left:-7%;margin-top:-7%"/>
+            <h5 style="margin-top:-52px">Calendar</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ui-sref="rides">
+          <div class="block" style="background:#52c0ec">
+            <img ng-src="{{assetsPath}}/images/data-icon.svg" alt="icon of graphs" style="object-fit:contain;width:200px;margin:0"/>
+            <h5 style="margin-top:-10px;color:white">Rides Data</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-6">
+        <a ui-sref="important-docs({filter: 'archives'})" ng-disabled="true" style="pointer-events:none">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/archives-icon.svg" alt="icon of archives" style="object-fit:contain;width:260px;margin-left:-3%;margin-top:-7%"/>
+            <h5 style="color:grey;margin-top:-50px"><em>Archives</em></h5>
+          </div>
+        </a>
+      </div><!--col-md-6-->
+
+    </div><!--row-->
+
+
+  </div>
+</div>
+
+
+<!-- <div class="portal comments" ng-show="allComments">
+  <div class="container-fluid ta-center">
+    <h2>Company-wide Comments & Announcements</h2>
+
+    <div class="row mt-50 mb-50">
+
+      <div class="col-md-12">
+        <h5 class="mb-25" style="display:inline-block">Comments</h5>
+
+        <p style="color:red; margin-top:50px"><strong>{{serverMessage}}</strong></p>
+
+        <div class="row" ng-show="showCommentInput">
+              <div class="form-area mb-50" style="background: #c7dfe4;border:none;padding:1%;border-radius:5px">
+                <form name="itnForm" novalidate ng-submit="addComment(formData, {name: affiliateOfComment}); showCommentInput = false" role="comment form" ng-model="formData" style="padding:2%;margin:0 5%">
+                  <h3 style="margin-bottom: 25px; text-align: center">Add a new comment</h3>
+
+                  <div class="row">
+                    <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.name.$invalid && !itnForm.name.$pristine }">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.author" required>
+                      <span ng-if="itnForm.name.$error.required && !itnForm.name.$pristine" class="help-block">{{errorMessages.required}}</span>
+                      <span ng-if="itnForm.name.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                      <span ng-if="itnForm.name.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                    </div>
+
+                    <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.email.$invalid && !itnForm.email.$pristine }">
+                      <input type="text" class="form-control" id="email" name="email" placeholder="Your Email" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.email" ng-pattern="emailPattern" required>
+                      <span ng-if="itnForm.email.$error.required && !itnForm.email.$pristine" class="help-block">{{errorMessages.required}}</span>
+                      <span ng-if="itnForm.email.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                      <span ng-if="itnForm.email.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                      <span ng-if="itnForm.email.$error.pattern" class="help-block">{{errorMessages.email}}</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : itnForm.message.$invalid && !itnForm.message.$pristine }">
+                    <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Message" maxlength="2000" rows="7" ng-minlength="minlength" ng-maxlength="maxMsgLength" ng-model="formData.message" required></textarea>
+                    <span ng-if="itnForm.message.$error.required && !itnForm.message.$pristine" class="help-block">{{errorMessages.required}}</span>
+                    <span ng-if="itnForm.message.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                    <span ng-if="itnForm.message.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                      <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+                  </div>
+
+                  <p ng-if="loading"><em>Loading. Please wait</em></p>
+                  <p style="color:red; margin-top:50px"><strong>{{serverMessage}}</strong></p>
+
+                  <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right itn-green-bg" value="Send" style="margin-left:2%;margin-top:-50px">
+                  <input type="button" ng-click="formData = {}" value="Reset Form" class="btn btn-lg pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">
+
+                </form>
+              </div>
+
+        </div>
+
+
+
+        <table class="table table-responsive table-bordered table-hover" style="font-size:25px;font-weight:bold;margin:auto">
+          <thead>
+            <tr>
+              <th class="ta-center">Affiliate Name</th>
+              <th class="ta-center">Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="commentPhoto in commentsPhoto">
+              <td style="width:20%">ITN<em>{{commentPhoto.name}}</em></td>
+              <td>
+
+                <button class="btn btn-sm" ng-click="addCommentFromAllComments(commentPhoto.name)" data-toggle="tooltip" title="Add comment" style="background:#cc6257;float:left">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+
+                <div dir-paginate="comment in commentPhoto.comments|orderBy:sortKey:reverse|itemsPerPage:5|reverse" pagination-id="comments" class="comments-for-each">
+                  {{comment.message}}
+                  <button type="button" class="btn btn-danger btn-sm" style="margin-left:5%" ng-click="askBeforeDeleteComment({name:commentPhoto.name}, comment)" data-toggle="tooltip" title="Delete Comment">
+                   <span class="glyphicon glyphicon-trash"></span>
+                 </button>
+                  <h6 style="text-align:center;font-size:15px"><em>-by {{comment.author}} <span ng-if="comment.email">( {{comment.email}} )</span></em></h6>
+                  <hr ng-if="!$last" style="text-align:center;margin:5px auto" width="30%">
+                </div>
+                <dir-pagination-controls
+                  pagination-id="comments"
+                   max-size="5"
+                   direction-links="true"
+                   boundary-links="true" >
+                </dir-pagination-controls>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+
+    </div>
+  </div>
+</div> -->
+
+<div class="back-btn-wrap">
+
+  <a ui-sref="portal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>
+
+
+
+<div class="portal company-analytics" ng-show="analytics">
+  <div class="container ta-center">
+    <h2>Website Analytics</h2>
+
+    <p class="analytics-warning">
+      To view web traffic for the ITN<em>America</em> website & its affiliates, you must log in from an active Gmail account. If you do not have a Gmail account, please create one at <em><a href="https://www.gmail.com" target="_blank">www.gmail.com</a></em>
+    </p>
+
+    <button id="loading-btn">Loading graph...</button>
+
+    <div class="ga-wrap" style="display:block;width:80%;margin:auto">
+      <section id="auth-button"></section>
+      <section id="view-selector"></section>
+      <section id="timeline"></section>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteAppModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content" style="font-size:25px">
+    <div class="modal-header" style="background:#529ba8;color:white">
+      <h3 class="modal-title" id="exampleModalLabel">Delete form submission</h3>
+      <button type="button" style="margin-top: -30px" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group ta-center">
+          <label for="delete app confirmation" style="margin-bottom:15px">Are you sure you would like to delete this comment?</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" ng-click="deleteComment();hideModal('deleteAppModal')" class="btn btn-lg btn-danger" style="background:#e05944">Delete</button>
+      <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal" aria-label="Cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+</div><!--end modal-->
+
+
+
+
+<script>
+  $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
+
+
+<!-- Step 2: Load the library. -->
+
+<script>
+(function(w,d,s,g,js,fjs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+  js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+}(window,document,'script'));
+</script>
+
+<script>
+gapi.analytics.ready(function() {
+
+  $('#loading-btn').css('display','none');
+
+  // Step 3: Authorize the user.
+
+  var CLIENT_ID = '633525844243-1r4ea74q27960sf6l7abko81l1o4tvoj.apps.googleusercontent.com';
+
+  gapi.analytics.auth.authorize({
+    container: 'auth-button',
+    clientid: CLIENT_ID,
+  });
+
+  // Step 4: Create the view selector.
+
+  var viewSelector = new gapi.analytics.ViewSelector({
+    container: 'view-selector'
+  });
+
+  // Step 5: Create the timeline chart.
+
+  var timeline = new gapi.analytics.googleCharts.DataChart({
+    reportType: 'ga',
+    query: {
+      'dimensions': 'ga:date',
+      'metrics': 'ga:sessions',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+    },
+    chart: {
+      type: 'LINE',
+      container: 'timeline'
+    }
+  });
+
+  // Step 6: Hook up the components to work together.
+
+  gapi.analytics.auth.on('success', function(response) {
+    viewSelector.execute();
+  });
+
+  viewSelector.on('change', function(ids) {
+    var newIds = {
+      query: {
+        ids: ids
+      }
+    }
+    timeline.set(newIds).execute();
+  });
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+  $('#characterLeft').text('2000 characters left');
+  $('#message').keydown(function () {
+      var max = 2000;
+      var len = $(this).val().length;
+      if (len >= max) {
+          $('#characterLeft').text('You have reached the limit');
+          $('#characterLeft').addClass('text-danger');
+          $('#submit').addClass('disabled');
+      }
+      else {
+          var ch = max - len;
+          $('#characterLeft').text(ch + ' characters left');
+          $('#submit').removeClass('disabled');
+          $('#characterLeft').removeClass('red');
+      }
+  });
+});
+
+</script>

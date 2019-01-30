@@ -1,0 +1,20 @@
+<form class="search">
+	<span class="turn-search" ng-click="update()"></span>
+	<span class="turn-clear" ng-show="param" ng-click="clear()"></span>
+	<input
+		type="search"
+		ng-model="param"
+		ng-keyup="change($event)"
+		ng-paste="change($event)"
+		class="{{ class }}"
+		ng-class="{ 'input-error': searchValidation }"
+		ng-disabled="disabled"
+		placeholder="{{ placeholder }}"
+	>
+	<span
+		class="press-enter"
+		ng-click="update()"
+		ng-show="!typeAhead && dirty && !loading"
+	>Press <kbd>enter</kbd> to search</span>
+	<span ng-show="searchValidation" class="error-label">You have to enter at least {{minSearchLength}} characters</span>
+</form>

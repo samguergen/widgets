@@ -1,0 +1,126 @@
+<div class="portal affiliate ta-center" ng-init="loadAffiliatePage(itnAffiliate)">
+  <div class="container" style="width:90%">
+    <h2>ITN<em>{{itnAffiliate.name}}</em></h2>
+
+    <div class="row mt-50 mb-25">
+
+      <div class="col-md-4">
+        <!-- <a ui-sref="affiliate-info({affiliate: itnAffiliate})"> -->
+        <a ng-click="generateRESTUrl(itnAffiliate, 'affiliate-info')">
+          <div class="block" style="background:#91cdff">
+            <img ng-src="{{assetsPath}}/images/affiliate-info.svg" alt="icon of avatar" style="object-fit:contain;width:150px;margin-left:0;margin-top:13%"/>
+            <h5 style="margin-top:-17px;">ITN<em>{{itnAffiliate.name}}</em> Profile</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ng-click="generateRESTUrl(itnAffiliate, 'comments')">
+          <div class="block" style="background:#90dea7">
+            <img ng-src="{{assetsPath}}/images/speakers2-icon.svg" alt="icon of a speaker" style="object-fit:contain;width:200px;margin-left:0;margin-top:-2%"/>
+            <h5 style="margin-top:-40px;">Comments & Announcements</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <!-- <a ui-sref="web-traffic({affiliate: itnAffiliate})"> -->
+        <a ng-click="generateRESTUrl(itnAffiliate, 'web-traffic')">
+          <div class="block" style="background:#f2ae5a">
+            <img ng-src="{{assetsPath}}/images/web-traffic.svg" alt="icon of a analytics diagram" style="object-fit:contain;width:170px;margin-left:0;margin-top:11%"/>
+            <h5 style="margin-top:-16px;">Web Traffic</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+    </div><!--row-->
+
+    <div class="row mt-50 mb-50">
+
+      <div class="col-md-4">
+        <a ui-sref="rides-data({affiliate: itnAffiliate})">
+          <div class="block" style="background:#d6d6d6">
+            <img ng-src="{{assetsPath}}/images/rides-data.svg" alt="icon of analytics diagram" style="object-fit:contain;width:130px;margin-left:0;margin-top:18%"/>
+            <h5>Rides Data</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ui-sref="documents({affiliate: itnAffiliate})">
+          <div class="block" style="background:#82d2af">
+            <img ng-src="{{assetsPath}}/images/library.svg" alt="icon of shelf" style="object-fit:contain;width:130px;margin-left:0;margin-top:17%"/>
+            <h5>Document Library</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ui-sref="timesheet({filter: itnAffiliate.name + '?day=1'})">
+        <!-- <a ng-click="generateRESTUrl(itnAffiliate, 'timesheet')"> -->
+          <div class="block" style="background:#fdbf43">
+            <img ng-src="{{assetsPath}}/images/timesheets.svg" alt="icon of a timesheet" style="object-fit:contain;width:140px;margin-left:0;margin-top:13%"/>
+            <h5>Submit Timesheet</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+    </div>
+
+
+    <div class="row mt-50 mb-50">
+
+      <div class="col-md-4"></div>
+
+      <div class="col-md-4">
+        <!-- <a ui-sref="shift-scheduler({affiliate: itnAffiliate})"> -->
+          <a ng-click="generateRESTUrl(itnAffiliate, 'shift-scheduler')">
+        <!-- <a ng-click="authAndRedirect('admins','RidesInSight','ui-sref','calendar-ris')"> -->
+          <div class="block" style="background:#ffd05b">
+            <img ng-src="{{assetsPath}}/images/calendar-icon.svg" alt="icon of calendar" style="object-fit:contain;width:200px;margin-left:-7%;margin-top:0"/>
+            <h5 style="margin-top:-33px">Shift Scheduler</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div class="back-btn-wrap">
+  <a ui-sref="affiliate-landing" class="back-btn">
+    <h3>Back to Previous Page</h3>
+  </a>
+  <a ui-sref="portal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $('#characterLeft').text('2000 characters left');
+  $('#message').keydown(function () {
+      var max = 2000;
+      var len = $(this).val().length;
+      if (len >= max) {
+          $('#characterLeft').text('You have reached the limit');
+          $('#characterLeft').addClass('text-danger');
+          $('#submit').addClass('disabled');
+      }
+      else {
+          var ch = max - len;
+          $('#characterLeft').text(ch + ' characters left');
+          $('#submit').removeClass('disabled');
+          $('#characterLeft').removeClass('red');
+      }
+  });
+});
+
+</script>

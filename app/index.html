@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sam Guergenenov's Portfolio</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/images/icons/favicon.ico">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/animate.css">
+  <!--PROD-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/hilitor/hilitor.js"></script>
+  <script src="bower_components/wowjs/dist/wow.min.js"></script>
+  <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+  <script src="//kendo.cdn.telerik.com/2018.1.117/js/kendo.all.min.js"></script>
+  <!-- jquery, moment, and angular have to get included before fullcalendar -->
+  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+  <script type="text/javascript" src="bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css"/>
+  <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+
+  <script type="text/javascript" src="bower_components/html2canvas/html2canvas.min.js"></script>
+  <script type="text/javascript" src="bower_components/pdfmake/build/pdfmake.min.js"></script>
+  <script type="text/javascript" src="bower_components/pdfmake/build/vfs_fonts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+
+
+  <script type="text/javascript" src="bower_components/dom-to-image/dist/dom-to-image.min.js"></script>
+  <script type="text/javascript" src="bower_components/file-saver/dist/fileSaver.min.js"></script>
+  <script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+  <script src="app/app.js"></script>
+  <script src="app/services/dataService.js"></script>
+  <script src="app/services/longVariablesService.js"></script>
+  <script src="app/services/ParseVariablesService.js"></script>
+  <script src="app/services/formService.js"></script>
+  <script src="app/services/fileUploadService.js"></script>
+  <script src="app/services/CalendarService.js"></script>
+  <script src="app/filters.js"></script>
+  <script src="app/directives.js"></script>
+  <script src="app/controllers/mainController.js"></script>
+  <script src="app/controllers/calendarController.js"></script>
+  <script src="app/controllers/fileUploadController.js"></script>
+  <script src="app/controllers/timesheetController.js"></script>
+
+  <base href="/app">
+</head>
+
+<body ng-controller="MainCtrl">
+  <div class="wrapper" id="wrapper-content">
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-left:-50%">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ui-sref="home"><img ng-src="{{assetsPath}}/images/sam-head.jpg" alt="main logo"/></a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+
+            <li>
+              <a ui-sref="home"><span class="glyphicon glyphicon-home"></span>
+                HOME
+              </a>
+            </li>
+
+             <li class="dropdown">
+              <a ui-sref="portfolio" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                MY WIDGETS
+               <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a ui-sref="about({anchor: 'why'})">Timesheet</a></li>
+              </ul>
+            </li>
+
+        </ul>
+      </div>
+    </div><!-- /.container-fluid -->
+
+    <!--ZOOM BUTTONS-->
+    <span style="margin-left:90%;position:absolute;margin-top:-100px !important;">
+      <img ng-src="{{assetsPath}}/images/icons/resize-large.png"/ ng-click="resizeText(0.1)">
+      <img ng-src="{{assetsPath}}/images/icons/resize-default.jpg" ng-click="resizeText()"/>
+      <img ng-src="{{assetsPath}}/images/icons/resize-small.png" ng-click="resizeText(-0.1)"/>
+    </span>
+
+  </nav>
+
+  <div class="main" id="main-content">
+
+    <div id="main-content-inner" ui-view></div>
+
+
+  </div><!--MAIN-->
+
+  <div id="footer">
+    <div class="container">
+        <div class="col-sm-4">
+          <div class="footer-title">MY INFO</div>
+          <hr>
+          <ul>
+            <li>617-455-8829</li>
+            <li><a ui-sref="contact">Email Me</a></li>
+            <li><a ui-sref="portfolio">Portfolio</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-4 social-icons">
+          <div class="footer-title">SOCIAL MEDIA</div>
+          <hr>
+          <div class="row">
+            <!-- <a href="https://www.facebook.com"><div class="col-sm-3 social-icon-border fb">
+              <i class="fa fa-facebook"></i>
+            </div></a> -->
+            <a href="http://www.twitter.com/jusdepommes25"><div class="col-sm-3 social-icon-border tw">
+              <i class="fa fa-twitter"></i>
+            </div></a>
+            <!-- <a href="http://www.youtube.com/"><div class="col-sm-3 social-icon-border yt">
+              <i class="fa fa-youtube"></i>
+            </div></a> -->
+            <!-- <a href="http://www.instagram.com/"><div class="col-sm-3 social-icon-border in">
+              <i class="fa fa-instagram"></i>
+            </div></a> -->
+          </div>
+        </div>
+
+        <div class="col-sm-4 search">
+          <div class="footer-title">SEARCH</div>
+          <hr>
+          <form class="navbar-form navbar-left" style="margin-top:-25px;">
+            <span class="form-group row">
+              <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="keyword" placeholder="Search">
+              </div>
+              <div class="col-sm-2">
+                <button type="button" ng-click="searchKeywordInApp()" class="btn btn-default btn-search">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </span>
+          </form>
+
+        </div>
+
+      <!-- </div> -->
+    </div>
+  </div><!-- END FOOTER -->
+
+  </div>
+
+
+  <!--CDN alternatives-->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.js"></script> -->
+
+
+
+</body>
+</html>

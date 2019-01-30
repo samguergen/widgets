@@ -1,0 +1,109 @@
+<div class="portal" ng-show="showPortal" ng-init="hasAffiliateFilter()">
+  <div class="container">
+
+    <h2>ITN Staff Portal</h2>
+
+    <div class="row mt-50 mb-25">
+      <div class="col-md-4">
+        <a ui-sref="itnamerica">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/itnamerica-logo.png" alt="itnamerica logo" style="margin-top:100px"/>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ui-sref="rides-in-sight">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/ris-lowres-logo.png" alt="rides in sight logo"  style="    margin-top:20px;height:190px;max-height:190px;width:auto;;margin-left:-41px"/>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ui-sref="affiliate-landing">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/itn_highres.png" alt="icon itn affiliates" style="width:130px;margin-top:30%"/>
+            <h3 style="color:#fc6d6d;margin-top:-4%"><em>Affiliates</em></h3>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+    </div><!--row-->
+
+    <div class="row mb-50">
+
+      <div class="col-md-4">
+        <a ng-click="" ng-disabled="true" style="pointer-events:none">
+          <div class="block">
+            <img ng-src="{{assetsPath}}/images/car-icon.svg" alt="icon car" style="width:260px;margin-left:-4%;margin-top:-7%"/>
+            <h3 style="color:grey;margin-top:-100px"><em>ITN Rides</em></h3>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ui-sref="itn-operations">
+          <div class="block">
+            <img ng-src="{{assetsPath}}/images/itn-services-icon.svg" alt="icon of avatars" style="width:260px;margin-left:-7%;margin-top:-7%"/>
+            <h3 style="margin-top:-100px;color:#fc6d6d">Operations</h3>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+      <div class="col-md-4">
+        <a ui-sref="other">
+          <div class="block">
+            <img ng-src="{{assetsPath}}/images/other-icon.svg" alt="icon miscellaneous" style="width:260px;margin-left:-2%;margin-top:-7%"/>
+            <h3 style="margin-top:-75px;color:#fc6d6d">Other</h3>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+    </div><!--row-->
+
+
+
+    <div class="row mb-50">
+      <div class="col-md-4">
+        <a href="http://www.itncountry.org">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/itnCountryLogo.png" alt="itncountry logo" style="margin-top:100px;height:50px"/>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+      <div class="col-md-4">
+        <a ui-sref="ttp">
+          <div class="block">
+            <img ng-src="{{assetsPath}}/images/ttp2-icon.svg" alt="icon car" style="width:260px;margin-left:-4%;margin-top:-8%"/>
+            <h3 style="margin-top:-90px;color:#fc6d6d">TTP</h3>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+      <div class="col-md-4">
+        <a ui-sref="research">
+          <div class="block" style="background:#324a5f">
+            <img ng-src="{{assetsPath}}/images/research-icon.svg" alt="icon research" style="width:170px;margin-top:2%"/>
+            <h3 style="margin-top:-30px;line-height:1.1;color:#fc6d6d">Research & Library</h3>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+    </div><!--row-->
+
+  </div>
+</div>
+
+
+
+<div class="back-btn-wrap">
+  <a ui-sref="portal" ng-hide="showPortal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>

@@ -1,0 +1,21 @@
+{
+  "name": "angular-search",
+  "version": "0.2.1",
+  "description": "A lightweight Angular search widget",
+  "keywords": ["search", "autocomplete", "typeahead", "angular", "ng", "input", "text", "form"],
+  "main": "./dist/search.js",
+  "authors": [
+    "Hanna Hoang <hhoang@turn.com>",
+    "Chris Zheng <czheng@turn.com>",
+    "Boris Cherny <boris@performancejs.com>"
+  ],
+  "license": "Apache2",
+  "dependencies": {
+    "angular": "^1.2.0",
+    "jquery": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.2.0",
+    "bootstrap": "^3.1"
+  }
+}

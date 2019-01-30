@@ -1,0 +1,152 @@
+<!-- <div class="portal calendar calendar-ris calendar-affiliate" ng-init="initWeekCalendar('affiliate', itnAffiliate.name)"> -->
+<div class="portal calendar calendar-ris calendar-affiliate" ng-init="hasAffiliateFilter();initWeekCalendar('affiliate', itnAffiliate)">
+  <div class="container-fluid" style="width:75%">
+    <h2>ITN<em>{{itnAffiliate}}</em>- Weekly Shift Scheduler</h2>
+    <div style="color:green">{{serverMessage}}</div>
+
+    <div id='calendar-week'></div>
+  </div>
+</div>
+
+
+<div class="back-btn-wrap">
+  <a ui-sref="affiliate-landing" class="back-btn">
+    <h3>Back to Previous Page</h3>
+  </a>
+  <a ui-sref="portal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content" style="font-size:25px">
+    <div class="modal-header" style="background:#529ba8;color:white">
+      <h3 class="modal-title" id="calendarModalLabel">Add a new event</h3>
+      <button type="button" style="margin-top: -30px" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-area" style="background: #c7dfe4;border:none;padding:1%;border-radius:5px">
+        <form name="itnForm" id="addEventForm" novalidate ng-submit="addCalendarEvent('affiliate', itnAffiliate.name)" role="comment form" ng-model="eventObj" style="padding:2%;margin:0 5%">
+
+          <div class="row">
+            <div class="form-group" ng-class="{ 'has-error' : itnForm.startTime.$invalid && !itnForm.startTime.$pristine }">
+              <input type="text" class="form-control" id="startTime" autofocus="autofocus" name="startTime" placeholder="Start time. Example: 10:00AM" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="eventObj.startTime" required>
+              <span ng-if="itnForm.startTime.$error.required && !itnForm.startTime.$pristine" class="help-block">{{errorMessages.required}}</span>
+              <span ng-if="itnForm.startTime.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+              <span ng-if="itnForm.startTime.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : itnForm.endTime.$invalid && !itnForm.endTime.$pristine }">
+              <input type="text" class="form-control" id="endTime" autofocus="autofocus" name="endTime" placeholder="End time. Example: 2:15PM" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="eventObj.endTime" ng-blur="isAfterStartTime(eventObj.endTime, eventObj.startTime)" required>
+              <span ng-if="itnForm.endTime.$error.required && !itnForm.endTime.$pristine" class="help-block">{{errorMessages.required}}</span>
+              <span ng-if="itnForm.endTime.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+              <span ng-if="itnForm.endTime.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+              <span ng-if="afterStartTime" class="help-block" style="color:red">{{errorMessages.endTime}}</span>
+            </div>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.title.$invalid && !itnForm.title.$pristine }">
+            <input type="text" class="form-control" id="title" title="title" placeholder="Event title (keep it short)" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="eventObj.title" required>
+            <span ng-if="itnForm.title.$error.required && !itnForm.title.$pristine" class="help-block">{{errorMessages.required}}</span>
+            <span ng-if="itnForm.title.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+            <span ng-if="itnForm.title.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.message.$invalid && !itnForm.message.$pristine }">
+            <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Event description" maxlength="2000" rows="7" ng-minlength="minlength" ng-maxlength="maxMsgLength" ng-model="eventObj.description" required></textarea>
+            <span ng-if="itnForm.message.$error.required && !itnForm.message.$pristine" class="help-block">{{errorMessages.required}}</span>
+            <span ng-if="itnForm.message.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+            <span ng-if="itnForm.message.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+              <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.author.$invalid && !itnForm.author.$pristine }">
+            <input type="text" class="form-control" id="author" author="author" placeholder="Your name" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="eventObj.author" required>
+            <span ng-if="itnForm.author.$error.required && !itnForm.author.$pristine" class="help-block">{{errorMessages.required}}</span>
+            <span ng-if="itnForm.author.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+            <span ng-if="itnForm.author.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+          </div>
+
+          <p ng-if="loading"><em>Loading. Please wait</em></p>
+          <p style="color:red; margin-top:50px"><strong>{{serverMessage}}</strong></p>
+
+          <div class="modal-footer">
+            <input type="submit" id="submit" class="btn btn-lg pull-right itn-green-bg pull-right" value="Add event" ng-disabled="afterStartTime || !eventObj.startTime || !eventObj.endTime || !eventObj.title || !eventObj.description || !eventObj.author" style="margin-left:2%;background:red">
+            <input type="button" ng-click="eventObj = {}" value="Reset Form" class="btn btn-lg pull-left itn-green-bg " style="margin-left:2%">
+            <button type="button" class="btn btn-lg btn-secondary pull-left" data-dismiss="modal" aria-label="Cancel">Cancel</button>
+          </div>
+
+        </form>
+      </div> <!-- form-area-->
+
+    </div>
+  </div>
+</div>
+</div><!--end modal-->
+
+
+<!-- Add or view Modal -->
+<div class="modal fade" id="addOrShowModal" tabindex="-1" role="dialog" aria-labelledby="addShowModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content" style="font-size:25px">
+    <div class="modal-header" style="background:#529ba8;color:white">
+      <h3 class="modal-title" id="addShowModalLabel">Add or View Events?</h3>
+      <button type="button" style="margin-top: -30px" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body mb-25">
+
+      <h3 class="ta-center mb-50">Would you like to <strong>add an event</strong>, or <strong>view events</strong> for this day?</h3>
+
+      <div class="row ta-center">
+        <div class="col-md-6">
+          <a ui-sref="agenda({selectedEventDate: dayClicked})"><button class="btn btn-lg">View Events</button></a>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-lg" ng-click="toggleModal('calendarModal','addOrShowModal')">Add Event</button>
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+</div>
+</div><!--end modal-->
+
+
+<script>
+  $(document).ready(function(){
+    $('#characterLeft').text('2000 characters left');
+    $('#message').keydown(function () {
+        var max = 2000;
+        var len = $(this).val().length;
+        if (len >= max) {
+            $('#characterLeft').text('You have reached the limit');
+            $('#characterLeft').addClass('text-danger');
+            $('#submit').addClass('disabled');
+        }
+        else {
+            var ch = max - len;
+            $('#characterLeft').text(ch + ' characters left');
+            $('#submit').removeClass('disabled');
+            $('#characterLeft').removeClass('red');
+        }
+    });
+
+    $('.agenda-link').click(function(event){
+      console.log('inside agenda click event');
+      event.stopPropagation()
+      alert('You just clicked an event! Redirecting to its relevant day agenda');
+    })
+
+  });
+</script>

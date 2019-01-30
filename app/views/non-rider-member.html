@@ -1,0 +1,139 @@
+
+    <div class="contact non-rider" >
+      
+    <div class="jumbotron section" id="first-hero-rider">
+      <h1>Membership Form (Non-Rider)</h1>
+    </div><!--first-hero-->
+    
+    <div class="jumbotron section" style="background: #c7dfe4">
+      
+      <div class="container">
+        <h3>Want to support our work but aren’t a rider? Become a non-riding member. Help keep your community safe, vibrant and inclusive of all its members.</h3>
+        <hr align="center">
+        
+        <div class="col-sm-12">
+            <div class="form-area" id="formConfirmation" style="background: #c7dfe4;border:none">  
+                  <form name="itnForm" novalidate ng-submit="submitFormWithPDF('nonrider')" role="non rider form" ng-model="formData">
+                <br style="clear:both">
+                            <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/>
+                            <h3 style="margin-bottom: 25px; text-align: center">Membership Form (Non-Rider)</h3>
+                            
+                  <div class="row">
+              			<div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.firstName.$invalid && !itnForm.firstName.$pristine }">
+                      <label for="First name">First Name: *</label><br>
+          						<input type="text" class="form-control" id="firstName" name="firstName" ng-model="formData.firstName" ng-minlength="minlength" ng-maxlength="maxlength" required>
+                      <span ng-if="itnForm.firstName.$error.required && !itnForm.firstName.$pristine" class="help-block">{{errorMessages.required}}</span>
+                      <span ng-if="itnForm.firstName.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                      <span ng-if="itnForm.firstName.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+          					</div>
+                    
+                    <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.lastName.$invalid && !itnForm.lastName.$pristine }">
+                      <label for="last name">Last Name: *</label><br>
+                      <input type="text" class="form-control" id="lastName" name="lastName" ng-model="formData.lastName" ng-minlength="minlength" ng-maxlength="maxlength" required>
+                      <span ng-if="itnForm.lastName.$error.required && !itnForm.lastName.$pristine" class="help-block">{{errorMessages.required}}</span>
+                      <span ng-if="itnForm.lastName.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                      <span ng-if="itnForm.lastName.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+              			<div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.address1.$invalid && !itnForm.address1.$pristine }">
+                      <label for="address 1">Address 1: *</label><br>
+                      <input type="text" class="form-control" id="address1" name="address1" ng-model="formData.address1" ng-minlength="minlength" ng-maxlength="maxlength" required>
+                      <span ng-if="itnForm.address1.$error.required && !itnForm.address1.$pristine" class="help-block">{{errorMessages.required}}</span>
+                      <span ng-if="itnForm.address1.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                      <span ng-if="itnForm.address1.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                    </div>
+                  
+                    <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.address2.$invalid && !itnForm.address2.$pristine }">
+                      <label for="address 2">Address 2: </label><br>
+                      <input type="text" class="form-control" id="address2" name="address2" ng-model="formData.address2" ng-minlength="minlength" ng-maxlength="maxlength">
+                      <span ng-if="itnForm.address2.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                      <span ng-if="itnForm.address2.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                  </div>
+                </div>
+                
+                  <div class="row">
+              			<div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.city.$invalid && !itnForm.city.$pristine }">
+                    <label for="city">City: *</label><br>
+                    <input type="text" class="form-control" id="city" name="city" ng-model="formData.city" ng-minlength="minlength" ng-maxlength="maxlength" required>
+                    <span ng-if="itnForm.city.$error.required && !itnForm.city.$pristine" class="help-block">{{errorMessages.required}}</span>
+                    <span ng-if="itnForm.city.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                    <span ng-if="itnForm.city.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                  </div>
+                  
+                  <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.state.$invalid && !itnForm.state.$pristine }">
+                    <label for="state">State: *</label><br>
+                    <select ng-model="formData.state" class="form-control" name="state" id="state">
+                       <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
+                    </select>
+                    <span ng-if="itnForm.state.$error.required && !itnForm.state.$pristine" class="help-block">{{errorMessages.required}}</span>
+                  </div>
+                </div>
+                  <div class="row">
+              			<div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.zip.$invalid && !itnForm.zip.$pristine }">
+                      <label for="zip">Zip code: *</label><br>
+                    <input type="text" class="form-control" id="zip" name="zip" ng-model="formData.zip" ng-pattern="zipPattern" required>
+                    <span ng-if="itnForm.zip.$error.required && !itnForm.zip.$pristine" class="help-block">{{errorMessages.required}}</span>
+                    <span ng-if="itnForm.zip.$error.pattern" class="help-block">{{errorMessages.zip}}</span>
+                  </div>
+                  <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.phone.$invalid && !itnForm.phone.$pristine }">
+                    <label for="phone">Phone Number: *</label><br>
+                    <input type="text" class="form-control" id="phone" name="phone" ng-model="formData.phone" ng-pattern="phonePattern" required>
+                    <span ng-if="itnForm.phone.$error.required && !itnForm.phone.$pristine" class="help-block">{{errorMessages.required}}</span>
+                    <span ng-if="itnForm.phone.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.email.$invalid && !itnForm.email.$pristine }">
+                    <label for="email">Email: *</label><br>
+        						<input type="email" class="form-control" id="email" name="email" ng-model="formData.email" ng-pattern="emailPattern" required>
+                    <span ng-if="itnForm.email.$error.required && !itnForm.email.$pristine" class="help-block">{{errorMessages.required}}</span>
+                    <span ng-if="itnForm.email.$error.pattern" class="help-block">{{errorMessages.email}}</span>
+        					</div>
+                  
+                  <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.emailConfirmation.$invalid && !itnForm.emailConfirmation.$pristine }">
+                    <label for="email confirmation">Email Confirmation: *</label><br>
+                    <input type="email" class="form-control" id="emailConfirmation" name="emailConfirmation" ng-model="formData.emailConfirmation" match="formData.email" required>
+                    <span ng-if="itnForm.emailConfirmation.$error.required && !itnForm.emailConfirmation.$pristine" class="help-block">{{errorMessages.required}}</span>
+                    <span ng-if="itnForm.emailConfirmation.$error.mismatch" class="help-block">{{errorMessages.emailConfirmation}}</span>
+                  </div>
+                </div>
+
+                <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right itn-green-bg" value="Send" style="margin-left:2%">
+                <input type="reset" class="btn btn-lg btn-primary pull-left itn-green-bg" ng-click="formData = {}" value="Reset">
+    
+                </form>
+                
+                <p ng-if="loading"><em>Loading. Please wait</em></p>
+                <p style="color:red; margin-top:50px"><strong>{{serverMessage}}</strong></p>
+            </div>
+          </div>
+        </div>
+      
+    </div><!--jumbo-->
+    
+  </div><!--contact-->
+  
+  <script>
+  $(document).ready(function(){ 
+    $('#characterLeft').text('2000 characters left');
+    $('#message').keydown(function () {
+        var max = 2000;
+        var len = $(this).val().length;
+        if (len >= max) {
+            $('#characterLeft').text('You have reached the limit');
+            $('#characterLeft').addClass('text-danger');
+            $('#submit').addClass('disabled');            
+        } 
+        else {
+            var ch = max - len;
+            $('#characterLeft').text(ch + ' characters left');
+            $('#submit').removeClass('disabled');
+            $('#characterLeft').removeClass('red');            
+        }
+    });    
+});
+
+  </script>

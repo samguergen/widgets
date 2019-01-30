@@ -1,0 +1,62 @@
+<div class="portal other" ng-show="showPortal">
+  <div class="container">
+
+    <h2>Other/Miscellaneous</h2>
+
+    <div class="row mt-50 mb-25">
+
+      <div class="col-md-6">
+        <a href="http://pressroom.itnamerica.org/">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/pressLogo.jpg" alt="itn pressroom logo" style="margin-top:100px;width:220px"/>
+          </div>
+        </a>
+      </div><!--col-md-6-->
+
+      <div class="col-md-6">
+        <a href="http://policy.itnamerica.org/">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/50state.png" alt="50 state policy project website screenshot" style="margin-left:-45%;height:450px;width:450px;margin-top:0"/>
+          </div>
+        </a>
+      </div><!--col-md-6-->
+
+    </div><!--row-->
+
+
+    <div class="row mt-25 mb-25">
+
+      <div class="col-md-6">
+        <a href="http://pressroom.itnamerica.org/">
+          <div class="block" style="background:white">
+            <img ng-src="{{assetsPath}}/images/itnamerica-portal-logo.png" alt="itnamerica original portal logo" style="width:95%;margin-top:100px"/>
+            <h5 style="color:#0057a7">Legacy Portal</h5>
+          </div>
+        </a>
+      </div><!--col-md-6-->
+      
+
+      <div class="col-md-4">
+        <a href="#">
+          <div class="block" style="background:#83dbff">
+            <img ng-src="{{assetsPath}}/images/learn-online2.svg" alt="icon of a person reading" style="object-fit:contain;width:200px;margin:0"/>
+            <h5 style="margin-top:-10px;color:white">Learn Online</h5>
+          </div>
+        </a>
+      </div><!--col-md-4-->
+
+    </div><!--row-->
+
+
+  </div>
+</div>
+
+
+<div class="back-btn-wrap">
+  <a ng-click="openAdditionalPage()" ng-hide="showPortal" class="back-btn">
+    <h3>Back to Previous Page</h3>
+  </a>
+  <a ui-sref="portal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html ng-app="demo">
+<head>
+
+	<meta charset="utf-8">
+
+	<title>search demo</title>
+
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="../dist/search.css">
+
+	<style>
+
+		body {
+			background: #f8f8f8;
+			margin-top: 100px;
+			text-align: center;
+		}
+
+		a {
+			display: block;
+		}
+
+		.search {
+			padding-bottom: 27px;
+		}
+
+		.search input {
+			border: 1px solid rgba(0, 0, 0, 0.4);
+			border-radius: 4px;
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+			font-size: 13px;
+			line-height: 21px;
+			padding: 3px 6px;
+			padding-left: 28px;
+		}
+		
+		.search input:focus {
+			outline: none;
+			border-color: #5e9ed6;
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 10px #5e9ed6;
+		}
+
+		.search input,
+		.list-group {
+			width: 500px;
+		}
+
+		.list-group {
+			height: 200px;
+			margin: 20px auto 0;
+			overflow-y: auto;
+			text-align: left;
+		}
+
+		.no-results {
+			color: #999;
+			font-style: italic;
+			padding: 30px 0;
+			text-align: center;
+		}
+
+		.loading {
+			background: #fff url("./img/spinner_48.gif") center no-repeat;
+			background-size: 48px;
+			content: "";
+			height: 160px;
+		}
+
+
+		@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+			.loading {
+				background-image: url("./img/spinner_96.gif");
+			}
+		}
+
+	</style>
+
+</head>
+<body class="container-fluid">
+
+	<div class="col-xs-6" ng-controller="countryCtrl">
+
+		<a ng-click="clear()">Clear</a>
+
+		<search
+			param="searchText"
+			search="search($param)"
+			class="size-medium"
+			placeholder="Search countries"
+		></search>
+
+		<ul class="list-group">
+			<li class="list-group-item loading" ng-show="loading"></li>
+			<li class="list-group-item no-results" ng-show="!loading && !results.length">No results for <strong>{{ searchText }}</strong></li>
+			<li class="list-group-item" ng-repeat="result in results">{{ result }}</li>
+		</ul>
+
+	</div>
+	<div class="col-xs-6" ng-controller="stateCtrl">
+
+		<a ng-click="clear()">Clear</a>
+
+		<search
+			param="searchText"
+			search="search($param)"
+			class="size-medium"
+			placeholder="Search states"
+		></search>
+
+		<ul class="list-group">
+			<li class="list-group-item loading" ng-show="loading"></li>
+			<li class="list-group-item no-results" ng-show="!loading && !results.length">No results for <strong>{{ searchText }}</strong></li>
+			<li class="list-group-item" ng-repeat="result in results">{{ result }}</li>
+		</ul>
+
+	</div>
+
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/angular/angular.js"></script>
+	<script src="../dist/search.js"></script>
+	<script>
+
+		angular
+		.module('demo', ['turn/search'])
+		.controller('countryCtrl', function ($scope, $http) {
+
+			angular.extend($scope, {
+				loading: false,
+				results: [],
+				searchText: '',
+				clear: function() {
+					$scope.searchText = '';
+					$scope.search();
+				},
+				search: function (text) {
+					console.log('country:', text);
+
+					$scope.loading = true;
+					$scope.results = [];
+
+					$http
+						.get('http://localhost:8001/countries', {
+							cache: true,
+							params: { search: text }
+						})
+						.then(function (results) {
+							$scope.loading = false;
+							$scope.results = results;
+						},
+						function (err) {
+							$scope.loading = false;
+							throw new Error (err);
+						});
+				}
+			});
+
+			// load initial data
+			$scope.search();
+
+		})
+		.controller('stateCtrl', function ($scope, $http) {
+
+			angular.extend($scope, {
+				loading: false,
+				results: [],
+				searchText: '',
+				clear: function() {
+					$scope.searchText = '';
+					$scope.search();
+				},
+				search: function (text) {
+					console.log('state:', text);
+
+					$scope.loading = true;
+					$scope.results = [];
+
+					$http
+						.get('http://localhost:8001/states', {
+							cache: true,
+							params: { search: text }
+						})
+						.then(function (results) {
+							$scope.loading = false;
+							$scope.results = results;
+						},
+						function (err) {
+							$scope.loading = false;
+							throw new Error (err);
+						});
+				}
+			});
+
+			// load initial data
+			$scope.search();
+
+		});
+
+	</script>
+</body>
+</html>

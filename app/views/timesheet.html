@@ -1,0 +1,278 @@
+<div class="timesheet portal" ng-init="parseDayAndAffiliateParams();parseParamsIfTimesheet();isNewTimesheet()">
+
+  <a ui-sref="timesheets({filter: tsData.affiliate})" class="btn btn-lg">Timesheets Index</a>
+
+
+    <!-- <ul class="nav nav-tabs">
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=1'})">Day 1</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=2'})">Day 2</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=3'})">Day 3</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=4'})">Day 4</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=5'})">Day 5</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=6'})">Day 6</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=7'})">Day 7</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=8'})">Day 8</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=9'})">Day 9</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=10'})">Day 10</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=11'})">Day 11</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=12'})">Day 12</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=13'})">Day 13</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=14'})">Day 14</a></li>
+      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=15'})">Day 15</a></li>
+    </ul> -->
+
+
+    <div class="current-timesheet container-fluid" style="width:95%" ng-hide="viewNewTimesheet">
+      <h2>Current ITN<em>{{tsData.affiliate}}</em> Timesheet - Day {{existingTimesheetDay}}</h2>
+
+      <div class="timesheet-card card">
+
+
+          <p class="title">Driver Information<p>
+
+          <div class="mileage-rates">
+            Mileage rate: ${{tsData.rates.mileageRate}}<br />
+            After-hours daily rate: ${{tsData.rates.dailyRate}}<br />
+            Weekly: ${{tsData.rates.weeklyRate}}
+          </div>
+
+          <div class="row semi-white-bg" style="padding: 20px 0;">
+
+            <div class="col-sm-5">
+              <label for="driver name">Name: {{existingTimesheet.name}}</label><br>
+            </div>
+
+            <div class="col-sm-3">
+              <label for="date">Date:  {{existingTimesheet.date | date}}</label><br>
+            </div>
+
+            <div class="col-sm-4">
+              <label for="lunchtime taken">Lunch taken during shift?  {{existingTimesheet.tookLunch}}</label>
+            </div>
+
+        </div>
+
+
+          <div class="shifts">
+            <p class="title">
+              Start/Stop Shifts <i class="fa fa-plus-circle" ng-click="addShift()"></i>
+            </p>
+
+            <p class="mileage-data"><em style="text-align:left">
+              Total Mileage Refund: ${{tsData.totalMileageRefund | number: 3}} <br />
+              Total daily work time: {{tsData.dailyWorkTimeMins}}mins<br />
+              Total daily Overtime: {{tsData.dailyOvertimeMins | isAbs}}mins - tabs highlighted
+            </em></p>
+
+            <div class="each-shift" style="padding:5px">
+              <table class="table table-responsive">
+                <thead style="background:#595656">
+                  <th style="15%">Shift #</th>
+                  <th>Start</th>
+                  <th>Stop</th>
+                  <th>Miles Driven</th>
+                  <th>Notes</th>
+                  <th>Delete</th>
+                  <th style="color:#afcace">Save Shift</th>
+                </thead>
+
+
+                <tbody style="background:grey">
+
+                  <tr ng-repeat="shift in existingTimesheet.shifts"
+                      ng-class="{highlighted: ($index + 1) >= shiftIdxTrigger}">
+
+                  <td style="width:15%;font-size:35px">
+                    {{$index + 1}} <br />
+                  </td>
+
+                  <td>{{shift.startTimeMeridian}}</td>
+
+                  <td>{{shift.endTimeMeridian}}</td>
+
+                  <td>{{shift.milesPerShift}}</td>
+
+                  <td class="show-note"></td><td>{{shift.note}}</td><td>
+                    <i class="fa fa-trash" ng-click="removeShift(shift, $index)"></i>
+                  </td>
+
+                  <td>
+                    <i class="fa fa-check" ng-click="recordShift($index)"></i><br>
+                    <em style="font-size:16px">
+                      Mileage refund: ${{shift.mileageRefund | number: 3}} <br>
+                      Shift duration: {{shift.timeDiffMins}}mins
+                    </em>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div><!--shifts-->
+
+          <p class="warning-msg"><strong>{{warningMsg}}</strong></p>
+
+          <div class="formBtns" style="margin-top:20px">
+            <button type="button" ng-click="editTimesheet()" class="btn btn-lg btn-primary pull-left itn-green-bg"  style="margin-left:2%">Edit Timesheet</button>
+            <button type="button" ng-click="deleteTimesheet()" class="btn btn-lg btn-primary pull-left itn-green-bg"  style="margin-left:2%;background:#e05944 !important">Delete Timesheet</button>
+            <button type="submit" ng-disabled="itnForm.$invalid || loading" class="btn btn-lg pull-right btn-danger" style="margin-left:2%">Submit</button>
+          </div>
+
+      </div><!--timesheet-card-->
+
+    </div><!--container-fluid-->
+
+
+
+
+
+  <div class="new-timesheet container-fluid" style="width:95%" ng-show="viewNewTimesheet">
+    <h2>New ITN<em>{{tsData.affiliate}}</em> Timesheet - Day {{tsData.day}}</h2>
+
+    <div class="timesheet-card card">
+
+      <form name="tsForm" novalidate ng-submit="submitTimesheet()" role="timesheet form" ng-model="tsData" ng-hide="submitted">
+
+        <p class="title">Driver Information<p>
+
+        <div class="mileage-rates">
+          Mileage rate: ${{tsData.rates.mileageRate}}<br />
+          After-hours daily rate: ${{tsData.rates.dailyRate}}<br />
+          Weekly: ${{tsData.rates.weeklyRate}}
+        </div>
+
+        <div class="row semi-white-bg">
+
+          <div class="col-sm-5 form-group">
+            <label for="driver name">Enter name: </label><br>
+            <input type="text" class="form-control" name="driverName" ng-model="tsData.name" ng-minlength="minlength" ng-maxlength="maxlength" style="text-align:center">
+          </div>
+
+          <div class="col-sm-3 form-group">
+            <label for="date">Date: </label><br>
+            <input type="date" class="form-control" name="date" ng-model="tsData.date" style="display:inline-block;text-align:center">
+          </div>
+          <!-- answer: {{tsData.date | date : "dd-MM-y" }}   -->
+
+          <div class="col-sm-4 form-group" style="margin-top:80px">
+            <label for="lunchtime taken">Lunch taken during shift? </label>
+            <input type="checkbox" name="tookLunch" value="true" ng-model="tsData.tookLunch" ng-change="deductLunch()" style="width:20px;height:20px">
+          </div>
+
+      </div>
+
+
+        <div class="shifts">
+          <p class="title">
+            Start/Stop Shifts <i class="fa fa-plus-circle" ng-click="addShift()"></i>
+          </p>
+
+          <p class="mileage-data"><em style="text-align:left">
+            Total Mileage Refund: ${{tsData.totalMileageRefund | number: 3}} <br />
+            Total daily work time: {{tsData.dailyWorkTimeMins}}mins<br />
+            Total daily Overtime: {{tsData.dailyOvertimeMins | isAbs}}mins - tabs highlighted
+          </em></p>
+
+          <div class="each-shift" style="padding:5px">
+            <table class="table table-responsive">
+              <thead style="background:#595656">
+                <th style="15%">Shift #</th>
+                <th>Start</th>
+                <th>Stop</th>
+                <th>Miles Driven</th>
+                <th>Add note</th>
+                <th>Delete</th>
+                <th style="color:#afcace">Save Shift</th>
+              </thead>
+
+
+              <tbody style="background:grey">
+
+                <tr ng-repeat="shift in tsData.shifts"
+                    ng-class="{highlighted: ($index + 1) >= shiftIdxTrigger}">
+
+                <td style="width:15%;font-size:35px">
+                  {{$index + 1}} <br />
+                </td>
+
+                <td>
+                  <select ng-model="selectedStartTime"
+                          ng-change="updateStartTime(selectedStartTime, shift, $index)"
+                          ng-options="time as time for time in timesForPicker">
+                  </select>
+                </td>
+
+                <td>
+                  <select ng-model="selectedEndTime"
+                          ng-change="updateEndTime(selectedEndTime, shift, $index)"
+                          ng-options="time as time for time in timesForPicker">
+                  </select>
+                </td>
+
+                <td>
+                  <input style="text-align:center;border-radius:5px" type="number" min="0" max="100" ng-model="shift.milesPerShift">
+                </td>
+
+                <td class="show-note">
+
+                  <i class="fa fa-pencil" style="padding-top:15px" ng-click="toggleNote($index)" ng-show="!showNote[$index]"></i>
+
+                  <div ng-show="showNote[$index]">
+                    <textarea class="form-control" type="textarea" name="note" id="note" placeholder="Message" maxlength="2000" rows="3" ng-minlength="minlength" ng-maxlength="maxMsgLength" ng-model="shift.note"></textarea>
+                    <i class="fa fa-minus-circle" ng-click="toggleNote($index)"></i>
+                  </div>
+                </td>
+
+                <td>
+                  <i class="fa fa-trash" ng-click="removeShift(shift, $index)"></i>
+                </td>
+
+                <td>
+                  <i class="fa fa-check" ng-click="recordShift($index)"></i><br>
+                  <em style="font-size:16px">
+                    Mileage refund: ${{shift.mileageRefund | number: 3}} <br>
+                    Shift duration: {{shift.timeDiffMins}}mins
+                  </em>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div><!--shifts-->
+
+        <p class="warning-msg"><strong>{{warningMsg}}</strong></p>
+        
+        <div class="formBtns" style="margin-top:20px">
+          <button type="submit" ng-disabled="itnForm.$invalid || loading" class="btn btn-lg pull-right btn-danger" style="margin-left:2%">Submit</button>
+        </div>
+
+    </div><!--timesheet-card-->
+
+  </div><!--container-fluid-->
+
+
+
+  <!-- <div class="container-fluid recorded-timesheets">
+    <h2>Recorded Timesheets for ITN<em>{{tsData.affiliate}}</em></h2>
+
+
+      <a ui-sref="timesheet({filter: tsData.affiliate + '?day=' + timesheet.day, day: timesheet.day, timesheet: timesheet})" ng-repeat="timesheet in timesheets" style="display:block">
+       Timesheet Day {{timesheet.day}} | {{timesheet.date | date}}
+      </a>
+
+    </div> -->
+
+
+</div><!--timesheets-->
+
+
+
+<div class="back-btn-wrap">
+  <a ui-sref="affiliate({filter: itnAffiliate.name})" class="back-btn">
+    <h3>Back to Previous Page</h3>
+  </a>
+  <a ui-sref="portal" class="back-btn">
+    <h3>Back to Portal</h3>
+  </a>
+</div>
