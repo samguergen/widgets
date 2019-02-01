@@ -158,23 +158,21 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: viewsPath + 'rides-data.html'
         })
         .state('timesheet', {
-            url: '/timesheet?filter',
+            url: '/timesheet?day',
             // abstract: true,
             templateUrl: viewsPath + 'timesheet.html',
             controller: 'TimesheetCtrl',
             params : {
-              filter: null,
               day: null,
               timesheet: null,
               viewNewTimesheet: false
             }
         })
         .state('timesheets', {
-            url: '/timesheets?filter',
+            url: '/timesheets',
             templateUrl: viewsPath + 'timesheets.html',
             controller: 'TimesheetCtrl',
             params : {
-              filter: null,
               day: null,
               timesheet: null,
               viewNewTimesheet: false

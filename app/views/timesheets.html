@@ -1,17 +1,17 @@
 <div class="timesheet portal" ng-init="parseDayAndAffiliateParams();getTimesheets();parseParamsIfTimesheet()">
     <div class="container-fluid recorded-timesheets">
-      <h2>Timesheets for ITN<em>{{tsData.affiliate}}</em></h2>
+      <h2>Timesheets</h2>
 
-        <a ui-sref="timesheet({filter: tsData.affiliate, viewNewTimesheet: true})"
+        <a ui-sref="timesheet({viewNewTimesheet: true})"
            class="btn btn-lg"
            style="margin-left:60%;">
            Create New Timesheet
          </a>
 
 
-          <div class="row" ng-repeat="timesheet in timesheets | orderBy:timesheet.day:true " style="width:70%">
+          <div class="row" ng-repeat="timesheet in timesheets | orderBy:true " style="width:70%">
             <div class="col-sm-6">
-              <a ui-sref="timesheet({filter: tsData.affiliate + '?day=' + timesheet.day, day: timesheet.day, timesheet: timesheet})"
+              <a ui-sref="timesheet({day: timesheet.day, timesheet: timesheet})"
                  style="display:block">
                  Day {{timesheet.day}} | {{timesheet.date | date}}
               </a>

@@ -258,13 +258,9 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
           return error
       })
   };
-  this.retrieveTimesheets = function(affiliateName){
-    console.log('in service, getting ts from affiliate ', affiliateName);
-    return $http.get('/getTimesheets', {
-      params: {
-        affiliateName: affiliateName
-      }
-    })
+  this.getTimesheets = function(affiliateName){
+    console.log('in service, getting ts');
+    return $http.get('/getTimesheets')
     .then(function(data){
       console.log('log from post is ', data);
       if (data.status === 200){
@@ -276,9 +272,9 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
         return error
     })
   };
-  this.saveTimesheet = function(timesheet){
+  this.addTimesheet = function(timesheet){
     console.log('ts to be saved is ', timesheet);
-    return $http.put('/saveTimesheet', {timesheet: timesheet})
+    return $http.post('/addTimesheet', {timesheet: timesheet})
       .then(function(data){
         console.log('log from post is ', data);
         if (data.status === 200){
@@ -291,11 +287,11 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
       })
   };
   this.deleteTimesheet = function(timesheet){
-    console.log('timesheet to delete in service is ', timesheet);
+    console.log('timesheet to delete in service is ', timesheet._id);
+    // return $http.delete('/deleteTimesheet', {timesheetId: timesheet._id})
     return $http.delete('/deleteTimesheet', {
       params: {
-        timesheet: timesheet,
-        affiliateName: timesheet.affiliate
+        timesheetId: timesheet._id
       }
     })
     .then(function(data){

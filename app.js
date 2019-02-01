@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents',''];
+var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents'];
 
 
 MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662/widgets', function(err, client) {
@@ -48,6 +48,60 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
   db = client.db('widgets');
 
   console.log('inside first mongo block');
+  
+  
+  app.get('/getTimesheets', function (req,res) {
+    db.collection('timesheets').find().toArray(function (err, result) {
+      res.send(result);
+    })
+  });
+  
+
+  app.post('/addTimesheet', function (req,res) {
+    console.log('inside timesheet add')
+    var timesheet = req.body.timesheet;
+    console.log('ts to be saved, received from backend is ', timesheet)
+    db.collection('timesheets').save(timesheet, function(err, result){
+      if (err) { return console.log('connecting to db, but not saving obj', err);}
+      console.log('ts saved to database');
+      res.send(result);
+    })
+  });
+  
+  
+  app.delete('/deleteTimesheet', function (req,res) {
+      var timesheetId = req.query.timesheetId;
+      console.log('ts to be deleted, received from backend is ', timesheetId)
+      db.collection('timesheets').deleteOne({_id: new mongo.ObjectId(timesheetId)}, function(err, result){
+        if (err) { throw new Error('No record found. ', err) };
+        console.log('timesheet has been removed, i think');
+        res.send(result);
+      });
+  }); // end of deleteagendaevent request
+  
+  
+  // 
+  // app.put('/saveTimesheet', function (req,res) {
+  //   var timesheet = req.body.timesheet;
+  //   var name = req.body.timesheet.name;
+  //   console.log('saving timesheets table for affiliate ', affiliateName);
+  // 
+  //   db.collection('timesheets').find({name: affiliateName}).toArray(function (err, result) {
+  //     if (err) { throw new Error('No record found. ', err) };
+  //     var recordId = result[0]._id;
+  //     console.log('recordId:', recordId);
+  //     var newTimesheet = { $addToSet: {timesheets: timesheet} };
+  //     db.collection('timesheets').update(
+  //        { _id: recordId },
+  //        newTimesheet
+  //     )
+  //     console.log('timesheet is saved in db', timesheet, typeof(timesheet));
+  //     res.send(result);
+  //   })
+  // });
+  
+
+  
 
 
 

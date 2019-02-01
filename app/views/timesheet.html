@@ -1,29 +1,12 @@
 <div class="timesheet portal" ng-init="parseDayAndAffiliateParams();parseParamsIfTimesheet();isNewTimesheet()">
 
-  <a ui-sref="timesheets({filter: tsData.affiliate})" class="btn btn-lg">Timesheets Index</a>
+  <a ui-sref="timesheets({filter: tsData.affiliate})" 
+     ng-show="backToTimesheet"
+     class="btn btn-lg">Timesheets Index</a>
 
 
-    <!-- <ul class="nav nav-tabs">
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=1'})">Day 1</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=2'})">Day 2</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=3'})">Day 3</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=4'})">Day 4</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=5'})">Day 5</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=6'})">Day 6</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=7'})">Day 7</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=8'})">Day 8</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=9'})">Day 9</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=10'})">Day 10</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=11'})">Day 11</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=12'})">Day 12</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=13'})">Day 13</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=14'})">Day 14</a></li>
-      <li><a ui-sref="timesheet({filter: tsData.affiliate + '?day=15'})">Day 15</a></li>
-    </ul> -->
-
-
-    <div class="current-timesheet container-fluid" style="width:95%" ng-hide="viewNewTimesheet">
-      <h2>Current ITN<em>{{tsData.affiliate}}</em> Timesheet - Day {{existingTimesheetDay}}</h2>
+    <div class="current-timesheet container-fluid" style="width:95%" ng-hide="viewNewTimesheet" ng-show="!backToTimesheet">
+      <h2>Timesheet - Day {{existingTimesheetDay}}</h2>
 
       <div class="timesheet-card card">
 
@@ -92,7 +75,11 @@
 
                   <td>{{shift.milesPerShift}}</td>
 
-                  <td class="show-note"></td><td>{{shift.note}}</td><td>
+                  <td class="show-note">
+                    {{shift.note}}
+                  </td>
+                  
+                  <td>
                     <i class="fa fa-trash" ng-click="removeShift(shift, $index)"></i>
                   </td>
 
@@ -127,7 +114,7 @@
 
 
   <div class="new-timesheet container-fluid" style="width:95%" ng-show="viewNewTimesheet">
-    <h2>New ITN<em>{{tsData.affiliate}}</em> Timesheet - Day {{tsData.day}}</h2>
+    <h2>New ITN<em>{{tsData.affiliate}}</em> Timesheet</h2>
 
     <div class="timesheet-card card">
 
@@ -253,25 +240,13 @@
 
 
 
-  <!-- <div class="container-fluid recorded-timesheets">
-    <h2>Recorded Timesheets for ITN<em>{{tsData.affiliate}}</em></h2>
-
-
-      <a ui-sref="timesheet({filter: tsData.affiliate + '?day=' + timesheet.day, day: timesheet.day, timesheet: timesheet})" ng-repeat="timesheet in timesheets" style="display:block">
-       Timesheet Day {{timesheet.day}} | {{timesheet.date | date}}
-      </a>
-
-    </div> -->
-
 
 </div><!--timesheets-->
 
 
 
 <div class="back-btn-wrap">
-  <a ui-sref="affiliate({filter: itnAffiliate.name})" class="back-btn">
-    <h3>Back to Previous Page</h3>
-  </a>
+
   <a ui-sref="portal" class="back-btn">
     <h3>Back to Portal</h3>
   </a>

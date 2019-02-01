@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window','DataService', 'LongVariablesService', 'CalendarService', '$q', 'DataService', function($scope, $transitions, $http, $location, $stateParams, $timeout, $state, $rootScope, $window, DataService, LongVariablesService, CalendarService, $q, DataService) {
+myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window','DataService', 'LongVariablesService', 'CalendarService', '$q', 'DataService', '$window', function($scope, $transitions, $http, $location, $stateParams, $timeout, $state, $rootScope, $window, DataService, LongVariablesService, CalendarService, $q, DataService, $window) {
 
     $scope.timesForPicker = LongVariablesService.timesForPicker;
     $scope.adjustTimeForCalendar = CalendarService.adjustTimeForCalendar; //function
@@ -8,6 +8,7 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
     $scope.showNote = {};
     $scope.selectedStartTime = $scope.timesForPicker[0];
     $scope.selectedEndTime = $scope.timesForPicker[0];
+    $scope.backToTimesheet = false;
     $scope.shiftsAdded = 0;
     $scope.tsData = {
        name: null,
@@ -28,13 +29,10 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
        dailyOvertimeMins: 0
      };
      var newShift = {
-      name: null,
-      startTime: null,
-      stopTime: null,
       startTimeObj: null,
-      stopTimeObj: null,
+      endTimeObj: null,
       startTimeMeridian: null,
-      stopTimeMeridian: null,
+      endTimeMeridian: null,
       milesPerShift: 0,
       note: "",
       isSelected: true,
@@ -78,13 +76,10 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
        }
        if ($scope.tsData.shifts.length < 5) { //add max 5 shifts per day
          var newShift2 = {
-          name: null,
-          startTime: null,
-          stopTime: null,
           startTimeObj: null,
-          stopTimeObj: null,
+          endTimeObj: null,
           startTimeMeridian: null,
-          stopTimeMeridian: null,
+          endTimeMeridian: null,
           milesPerShift: 0,
           note: "",
           isSelected: true,
@@ -237,10 +232,15 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
     $scope.submitTimesheet = function(){
       $scope.calculateDayOfPeriod();
       console.log('timesheet to be saved in ', $scope.tsData);
-      DataService.saveTimesheet($scope.tsData)
+      DataService.addTimesheet($scope.tsData)
       .then(function(data){
         console.log('returned from save ', data);
         swal("Timesheet added","Your timesheet was succesfully saved to the database.","success");
+        var domain = window.location.host;
+        var pathname = '/timesheets';
+        var url = domain + pathname;
+        console.log('url is ', url);
+        $scope.backToTimesheet = true
       }).catch(function(error){
         swal("Error","There was an error saving your timesheet. Please try again or contact Customer Support","error");
       })
@@ -320,10 +320,10 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
     $scope.getTimesheets = function(){
       console.log('in ctrl, getting ts from affiliate ', $scope.tsData.affiliate);
       var affiliateName = $scope.tsData.affiliate;
-      DataService.retrieveTimesheets(affiliateName)
+      DataService.getTimesheets()
       .then(function(data){
         console.log('data from ctrl is ', data.data);
-        $scope.timesheets = data.data[0].timesheets;
+        $scope.timesheets = data.data;
         console.log('timesheets are', $scope.timesheets);
       })
     };
@@ -331,8 +331,13 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
 
     $scope.deleteTimesheet = function(){
       console.log('timesheet to delete is ', $scope.tsData);
-      DataService.deleteTimesheet($scope.tsData).then(function(data){
-        console.log('return from delete ', data);
+      DataService.deleteTimesheet($scope.tsData)
+      .then(function(data){
+        console.log('returned from delete ', data);
+        swal("Timesheet deleted","Your timesheet was succesfully deleted from the database.","success");
+        $scope.backToTimesheet = true
+      }).catch(function(error){
+        swal("Error","There was an error deleting your timesheet. Please try again or contact Customer Support","error");
       })
     };
     
@@ -342,6 +347,7 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
       .then(function(data){
         console.log('returned from delete ', data);
         swal("Timesheet deleted","Your timesheet was succesfully deleted from the database.","success");
+        $scope.getTimesheets();
       }).catch(function(error){
         swal("Error","There was an error deleting your timesheet. Please try again or contact Customer Support","error");
       })
