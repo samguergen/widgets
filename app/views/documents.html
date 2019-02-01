@@ -1,4 +1,4 @@
-<div class="important-docs portal" ng-init="catchDocFilter();getCommentsPhotoPerAffiliate(docFilter)">
+<div class="important-docs portal" ng-init="getDocuments()">
   <div class="container ta-center">
 
     <h2>Document Library</h2>
@@ -26,7 +26,7 @@
 
 
         <div class="row ta-center" style="margin:auto;padding:1;clear:both" ng-hide="hideLibrary">
-          <div ng-repeat="file in fileUploadsAffiliate | filter: fileCategoryFilter.name" ng-click="downloadImgFull(file.data)" class="repeat-img col-sm-3">
+          <div ng-repeat="file in fileUploads | filter: fileCategoryFilter.name" ng-click="downloadImgFull(file.data)" class="repeat-img col-sm-3">
             <div class="clearfix" ng-if="$index % 4 == 0"></div>
             <div class="col-sm-3">
 

@@ -14,6 +14,12 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
       return data;
     })
   };
+  this.getDocuments = function(){
+    return $http.get('/getDocuments')
+    .then(function(data){
+      return data;
+    })
+  };
   this.getCommentsPhoto = function(){
     return $http.get('/getCommentsPhoto')
     .then(function(data){

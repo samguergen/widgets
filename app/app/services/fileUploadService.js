@@ -11,10 +11,9 @@ myApp.service('FileUploadService', ['$http','$q','$rootScope', function ($http, 
          headers: {'Content-Type': undefined}
       })
    };
-   this.uploadFileToDB = function(fd, tableName){
+   this.uploadFileToDB = function(fd){
       $http.post('/uploadFiles', fd, {
-        headers: {'Content-Type': undefined},
-        params: {tableName: tableName}
+        headers: {'Content-Type': undefined}
       })
       .then(function(data){
         if (data.status === 200){

@@ -80,30 +80,34 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
   }); // end of deleteagendaevent request
   
   
-  // 
-  // app.put('/saveTimesheet', function (req,res) {
-  //   var timesheet = req.body.timesheet;
-  //   var name = req.body.timesheet.name;
-  //   console.log('saving timesheets table for affiliate ', affiliateName);
-  // 
-  //   db.collection('timesheets').find({name: affiliateName}).toArray(function (err, result) {
-  //     if (err) { throw new Error('No record found. ', err) };
-  //     var recordId = result[0]._id;
-  //     console.log('recordId:', recordId);
-  //     var newTimesheet = { $addToSet: {timesheets: timesheet} };
-  //     db.collection('timesheets').update(
-  //        { _id: recordId },
-  //        newTimesheet
-  //     )
-  //     console.log('timesheet is saved in db', timesheet, typeof(timesheet));
-  //     res.send(result);
-  //   })
-  // });
+
+  app.get('/getDocuments', formidable(), function (req,res) {
+    db.collection('documents').find().toArray(function (err, result) {
+      res.send(result);
+    })
+  }); // end of /getRidesData get request
   
 
-  
-
-
+  app.post('/uploadFiles', formidable(), function(req, res) {
+          console.log('uploadFiles from backend is ', req.files);
+    var binaryLocation = req.files.file.path;
+    var fileName = req.files.file.name;
+          console.log('file name is ', fileName);
+    var binaryData = fs.readFileSync(binaryLocation);
+    var theFile = {};
+    theFile.data = binaryData
+    theFile.name = fileName;
+    theFile.category = 'all';
+    var tableName = req.query.tableName;
+          console.log('theFile is ', theFile);
+          
+    db.collection('documents').save(theFile, function(err, result){
+      if (err) { return console.log('connecting to db, but not saving obj', err);}
+      console.log('doc saved to database');
+      res.send(result);
+    })
+    res.send();
+  });
 
 
 }); //end of main mongodb block

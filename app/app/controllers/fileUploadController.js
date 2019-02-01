@@ -2,39 +2,32 @@ var myApp = angular.module('myApp');
 
 myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window', 'FormService', '$sce', 'DataService', '$q', 'FileUploadService', 'Upload', 'LongVariablesService', 'ParseVariablesService', function($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope, $window, FormService, $sce, DataService, $q, FileUploadService, Upload, LongVariablesService, ParseVariablesService) {
     console.log('inside file upload controller', $stateParams);
-
-    //catch url params for affiliates loading their dynamic page directly
-     $scope.catchDocFilter = function() {
-         if ($stateParams.filter){
-           $scope.docFilter = ParseVariablesService.fixCorruptedParams($stateParams.filter);
-         } else if ($stateParams.name){
-           $scope.docFilter = $stateParams.name;
-         } else if ($scope.itnAffiliate.name){
-           $scope.docFilter = $scope.itnAffiliate.name;
-         } else if (window.location.pathname === '/important-docs'){
-           $scope.docFilter = 'America';
-         }
-         console.log('docfilter is ', $scope.docFilter);
-     };
+    
+    $scope.getDocuments = function() {
+      $scope.serverMessage = "Please wait a few seconds while the comments are loading.";
+        DataService.getDocuments().then(function(response){
+          console.log('response file uploads get ', response)
+          $scope.fileUploads = response.data;
+          $scope.serverMessage = "";
+        });
+    };
 
     // upload on file select or drop
-    $scope.upload = function (file, tableName) {
+    $scope.upload = function (file) {
             console.log('about to upload ', file, 'file name is ', file.name);
       $scope.serverMessage = "Your file is being uploaded. Please wait.";
       $scope.hideLibrary = true;
-      var tableName;
-      if (!tableName){ tableName = 'America';}
-      else { tableName = tableName;}
       var fd = new FormData();
       fd.append('file', file);
             console.log('fd about to be sent is ', fd);
-      FileUploadService.uploadFileToDB(fd, tableName);
+      FileUploadService.uploadFileToDB(fd);
       //upload service cannot work with promises, so listen to response instead using $rootScope
       $rootScope.$on('file upload ok', function(){
         console.log('file upload success');
         $scope.hideLibrary = true;
         $scope.serverMessage = "Your file was succesfully uploaded. Reloading page.";
-        $scope.reloadWithParams();
+        // $scope.reloadWithParams();
+        window.location.href;
       });
     };
 
@@ -189,7 +182,7 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
            var currentBlob = new Blob([uintArray], {
                type: 'application/png'
            });
-           window.saveAs(currentBlob, formObj.name);
+           $window.saveAs(currentBlob, formObj.name);
 
        } else {
            return $scope.pdfUrl = "This form does not contain a PDF";
@@ -223,7 +216,7 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
          type: ''
      });
      // href = URL.createObjectURL(blob);
-     window.saveAs(blob, file.name);
+     $window.saveAs(blob, file.name);
    };
 
    $scope.downloadFile = function(file, idx){

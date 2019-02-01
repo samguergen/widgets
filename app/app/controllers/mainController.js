@@ -1110,6 +1110,7 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
       })
       $scope.selected = {};
     };
+    
 
     $scope.getCommentsPhoto = function() {
       $scope.serverMessage = "Please wait a few seconds while the comments are loading.";
