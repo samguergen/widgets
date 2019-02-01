@@ -108,6 +108,20 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     })
     res.send();
   });
+  
+  
+  app.delete('/removeFile', formidable(), function (req,res) {
+        console.log('inside removeFile, queries are ', req.query.fileId);
+    var fileId = req.query.fileId;
+    db.collection('documents').deleteOne({_id: new mongo.ObjectId(fileId)}, function(err, result){
+      if (err) { throw new Error('No record found. ', err) };
+      console.log('file has been removed, i think');
+      res.send(result);
+    });
+  }); // end of /removeFile get request
+  
+  
+  
 
 
 }); //end of main mongodb block

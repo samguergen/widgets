@@ -26,12 +26,11 @@ myApp.service('FileUploadService', ['$http','$q','$rootScope', function ($http, 
         return data;
       })
    };
-   this.removeFile = function(file, tableName){
-     console.log('file is ', file, 'tableName is ', tableName);
-     return $http.get('/removeFile', {
+   this.removeFile = function(file){
+     console.log('file is ', file, 'id is ', file._id);
+     return $http.delete('/removeFile', {
        params: {
-         fileName: file.name,
-         tableName: tableName
+         fileId: file._id
        }
      })
      .then(function(data){

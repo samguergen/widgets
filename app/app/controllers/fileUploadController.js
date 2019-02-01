@@ -51,11 +51,11 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
       return window.location.href = urlWithParam;
     }
 
-    $scope.removeFile = function(file, tableName){
+    $scope.removeFile = function(file){
             console.log('inside removeFile func, file is ', file, file.name);
       $scope.serverMessage = "Your file is being removed. Please wait.";
       $scope.hideLibrary = true;
-      FileUploadService.removeFile(file, tableName)
+      FileUploadService.removeFile(file)
         .then(function(response){
           $scope.hideLibrary = false;
           if (response.status === 200){
