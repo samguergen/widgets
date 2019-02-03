@@ -61,7 +61,7 @@ nav .navbar-nav {
   margin-right: 2%;
 }
 nav .navbar-nav li:hover {
-  background: #399eaa;
+  background: #FFF4F4;
   border-radius:5px;
   color:white;
   font-weight: bold;
@@ -76,16 +76,16 @@ nav .navbar-nav a {
 nav .navbar-nav a:hover { color: white !important}
 nav .navbar-nav a:hover i, nav .navbar-nav a:hover span { color: white !important}
 nav .navbar-nav a .glyphicon-home {color: #e05944}
-nav .navbar-nav a .glyphicon-info-sign {color: #529ba8;}
+nav .navbar-nav a .glyphicon-info-sign {color: #e99090;}
 nav .navbar-nav a .fa-cog {color: #e05944}
-nav .navbar-nav a .glyphicon-envelope {color: #529ba8;}
+nav .navbar-nav a .glyphicon-envelope {color: #e99090;}
 nav .navbar-nav a .fa-map-marker {color: #e05944;}
-nav .navbar-nav a .glyphicon-heart {color: #529ba8}
-nav .navbar-nav a .fa-hand-paper-o {color: #529ba8;}
+nav .navbar-nav a .glyphicon-heart {color: #e99090}
+nav .navbar-nav a .fa-hand-paper-o {color: #e99090;}
 nav .navbar-nav a .glyphicon-usd {color: #e05944;}
 
 nav .dropdown-menu {
-  background: #399eaa;
+  background: #FFF4F4;
   color:white;
   font-weight: bold;
   border-radius:5px;
@@ -242,7 +242,7 @@ nav .dropdown-menu li.divider{
 }
 .mission, #research {
   text-align: center;
-  background-color: #399eaa;
+  background-color: #FFF4F4;
   color: white;
   font-size:50px;
 }
@@ -278,7 +278,7 @@ nav .dropdown-menu li.divider{
 }
 .homepage .rider-stories {
   background: #afcace;
-  background:#399eaa;
+  background:#FFF4F4;
 }
 .homepage .rider-stories h1 {
   color:white;
@@ -354,7 +354,7 @@ nav .dropdown-menu li.divider{
 }
 .services .first-hero h1{
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px;
   margin-left: 5%;
 }
@@ -362,7 +362,7 @@ nav .dropdown-menu li.divider{
   /* width:80%; */
 }
  .jumbo-title {
-  background-color: #399eaa;
+  background-color: #FFF4F4;
   color: white;
   text-align: center;
   padding: 2%;
@@ -438,7 +438,7 @@ nav .dropdown-menu li.divider{
 }
 .services .operating-radius button {
   margin-top: 3%;
-  background: #399eaa;
+  background: #FFF4F4;
 }
 .services .dignified {
   color: white;
@@ -471,7 +471,7 @@ nav .dropdown-menu li.divider{
 }
 .news .first-hero h1 {
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top: 170px;
   margin-left: 5%;
 }
@@ -515,7 +515,7 @@ nav .dropdown-menu li.divider{
 }
 .contact #first-hero-contact h1 {
   color:White;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px;
   margin-left: 5%;
 }
@@ -540,7 +540,7 @@ nav .dropdown-menu li.divider{
 }
 .donate .first-hero h1{
   color:White;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px;
   margin-left: 5%;
 }
@@ -562,7 +562,7 @@ nav .dropdown-menu li.divider{
 }
 .donate .donate-type p {font-size:25px}
 .donate h2 {
-  color: #399eaa
+  color: #FFF4F4
 }
 .donate hr {
   border: none;
@@ -598,7 +598,7 @@ nav .dropdown-menu li.divider{
 
 .corporate #first-hero-corporate h1{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -606,7 +606,7 @@ nav .dropdown-menu li.divider{
 .corporate .corp-slogan h2 {
   text-align:center;
   font-style:italic;
-  color: #399eaa;
+  color: #FFF4F4;
 }
 .corporate .description .container {
   width:80%;
@@ -636,7 +636,7 @@ nav .dropdown-menu li.divider{
 }
 .community #first-hero-community h1{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -692,7 +692,7 @@ nav .dropdown-menu li.divider{
 }
 .organization #first-hero-org h1{
   color:White;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -719,7 +719,7 @@ nav .dropdown-menu li.divider{
 .organization .section-container {
   padding-top: 50px !important;
   padding-bottom: 50px !important;
-  background: #399eaa24 !important;
+  background: #FFF4F424 !important;
 }
 .organization #start .start-itn {
     font-size:30px;
@@ -740,7 +740,7 @@ nav .dropdown-menu li.divider{
 #board h1, .org-section h1, #staff h1 {
   text-align:center;
   padding: 20px;
-  color:#399eaa;
+  color:#FFF4F4;
 }
 #board .row, #staff .row {
   text-align: center;
@@ -827,7 +827,7 @@ nav .dropdown-menu li.divider{
  }
  .faq #first-hero-faq h1{
    color:white;
-   text-shadow: 2px 2px #529ba8;
+   text-shadow: 2px 2px #e99090;
    margin-top:170px !important;
    margin-left: 5% !important;
  }
@@ -924,7 +924,7 @@ nav .dropdown-menu li.divider{
 }
 .rider-stories #first-hero-rider h1{
   color:White;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -983,13 +983,13 @@ nav .dropdown-menu li.divider{
 }
 .faces #first-hero-faces h1{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
 .faces .container-wrapper {
   width: 100%;
-  background: #399eaa;
+  background: #FFF4F4;
   float: left;
   padding-top:50px;
   padding-bottom:50px;
@@ -1041,13 +1041,13 @@ nav .dropdown-menu li.divider{
 }
 .member-programs #first-hero-member h1{
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
 .member-programs .intro-wrapper {
   background:#afcace;
-  background: #399eaa;
+  background: #FFF4F4;
   color: white;
 }
 .member-programs .intro {
@@ -1060,7 +1060,7 @@ nav .dropdown-menu li.divider{
 }
 .member-programs .gift-cert-info {
   text-align: justify;
-  border: 3px solid #399eaa;
+  border: 3px solid #FFF4F4;
   border-radius:5px;
   padding: 5%;
   margin-top: 75px;
@@ -1100,7 +1100,7 @@ nav .dropdown-menu li.divider{
 }
 .family #first-hero-family h1{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1113,7 +1113,7 @@ nav .dropdown-menu li.divider{
   padding-bottom: 0 !important;
 }
 .family .title h2 {
-  color: #399eaa
+  color: #FFF4F4
 }
 .family .title hr {
   border: none;
@@ -1180,7 +1180,7 @@ nav .dropdown-menu li.divider{
 }
 .pay-online #first-hero-pay-online h1{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1195,7 +1195,7 @@ nav .dropdown-menu li.divider{
   margin-bottom: 50px;
 }
 .pay-online .title h2 {
-  color: #399eaa;
+  color: #FFF4F4;
 }
 .pay-online .title hr {
   width:35%;
@@ -1212,7 +1212,7 @@ nav .dropdown-menu li.divider{
 .pay-online .pay-online-content form{
   overflow: hidden;
   padding: 3%;
-  border: 3px solid #399eaa;
+  border: 3px solid #FFF4F4;
   border-radius: 5px;
   background:#afcace;
 }
@@ -1235,7 +1235,7 @@ nav .dropdown-menu li.divider{
 }
 .non-rider #first-hero-rider h1{
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1243,7 +1243,7 @@ nav .dropdown-menu li.divider{
   text-align: center;
   line-height: 2;
   font-size: 26px;
-  /*color:#399eaa*/
+  /*color:#FFF4F4*/
 }
 .non-rider hr, .contact hr, .corporate hr, .programs-contact hr {
   width:35%;
@@ -1272,7 +1272,7 @@ nav .dropdown-menu li.divider{
 }
 .become-member #first-hero-become h1 {
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1331,7 +1331,7 @@ nav .dropdown-menu li.divider{
  .icon-wrap-circle {
   border-radius: 100%;
   color: white;
-  background: #399eaa;
+  background: #FFF4F4;
   height: 150px;
   WIDTH: 150PX;
   margin-left: auto;
@@ -1353,7 +1353,7 @@ nav .dropdown-menu li.divider{
 
 .member-app #first-hero-online-app h1 {
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px;
   margin-left: 5%;
 }
@@ -1416,7 +1416,7 @@ form textarea.form-control {font-size:25px}
 }
 .volunteer-drive #first-hero-volunteer-drive h1{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1492,7 +1492,7 @@ form textarea.form-control {font-size:25px}
 }
 .volunteer-app #first-hero-volunteer-app h1{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1526,7 +1526,7 @@ form textarea.form-control {font-size:25px}
 }
 .ways-to-give #first-hero-ways h1 {
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top: 170px;
   margin-left: 5%;
 }
@@ -1557,7 +1557,7 @@ form textarea.form-control {font-size:25px}
 }
 .about #first-hero-about h1 {
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top: 170px;
   margin-left: 5%;
 }
@@ -1572,7 +1572,7 @@ form textarea.form-control {font-size:25px}
 }
 .find-your-itn #first-hero-find h1 {
   color:white;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top: 170px;
   margin-left: 5%;
 }
@@ -1592,7 +1592,7 @@ form textarea.form-control {font-size:25px}
 
 .mrc #first-hero-mrc h1, .mrc #first-hero-mrc h3{
   color:white !important;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1645,7 +1645,7 @@ form textarea.form-control {font-size:25px}
 }
 .annual-report #first-hero-report h1{
   color:White;
-  text-shadow: 2px 2px #529ba8;
+  text-shadow: 2px 2px #e99090;
   margin-top:170px !important;
   margin-left: 5% !important;
 }
@@ -1678,7 +1678,7 @@ form textarea.form-control {font-size:25px}
   padding:5%;
   border-radius:5px;
   background:white;
-  color:#399eaa;
+  color:#FFF4F4;
 }
 .annual-report .container p, .annual-report .container-fluid p {
   font-weight: bold;
@@ -1775,7 +1775,8 @@ form textarea.form-control {font-size:25px}
 
 
 .portal {
-  background-image: url('../images/itnportland-pic.JPG') !important;
+  /* background-image: url('../images/itnportland-pic.JPG') !important; */
+  background: black;
   background-attachment: fixed;
   background-position: center center !important;
   background-size: cover !important;
@@ -1824,7 +1825,7 @@ form textarea.form-control {font-size:25px}
   height: 250px;
   width: 250px;
   background: rgba(68,109,116,0.7);
-  border: 7px solid #399eaa;
+  border: 7px solid #FFF4F4;
   background: rgba(252,109,109,0.3);
   border: 5px solid rgba(252,109,109,1);
   text-align: center;
@@ -2075,7 +2076,7 @@ form textarea.form-control {font-size:25px}
 .btn-itn-sm {
   padding:1px 6px;
   font-size:12px;
-  background: #529ba8;
+  background: #e99090;
   border-color: white;
   color:white;
 }
@@ -2083,11 +2084,11 @@ form textarea.form-control {font-size:25px}
   z-index: 99;
   float: left;
   padding: 10px;
-  border: 1px solid #529ba8;
+  border: 1px solid #e99090;
   border-radius: 5px;
   position: absolute;
   background: white;
-  color: #529ba8;
+  color: #e99090;
 }
 .all-docs .file-name {
   text-overflow: ellipsis;
@@ -2269,7 +2270,7 @@ form textarea.form-control {font-size:25px}
   margin-top:50px;
 }
 .blueHighlight {
-  background:#529ba8;
+  background:#e99090;
 }
 .disabled {
   color:grey !important;
@@ -2290,7 +2291,8 @@ form textarea.form-control {font-size:25px}
     position:absolute;
     bottom:0;
     left:0;
-    background: #399eaa;
+    /* background: #FFF4F4; */
+    background: #e99090;
     font-size:20px;
 }
 #footer ul li a {color:white}
@@ -2303,7 +2305,8 @@ form textarea.form-control {font-size:25px}
   margin: auto;
   margin-bottom: 10px;
   color:white;
-  background: #399eaa;
+  /* background: #FFF4F4; */
+  background: #e99090;
 }
 #footer .container .col-sm-4{
   margin-top:30px;
@@ -2407,8 +2410,8 @@ form textarea.form-control {font-size:25px}
 
 /* HELPER CLASSES */
 
-.itn-green {color: #399eaa !important}
-.itn-green-bg {background: #399eaa !important}
+.itn-green {color: #FFF4F4 !important}
+.itn-green-bg {background: #FFF4F4 !important}
 .itn-orange {color: #fc6d6d !important}
 .itn-orange-bg {background: #fc6d6d !important}
 .itn-lightgreen {color: #afcace !important}
@@ -2470,7 +2473,7 @@ form textarea.form-control {font-size:25px}
 /* OFFICIAL WIDGETS */
 
 .btn-lg {
-  background: #529ba8;
+  background: #e99090;
   border-color: white;
   padding: 7px 15px;
   font-size: 22px;
@@ -2478,7 +2481,7 @@ form textarea.form-control {font-size:25px}
   font-weight:bold;
 }
 .itn-title h2 {
-  color: #399eaa
+  color: #FFF4F4
 }
 .itn-title hr, .red-hr {
   border: none;
