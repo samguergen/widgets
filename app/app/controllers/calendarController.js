@@ -172,41 +172,23 @@ myApp.controller('CalendarCtrl', ['$scope', '$transitions', '$http', '$anchorScr
               type: "warning"
             }).then(function(readyToDelete){
               //On confirm, delete event from db
-              if (readyToDelete.value && calendarType === 'affiliate'){
+              if (readyToDelete.value){
                 console.log('event is ', complexEventObj);
                 var simpleEventObjToDelete = $scope.convertComplexToSimpleEventObj(complexEventObj);
-                $scope.deleteAffiliateCalendarEventPromise(simpleEventObjToDelete, affiliateName)
+                $scope.deleteWeeklyCalendarEventPromise(simpleEventObjToDelete)
                   .then(function(response){
                     console.log('final response from delete is ', response);
-                    location.reload()
-
-
-
-
-
-                    //removeEvents from fullcalendar not working so much force event to hide on DOM with CSS
-                    var cssElem = $scope.theJsEvent.currentTarget.className;
-                    var idx = cssElem.indexOf(' ');
-                    var cssCutoff = cssElem.substring(0, idx);
-                    var cssElemReady = '.' + cssCutoff;
-                    console.log('css elem ready is ', cssElemReady);
-                    var allEvents = $(cssElemReady).show();
-                    console.log('all obj with class name are ', allEvents);
-                    var matchedElem = $scope.matchRelevantEvent(allEvents, calEvent);
-                    console.log('matched event ', matchedElem);
-                    $(cssElemReady).css('display','none');
-                    $scope.resetEventObj();
                     swal("Deleted!","Your event was deleted.","success");
+                    
+                    $scope.viewWeeklyCalendarEventsPromise()
+                      .then(function(response){
+                        $('#calendar-week').fullCalendar('removeEvents');
+                        $('#calendar-week').fullCalendar('addEventSource', $scope.calendarEvents);
+                        $('#calendar-week').fullCalendar('rerenderEvents');
+                        $scope.resetEventObj();
+                      })
                   })
                   .catch(function(error){
-                    swal("Oops!","Your event couldn't be deleted.","error");
-                  })
-              }
-              else if (readyToDelete.value){
-                $scope.deleteRISCalendarEventPromise(complexEventObj, 'calendar-ris')
-                  .then(function(response){
-                    swal("Deleted!","Your event was deleted.","success");
-                  }).catch(function(error){
                     swal("Oops!","Your event couldn't be deleted.","error");
                   })
               }
@@ -357,10 +339,10 @@ myApp.controller('CalendarCtrl', ['$scope', '$transitions', '$http', '$anchorScr
     };
 
 
-    $scope.deleteAffiliateCalendarEventPromise = function(eventToDelete, affiliateName){
+    $scope.deleteWeeklyCalendarEventPromise = function(eventToDelete){
       var deferred = $q.defer();
       console.log('before delete affiliate calendar event call');
-      DataService.deleteAffiliateCalendarEvent(eventToDelete, affiliateName)
+      DataService.deleteWeeklyCalendarEvent(eventToDelete)
         .then(function(data){
           console.log('scheduler data is ', data.data[0].scheduler);
           if (data.data[0] && data.data[0].scheduler){

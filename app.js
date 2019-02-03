@@ -160,6 +160,38 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     });
     
     
+    app.delete('/deleteWeeklyCalendarEvent', function (req,res) {
+        var eventId = req.query.eventId;
+        console.log('event to be deleted, received from backend is ', eventId)
+        db.collection('weekly-calendar').deleteOne({_id: new mongo.ObjectId(eventId)}, function(err, result){
+          if (err) { throw new Error('No record found. ', err) };
+          console.log('event has been removed');
+          res.send(result);
+        });
+    }); // end of deleteagendaevent request
+    
+    
+    //the GET call below is meant to be the DELETE CALL above but smth is parsing wrong.
+    // app.delete('/deleteWeeklyCalendarEvent', function (req,res) {
+    //   var parsedEventToDelete = JSON.parse(req.query.event);
+    //   var affiliateName = req.query.affiliateName;
+    //   db.collection('commentsphoto').find({name: affiliateName}).toArray(function (err, result) {
+    //     if (err) { throw new Error('No record found. ', err) };
+    //     var recordId = result[0]._id;
+    //     var matchConditions = {author: parsedEventToDelete.author, description: parsedEventToDelete.description, title: parsedEventToDelete.title};
+    //     console.log('match conditions are ', matchConditions);
+    //     var eventObj = { $pull: {scheduler: matchConditions} };
+    //     console.log('recordId:', recordId);
+    //     console.log("event obj is ", eventObj);
+    //     db.collection('commentsphoto').update(
+    //        { _id: recordId },
+    //        eventObj
+    //     )
+    //     res.send(result);
+    //   });
+    // });
+    
+    
   
 
 

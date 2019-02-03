@@ -117,7 +117,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
 
 
     //the GET call below is meant to be the DELETE CALL above but smth is parsing wrong.
-    app.delete('/deleteAffiliateEventObj', formidable(), function (req,res) {
+    app.delete('/deleteWeeklyEventObj', formidable(), function (req,res) {
       var parsedEventToDelete = JSON.parse(req.query.event);
       var affiliateName = req.query.affiliateName;
       db.collection('commentsphoto').find({name: affiliateName}).toArray(function (err, result) {
