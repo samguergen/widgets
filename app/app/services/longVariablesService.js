@@ -320,7 +320,7 @@ myApp.service('LongVariablesService', ['$http', function ($http) {
       dbName: 'excel'
     },
     {
-      name: 'No Category/All',
+      name: 'General',
       dbName: 'all'
     },
     {
