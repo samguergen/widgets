@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents'];
+var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler'];
 
 
 MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662/widgets', function(err, client) {
@@ -60,7 +60,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
   app.post('/addTimesheet', function (req,res) {
     console.log('inside timesheet add')
     var timesheet = req.body.timesheet;
-    console.log('ts to be saved, received from backend is ', timesheet)
+    console.log('ts to be saved, received from backend is ', timesheet);
     db.collection('timesheets').save(timesheet, function(err, result){
       if (err) { return console.log('connecting to db, but not saving obj', err);}
       console.log('ts saved to database');
@@ -138,6 +138,28 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
         res.send(result);
       });
   }); // end of /updateCategory put request
+  
+  
+  
+  
+    app.get('/viewWeeklyCalendarEvents', function (req,res) {
+      db.collection('weekly-calendar').find().toArray(function (err, result) {
+        res.send(result);
+      })
+    }); // end of /viewRISCalendarEvents get request
+    
+    
+    app.post('/addWeeklyCalendarEvent', function (req,res) {
+      var newEvent = req.body.newEvent;
+      console.log('event to be saved, received from backend is ', newEvent);
+      db.collection('weekly-calendar').save(newEvent, function(err, result){
+        if (err) { return console.log('connecting to db, but not saving obj', err);}
+        console.log('event saved to database', result);
+        res.send(result);
+      })
+    });
+    
+    
   
 
 

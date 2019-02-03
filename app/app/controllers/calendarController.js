@@ -130,20 +130,13 @@ myApp.controller('CalendarCtrl', ['$scope', '$transitions', '$http', '$anchorScr
     };
 
 
-    $scope.initWeekCalendar = function(calendarType, affiliateName) {
+    $scope.initWeekCalendar = function(calendarType) {
       $scope.serverMessage = "Loading calendar...";
       $scope.hideModal('calendarModal');
       $scope.hideModal('addOrShowModal');
-      var promise;
-      if (calendarType === 'affiliate'){
-        // DataService.generateRESTUrl($scope.itnAffiliate.name, 'shift-scheduler');
-        console.log('fetching calendar events, affiliateName is ', affiliateName);
-        promise = $scope.viewAffiliateCalendarEventsPromise(affiliateName);
-      } else {
-        promise = $scope.viewRISCalendarEventsPromise();
-      }
+      var promise = $scope.viewWeeklyCalendarEventsPromise();
       promise.then(function(data){
-        console.log('ris events are ', $scope.calendarEvents);
+        console.log('weekly calendar events are ', $scope.calendarEvents);
         $scope.serverMessage = "";
 
         $('#calendar-week').fullCalendar({
@@ -284,69 +277,26 @@ myApp.controller('CalendarCtrl', ['$scope', '$transitions', '$http', '$anchorScr
     };
 
 
-    $scope.addCalendarEvent = function(calendarType, affiliateName){
-      console.log('is calendar Type and affiliateName ', calendarType, affiliateName);
+    $scope.addWeeklyCalendarEvent = function(){;
       $scope.serverMessage = "Adding event...";
       //selects previous day by default, so need to adjust
       $scope.eventObj.day = new Date($scope.dayClicked.getTime());
       console.log('event obj is ', $scope.eventObj);
       //save event to database
-      if (calendarType === 'RIS'){
-        $scope.completeEventObj();
-        DataService.addRISCalendarEvent($scope.eventObj).then(function(data){
-          $('#calendarModal').modal('hide');
-          $scope.serverMessage = "Your event has been succesfully added.";
-          //updates events on DOM
-          $scope.viewRISCalendarEventsPromise().then(function(response){
-            $('#calendar-week').fullCalendar('removeEvents');
-            $('#calendar-week').fullCalendar('addEventSource', $scope.calendarEvents);
-            $('#calendar-week').fullCalendar('rerenderEvents');
-            $scope.resetEventObj();
-          })
-        })
-      } else if (calendarType === 'affiliate' && affiliateName) {
-        console.log('is affiliate add');
-        $scope.completeEventObj();
-        DataService.addAffiliateCalendarEvent($scope.eventObj, affiliateName)
+      $scope.completeEventObj();
+      DataService.addWeeklyCalendarEvent($scope.eventObj)
         .then(function(data){
           $('#calendarModal').modal('hide');
           $scope.serverMessage = "Your event has been succesfully added.";
           //updates events on DOM
-          $scope.viewAffiliateCalendarEventsPromise(affiliateName).then(function(response){
-            $('#calendar-week').fullCalendar('removeEvents');
-            $('#calendar-week').fullCalendar('addEventSource', $scope.calendarEvents);
-            $('#calendar-week').fullCalendar('rerenderEvents');
-            $scope.resetEventObj();
-          })
+          $scope.viewWeeklyCalendarEventsPromise()
+            .then(function(response){
+              $('#calendar-week').fullCalendar('removeEvents');
+              $('#calendar-week').fullCalendar('addEventSource', $scope.calendarEvents);
+              $('#calendar-week').fullCalendar('rerenderEvents');
+              $scope.resetEventObj();
+            })
         })
-      } else if (calendarType === 'affiliate') {
-        console.log('is affiliate add');
-        console.log('scope itn affiliate is ', $scope.itnAffiliate);
-        $scope.completeEventObj();
-        DataService.addAffiliateCalendarEvent($scope.eventObj, $scope.itnAffiliate)
-        .then(function(data){
-          $('#calendarModal').modal('hide');
-          $scope.serverMessage = "Your event has been succesfully added.";
-          console.log("event added to db");
-          //updates events on DOM
-          $scope.viewAffiliateCalendarEventsPromise($scope.itnAffiliate).then(function(response){
-            $('#calendar-week').fullCalendar('removeEvents');
-            $('#calendar-week').fullCalendar('addEventSource', $scope.calendarEvents);
-            $('#calendar-week').fullCalendar('rerenderEvents');
-            $scope.resetEventObj();
-          })
-        })
-      } else {
-        console.log('inside calendar event');
-        DataService.addCalendarEvent($scope.eventObj).then(function(data){
-          $('#calendarModal').modal('hide');
-          $scope.serverMessage = "Your event has been succesfully added.";
-          //updates events on DOM
-          $scope.emptyCalendar();
-          $scope.viewCalendarEventsPromise();
-          $scope.resetEventObj();
-        })
-      }
     };
 
 
@@ -431,10 +381,10 @@ myApp.controller('CalendarCtrl', ['$scope', '$transitions', '$http', '$anchorScr
     };
 
 
-    $scope.viewCalendarEventsPromise = function(){
+    $scope.viewWeeklyCalendarEventsPromise = function(){
       var deferred = $q.defer();
       //get events from database
-      DataService.viewCalendarEvents()
+      DataService.viewWeeklyCalendarEvents()
       .then(function(data){
         $scope.calendarEvents = data.data;
         $scope.drawEventsOnCalendar();
@@ -445,40 +395,6 @@ myApp.controller('CalendarCtrl', ['$scope', '$transitions', '$http', '$anchorScr
       return deferred.promise;
     };
 
-
-    $scope.viewRISCalendarEventsPromise = function(){
-      var deferred = $q.defer();
-      //get events from database
-      DataService.viewRISCalendarEvents()
-      .then(function(data){
-        $scope.calendarEvents = data.data;
-        console.log('RIS calendar events are ', $scope.calendarEvents);
-        deferred.resolve(data.data);
-      }).catch(function(err){
-        deferred.resolve('Error: ', err);
-      })
-      return deferred.promise;
-    };
-
-    $scope.viewAffiliateCalendarEventsPromise = function(affiliateName){
-      console.log('view affiliate calendar events promise, affiliate name is ',affiliateName);
-      var deferred = $q.defer();
-      //get events from database
-      DataService.viewAffiliateCalendarEvents(affiliateName)
-      .then(function(data){
-        console.log("data from viewAffiliateCalendarEventsPromise func is ", data);
-        if (data.data[0]){
-          $scope.calendarEvents = data.data[0].scheduler;
-          console.log('Affiliate calendar events are ', $scope.calendarEvents);
-          deferred.resolve(data.data);
-        } else {
-          deferred.resolve('Error');
-        }
-      }).catch(function(err){
-        deferred.resolve('Error');
-      })
-      return deferred.promise;
-    };
 
 
     //place events on their respective day tabs

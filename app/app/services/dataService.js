@@ -84,39 +84,16 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
       return data;
     }).catch(function(error){ return error })
   };
-  this.addAffiliateCalendarEvent = function(newEvent, affiliateName){
-    console.log('event is ', newEvent);
-    return $http.get('/fetchAffiliateSchedulerEvent', {
-      params: {
-        newEvent: newEvent,
-        affiliateName: affiliateName
-      }
-    })
-      .then(function(data){
-      console.log('data returned from add affiliate calendar service is ', data);
-      return data;
-    }).catch(function(error){ return error })
-  };
-  this.addCalendarEvent = function(newEvent){
+  this.addWeeklyCalendarEvent = function(newEvent){
     console.log('event in add calendar event is ', newEvent);
-    return $http.post('/addCalendarEvent', {newEvent: newEvent}).then(function(data){
-      console.log('data returned from add calendar event service is ', data);
-      return data;
-    }).catch(function(error){ return error })
+    return $http.post('/addWeeklyCalendarEvent', {newEvent: newEvent})
+      .then(function(data){
+        console.log('data returned from add calendar event service is ', data);
+        return data;
+      }).catch(function(error){ 
+        return error 
+      })
   };
-  // this.addCalendarEventAffiliate = function(newEvent){
-  //   console.log('event is ', newEvent);
-  //   return $http.get('/addCalendarEventAffiliate', {
-  //     params: {
-  //       newEvent: newEvent,
-  //       affiliateName: affiliateName
-  //     }
-  //   })
-  //     .then(function(data){
-  //     console.log('data returned from add affiliate calendar service is ', data);
-  //     return data;
-  //   }).catch(function(error){ return error })
-  // };
   this.deleteRISCalendarEvent = function(agendaEvent, dbName){
     //special circular object, do not send full agendaEvent obj to backend.
     console.log('event is ', agendaEvent, 'from ', dbName);
@@ -128,14 +105,13 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
       return error;
     })
   };
-  this.deleteAffiliateCalendarEvent = function(agendaEvent, affiliateName){
-    console.log('event is ', agendaEvent, 'from ', affiliateName);
+  this.deleteWeeklyCalendarEvent = function(agendaEvent, affiliateName){
+    console.log('event is ', agendaEvent);
     var affiliateObj = {
-      affiliateName: affiliateName,
       event: agendaEvent
     };
     console.log('affiliate obj is ', affiliateObj, 'type is ', typeof(affiliateObj));
-    return $http.delete('/deleteAffiliateEventObj', {params: affiliateObj})
+    return $http.delete('/deleteWeeklyEventObj', {params: affiliateObj})
       .then(function(data){
         console.log('data returned is ', data);
         return data;
@@ -144,26 +120,13 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
         return error;
       })
   };
-  this.viewRISCalendarEvents = function(){
-    return $http.get('/viewRISCalendarEvents')
+  this.viewWeeklyCalendarEvents = function(){
+    return $http.get('/viewWeeklyCalendarEvents')
       .then(function(data){
         return data;
-    }).catch(function(error){ return error })
-  };
-  this.viewAffiliateCalendarEvents = function(affiliateName){
-    return $http.get('/viewAffiliateCalendarEvents', {
-      params: {
-        affiliateName: affiliateName
-      }
-    }).then(function(data){
-      return data;
-    }).catch(function(error){ return error })
-  };
-  this.viewCalendarEvents = function(){
-    return $http.get('/viewCalendarEvents')
-    .then(function(data){
-      return data;
-    }).catch(function(error){ return error })
+      }).catch(function(error){ 
+        return error 
+      })
   };
   this.deleteAgendaEvent = function(agendaEvent, dbName){
     console.log('event is ', agendaEvent, 'from ', dbName);

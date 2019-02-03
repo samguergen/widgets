@@ -1,5 +1,5 @@
 <!-- <div class="portal calendar calendar-ris calendar-affiliate" ng-init="initWeekCalendar('affiliate', itnAffiliate.name)"> -->
-<div class="portal calendar calendar-ris calendar-affiliate" ng-init="hasAffiliateFilter();initWeekCalendar('affiliate', itnAffiliate)">
+<div class="portal calendar calendar-ris calendar-affiliate" ng-init="initWeekCalendar()">
   <div class="container-fluid" style="width:75%">
     <h2>ITN<em>{{itnAffiliate}}</em>- Weekly Shift Scheduler</h2>
     <div style="color:green">{{serverMessage}}</div>
@@ -33,7 +33,7 @@
     <div class="modal-body">
 
       <div class="form-area" style="background: #c7dfe4;border:none;padding:1%;border-radius:5px">
-        <form name="itnForm" id="addEventForm" novalidate ng-submit="addCalendarEvent('affiliate', itnAffiliate.name)" role="comment form" ng-model="eventObj" style="padding:2%;margin:0 5%">
+        <form name="itnForm" id="addEventForm" novalidate ng-submit="addWeeklyCalendarEvent()" role="comment form" ng-model="eventObj" style="padding:2%;margin:0 5%">
 
           <div class="row">
             <div class="form-group" ng-class="{ 'has-error' : itnForm.startTime.$invalid && !itnForm.startTime.$pristine }">

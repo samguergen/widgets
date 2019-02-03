@@ -179,13 +179,9 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
         .state('shift-scheduler', {
-            url: '/shift-scheduler?filter',
+            url: '/shift-scheduler',
             templateUrl: viewsPath + 'shift-scheduler.html',
-            controller: 'CalendarCtrl',
-            params : {
-              name: 'Lanier',
-              gaViewCode: 89470158,
-            }
+            controller: 'CalendarCtrl'
         })
 
     // default fall back route
