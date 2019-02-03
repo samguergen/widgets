@@ -86,29 +86,6 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
       $scope.fileUploads = $filter('filter')($scope.fileUploads2, {category: $scope.fileCategoryFilter});
     };
     
-    // $scope.fileCategoryFilter = "pdf";
-    // $scope.filtered = false;
-    // 
-    // $scope.assignFileCategoryFilter = function(category){
-    //   $scope.filtered = true;
-    //   console.log('inside assignFileCategoryFilter');
-    //   $scope.fileCategoryFilter = category.dbName;
-    //   console.log('category filtered is ', $scope.fileCategoryFilter);
-    // };
-    // 
-    // 
-    // $scope.filterCategory2 = function(file){
-    //   console.log('inside filterCategory');
-    //   // console.log('file cat is ', file.category, 'fileCatFilter is ', $scope.fileCategoryFilter);
-    //   if (($scope.fileCategoryFilter === file.category)){
-    //     console.log('if');
-    //     return file;
-    //   } 
-    //   else {
-    //     console.log('else');
-    //     // return $scope.fileUploads;
-    //   }
-    // };
 
     $scope.findFileMimeType = function(file){
       var fileFormat = file.name.substr(file.name.length - 3);
@@ -131,7 +108,6 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
     };
 
     $scope.base64ToImgSrc = function(base64){
-      // console.log("base64 file is ", base64);
       if (base64 && $scope.fileMimeType){
         var newImgUrl;
         if ($scope.fileMimeType === 'png'){
