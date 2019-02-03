@@ -61,7 +61,7 @@ nav .navbar-nav {
   margin-right: 2%;
 }
 nav .navbar-nav li:hover {
-  background: #FFF4F4;
+  background: #e99090;
   border-radius:5px;
   color:white;
   font-weight: bold;
@@ -85,7 +85,7 @@ nav .navbar-nav a .fa-hand-paper-o {color: #e99090;}
 nav .navbar-nav a .glyphicon-usd {color: #e05944;}
 
 nav .dropdown-menu {
-  background: #FFF4F4;
+  background: #e99090;
   color:white;
   font-weight: bold;
   border-radius:5px;
@@ -242,7 +242,7 @@ nav .dropdown-menu li.divider{
 }
 .mission, #research {
   text-align: center;
-  background-color: #FFF4F4;
+  background-color: #e99090;
   color: white;
   font-size:50px;
 }
@@ -278,7 +278,7 @@ nav .dropdown-menu li.divider{
 }
 .homepage .rider-stories {
   background: #afcace;
-  background:#FFF4F4;
+  background:#e99090;
 }
 .homepage .rider-stories h1 {
   color:white;
@@ -362,7 +362,7 @@ nav .dropdown-menu li.divider{
   /* width:80%; */
 }
  .jumbo-title {
-  background-color: #FFF4F4;
+  background-color: #e99090;
   color: white;
   text-align: center;
   padding: 2%;
@@ -438,7 +438,7 @@ nav .dropdown-menu li.divider{
 }
 .services .operating-radius button {
   margin-top: 3%;
-  background: #FFF4F4;
+  background: #e99090;
 }
 .services .dignified {
   color: white;
@@ -562,7 +562,7 @@ nav .dropdown-menu li.divider{
 }
 .donate .donate-type p {font-size:25px}
 .donate h2 {
-  color: #FFF4F4
+  color: #e99090
 }
 .donate hr {
   border: none;
@@ -606,7 +606,7 @@ nav .dropdown-menu li.divider{
 .corporate .corp-slogan h2 {
   text-align:center;
   font-style:italic;
-  color: #FFF4F4;
+  color: #e99090;
 }
 .corporate .description .container {
   width:80%;
@@ -719,7 +719,7 @@ nav .dropdown-menu li.divider{
 .organization .section-container {
   padding-top: 50px !important;
   padding-bottom: 50px !important;
-  background: #FFF4F424 !important;
+  background: #e9909024 !important;
 }
 .organization #start .start-itn {
     font-size:30px;
@@ -740,7 +740,7 @@ nav .dropdown-menu li.divider{
 #board h1, .org-section h1, #staff h1 {
   text-align:center;
   padding: 20px;
-  color:#FFF4F4;
+  color:#e99090;
 }
 #board .row, #staff .row {
   text-align: center;
@@ -989,7 +989,7 @@ nav .dropdown-menu li.divider{
 }
 .faces .container-wrapper {
   width: 100%;
-  background: #FFF4F4;
+  background: #e99090;
   float: left;
   padding-top:50px;
   padding-bottom:50px;
@@ -1047,7 +1047,7 @@ nav .dropdown-menu li.divider{
 }
 .member-programs .intro-wrapper {
   background:#afcace;
-  background: #FFF4F4;
+  background: #e99090;
   color: white;
 }
 .member-programs .intro {
@@ -1060,7 +1060,7 @@ nav .dropdown-menu li.divider{
 }
 .member-programs .gift-cert-info {
   text-align: justify;
-  border: 3px solid #FFF4F4;
+  border: 3px solid #e99090;
   border-radius:5px;
   padding: 5%;
   margin-top: 75px;
@@ -1113,7 +1113,7 @@ nav .dropdown-menu li.divider{
   padding-bottom: 0 !important;
 }
 .family .title h2 {
-  color: #FFF4F4
+  color: #e99090
 }
 .family .title hr {
   border: none;
@@ -1195,7 +1195,7 @@ nav .dropdown-menu li.divider{
   margin-bottom: 50px;
 }
 .pay-online .title h2 {
-  color: #FFF4F4;
+  color: #e99090;
 }
 .pay-online .title hr {
   width:35%;
@@ -1212,7 +1212,7 @@ nav .dropdown-menu li.divider{
 .pay-online .pay-online-content form{
   overflow: hidden;
   padding: 3%;
-  border: 3px solid #FFF4F4;
+  border: 3px solid #e99090;
   border-radius: 5px;
   background:#afcace;
 }
@@ -1243,7 +1243,7 @@ nav .dropdown-menu li.divider{
   text-align: center;
   line-height: 2;
   font-size: 26px;
-  /*color:#FFF4F4*/
+  /*color:#e99090*/
 }
 .non-rider hr, .contact hr, .corporate hr, .programs-contact hr {
   width:35%;
@@ -1331,7 +1331,7 @@ nav .dropdown-menu li.divider{
  .icon-wrap-circle {
   border-radius: 100%;
   color: white;
-  background: #FFF4F4;
+  background: #e99090;
   height: 150px;
   WIDTH: 150PX;
   margin-left: auto;
@@ -1678,7 +1678,7 @@ form textarea.form-control {font-size:25px}
   padding:5%;
   border-radius:5px;
   background:white;
-  color:#FFF4F4;
+  color:#e99090;
 }
 .annual-report .container p, .annual-report .container-fluid p {
   font-weight: bold;
@@ -1825,7 +1825,7 @@ form textarea.form-control {font-size:25px}
   height: 250px;
   width: 250px;
   background: rgba(68,109,116,0.7);
-  border: 7px solid #FFF4F4;
+  border: 7px solid #e99090;
   background: rgba(252,109,109,0.3);
   border: 5px solid rgba(252,109,109,1);
   text-align: center;
@@ -2291,7 +2291,7 @@ form textarea.form-control {font-size:25px}
     position:absolute;
     bottom:0;
     left:0;
-    /* background: #FFF4F4; */
+    /* background: #e99090; */
     background: #e99090;
     font-size:20px;
 }
@@ -2305,7 +2305,7 @@ form textarea.form-control {font-size:25px}
   margin: auto;
   margin-bottom: 10px;
   color:white;
-  /* background: #FFF4F4; */
+  /* background: #e99090; */
   background: #e99090;
 }
 #footer .container .col-sm-4{
@@ -2410,8 +2410,8 @@ form textarea.form-control {font-size:25px}
 
 /* HELPER CLASSES */
 
-.itn-green {color: #FFF4F4 !important}
-.itn-green-bg {background: #FFF4F4 !important}
+.itn-green {color: #e99090 !important}
+.itn-green-bg {background: #e99090 !important}
 .itn-orange {color: #fc6d6d !important}
 .itn-orange-bg {background: #fc6d6d !important}
 .itn-lightgreen {color: #afcace !important}
@@ -2481,7 +2481,7 @@ form textarea.form-control {font-size:25px}
   font-weight:bold;
 }
 .itn-title h2 {
-  color: #FFF4F4
+  color: #e99090
 }
 .itn-title hr, .red-hr {
   border: none;
