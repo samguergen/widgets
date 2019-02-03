@@ -13,28 +13,8 @@ myApp.service('FormService', ['$http', function($http) {
             return data.data;
         })
     };
-    this.getHRContactForms = function() {
-        return $http.get('/getHRContactForms').then(function(data) {
-            console.log('data is ', data);
-            return data.data;
-        })
-    };
-    this.getNewsletterForms = function() {
-        return $http.get('/getNewsletterForms').then(function(data) {
-            console.log('data is ', data);
-            return data.data;
-        })
-    };
-    this.deleteForm = function(formType, formObj) {
-        return $http.delete('/deleteForm/' + formObj._id, {
-            params: {
-                formType: formType
-            }
-        }).then(function(data) {
-            return data;
-        })
-    }
-    this.sendMail = function(formType, formObj) {
+
+    this.sendMail = function(formObj) {
       var responseMsg = {
         loading: false,
         contactPerson: null

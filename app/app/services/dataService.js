@@ -71,60 +71,51 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
     })
   };
   
-  
-  this.getCommentsPhoto = function(){
-    return $http.get('/getCommentsPhoto')
+  this.getComments = function(){
+    return $http.get('/getComments')
     .then(function(data){
-      return data;
-    })
-  };
-  this.fetchCommentsPerAffiliate = function(affiliateName){
-    return $http.get('/fetchCommentsPerAffiliate', {
-      params: {
-        affiliateName: affiliateName
+      console.log('log from post is ', data);
+      if (data.status === 200){
+        return data
+      } else {
+        return error
       }
+    }).catch(function(error) {
+        return error
     })
-    .then(function(data){
-      console.log('data returned from fetch comments per aff frontend service is ', data);
-      return data;
-    }).catch(function(error){ return error })
   };
-  this.fetchImages = function(affiliateName){
-    return $http.get('/fetchCommentsPhoto', {
-      params: {
-        affiliateName: affiliateName
-      }
-    })
-    .then(function(data){
-      console.log('data returned from fetch images frontend service is ', data);
-      return data;
-    }).catch(function(error){ return error })
+  this.addComment = function(comment){
+    return $http.post('/addComment', {comment: comment})
+      .then(function(data){
+        console.log('data returned from add comment service is ', data);
+        return data;
+      })
+  };
+  this.deleteComment = function(comment){
+    console.log('comment id is is ', comment, 'id is ', comment._id)
+    return $http.delete('/deleteComment', {
+        params: {
+          commentId: comment._id
+        }
+      })
+      .then(function(data){
+        console.log('data returned is ', data);
+        return data;
+      }).catch(function(error){
+        console.log('error is ', error);
+        return error;
+      })
   };
   
-  this.addComment2 = function(content, affiliate){
-    return $http.put('/updateCommentsPhoto', {content: content, affiliate: affiliate, operation: 'add'})
-    .then(function(data){
-      console.log('data returned from add comment service is ', data);
-      return data;
-    })
-  };
-  this.fetchComment = function(content, affiliate){
-    var newComment = {content: content, affiliate: affiliate};
-    return $http.get('/fetchComment', {params: newComment})
-    .then(function(data){
-      console.log('data returned from fetch comment service 1 is ', data);
-      return data;
-    })
-  };
-  this.deleteComment = function(content, affiliate){
-    console.log('inside delete comment service, content is ', content, 'affiliate is ', affiliate);
-    var payload = {content: content, affiliate: affiliate, operation: 'delete'};
-    return $http.delete('/deleteComment', {params: payload})
-    .then(function(data){
-      console.log('return from update comments', data);
-      return data;
-    })
-  };
+  // this.editCommentDraft = function(content, affiliate){
+  //   console.log('inside delete comment service, content is ', content, 'affiliate is ', affiliate);
+  //   var payload = {content: content, affiliate: affiliate, operation: 'delete'};
+  //   return $http.delete('/deleteComment', {params: payload})
+  //   .then(function(data){
+  //     console.log('return from update comments', data);
+  //     return data;
+  //   })
+  // };
 
   
   this.viewWeeklyCalendarEvents = function(){
@@ -161,21 +152,22 @@ myApp.service('DataService', ['$http','$q', function($http, $q){
       })
   };
 
-  this.deleteAgendaEvent = function(agendaEvent, dbName){
-    console.log('event is ', agendaEvent, 'from ', dbName);
-    return $http.delete('/deleteAgendaEvent', {
-        params: {
-            agendaEvent: agendaEvent,
-            dbName: dbName
-        }
-    }).then(function(data){
-      console.log('data returned is ', data);
-      return data;
-    }).catch(function(error){
-      console.log('error is ', error);
-      return error;
-    })
-  };
+
+  // this.deleteAgendaEvent = function(agendaEvent, dbName){
+  //   console.log('event is ', agendaEvent, 'from ', dbName);
+  //   return $http.delete('/deleteAgendaEvent', {
+  //       params: {
+  //           agendaEvent: agendaEvent,
+  //           dbName: dbName
+  //       }
+  //   }).then(function(data){
+  //     console.log('data returned is ', data);
+  //     return data;
+  //   }).catch(function(error){
+  //     console.log('error is ', error);
+  //     return error;
+  //   })
+  // };
 
 
 }]);

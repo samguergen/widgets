@@ -46,16 +46,15 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     console.log('db not connecting, but inside mongo block - 1', err);
   };
   db = client.db('widgets');
-
-  console.log('inside first mongo block');
   
+  console.log('inside first mongo block');
   
   app.get('/getTimesheets', function (req,res) {
     db.collection('timesheets').find().toArray(function (err, result) {
       res.send(result);
     })
   });
-  
+
 
   app.post('/addTimesheet', function (req,res) {
     console.log('inside timesheet add')
@@ -169,6 +168,94 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
           res.send(result);
         });
     }); // end of deleteagendaevent request
+    
+    
+    app.get('/getComments', function (req,res) {
+      db.collection('comments').find().toArray(function (err, result) {
+        res.send(result);
+      })
+    }); // end of /getComments get request
+
+
+    
+    app.post('/addComment', function (req,res) {
+      var comment = req.body.comment;
+      console.log('comment to be saved, received from backend is ', comment);
+      db.collection('comments').save(comment, function(err, result){
+        if (err) { return console.log('connecting to db, but not saving obj', err);}
+        console.log('comment saved to database');
+        res.send(result);
+      })
+    });
+    
+    
+    app.delete('/deleteComment', function (req,res) {
+        var commentId = req.query.commentId;
+        console.log('comment to be deleted, received from backend is ', commentId)
+        db.collection('comments').deleteOne({_id: new mongo.ObjectId(commentId)}, function(err, result){
+          if (err) { throw new Error('No record found. ', err) };
+          console.log('comment has been removed');
+          res.send(result);
+        });
+    }); // end of deleteagendaevent request
+    
+    
+    
+    
+    
+    app.post('/sendmail', function(req, res){
+      console.log('inside sendmail, post req', req.body);
+      let mailOptions = {};
+
+      if (req.body){ //private contact form from ITN staff to ITN staff
+        console.log('sending email without pdf');
+        mailOptions = {
+            from: req.body.from, // sender address
+            to: req.body.to, // list of receivers
+            subject: req.body.subject, // Subject line
+            html: req.body.html // html body
+        };
+      }
+    
+      let transporter = nodemailer.createTransport(smtpTransport({
+           service: "Gmail",  // sets automatically host, port and connection security settings
+           auth: {
+               user: gmail_login,
+               pass: gmail_pass
+           }
+        })
+      )
+    
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, function(error, info) {
+          if (error) {
+              return console.log(error);
+          }
+          console.log('Message sent: %s', info.messageId);
+          transporter.close();
+      });
+
+      // if (req.body && req.body.html) {
+      //   var contactObj = {
+      //     subject: req.body.text.subject,
+      //     messageBody: req.body.text.messageBody,
+      //     name: req.body.text.name,
+      //     email: req.body.text.email,
+      //     phone: req.body.text.phone,
+      //     date: req.body.text.date,
+      //   };
+      //   db.collection('contactform').save(contactObj, function(err, result){
+      //     if (err) { return console.log('connecting to db, but not saving obj', err);}
+      //     console.log('contact form saved to database', result);
+      //     // res.redirect('/');
+      //   })
+      // }
+
+        console.log('after mongo block');
+        res.end();
+      }); 
+    
+    
     
 
 

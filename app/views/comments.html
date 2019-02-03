@@ -1,18 +1,23 @@
 
-<div class="portal comments" ng-init="catchCommentParams()" class="portal events ta-center">
+<div class="portal comments" ng-init="getComments()" class="portal events ta-center">
   <div class="container">
-    <h2>Announcements with Auto-Generated Emails</h2>
+    <h2>Announcements with Auto-Generated Email</h2>
 
 
-    <div ng-hide="commentsPhoto" style="color:red;text-align:center"><strong>Please wait for your comments to load.</strong></div>
+    <div ng-hide="comments" style="color:red;text-align:center"><strong>Please wait for your comments to load.</strong></div>
 
     <ul>
       <div class="row mt-25 mb-50">
         <div class="col-md-12">
 
           <div class="row" ng-show="showCommentInput">
-                <div class="form-area mb-50" style="background: #c7dfe4;border:none;padding:1%;border-radius:5px">
-                  <form name="itnForm" novalidate ng-submit="addComment(itnAffiliate); showCommentInput = false" role="comment form" ng-model="commentData" style="padding:2%;margin:0 5%">
+                <div class="form-area mb-50 pb-100" 
+                     style="background: #e99090;border:none;padding:1%;border-radius:5px">
+                  <form name="itnForm" novalidate 
+                        ng-submit="addComment(); showCommentInput = false" 
+                        role="comment form" 
+                        ng-model="commentData" 
+                        style="padding:2%;margin:0 5%">
                     <h3 style="margin-bottom: 25px; text-align: center">Add a new comment</h3>
 
                     <div class="row">
@@ -30,7 +35,7 @@
                         <span ng-if="itnForm.email.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
                         <span ng-if="itnForm.email.$error.pattern" class="help-block">{{errorMessages.email}}</span>
                       </div>
-                    </div>
+                    </div><!--row-->
 
                     <div class="form-group" ng-class="{ 'has-error' : itnForm.message.$invalid && !itnForm.message.$pristine }">
                       <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Message" maxlength="2000" rows="7" ng-minlength="minlength" ng-maxlength="maxMsgLength" ng-model="commentData.message" required></textarea>
@@ -39,14 +44,26 @@
                       <span ng-if="itnForm.message.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
                         <span class="help-block ta-center"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
                     </div>
-
-                    <p ng-if="loading"><em>Loading. Please wait</em></p>
-                    <p style="color:red; text-align:center;margin-top:25px"><strong>{{serverMessage}}</strong></p>
-
-                    <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right itn-green-bg" value="Send" style="margin-left:2%;margin-top:-50px">
-                    <input type="button" ng-click="commentData = {}" value="Reset Form" class="btn btn-lg pull-left itn-green-bg"  style="margin-left:2%;margin-top:-50px">
-
+                    
+                    <div class="form-group" ng-class="{ 'has-error' : itnForm.emailContact.$invalid && !itnForm.emailContact.$pristine }">
+                      <input type="text" class="form-control" id="emailContact" name="emailContact" placeholder="Who would you like to email this comment to?" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="commentData.emailContact" ng-pattern="emailPattern" required>
+                      <span ng-if="itnForm.email.$error.required && !itnForm.email.$pristine" class="help-block">{{errorMessages.required}}</span>
+                      <span ng-if="itnForm.email.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                      <span ng-if="itnForm.email.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                      <span ng-if="itnForm.email.$error.pattern" class="help-block">{{errorMessages.email}}</span>
+                    </div>
+                  
+                  
+                  <p ng-if="loading"><em>Loading. Please wait</em></p>
+                  <p style="color:red; text-align:center;margin-top:25px">
+                    <strong>{{serverMessage}}</strong>
+                  </p>
+                  
+                  <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right itn-green-bg" value="Send">
+                  <input type="button" ng-click="commentData = {}" value="Reset Form" class="btn btn-lg pull-left itn-green-bg" >
+                  
                   </form>
+
                 </div><!--form-area-->
 
           </div><!--row-->
@@ -54,7 +71,7 @@
 
 
           <table class="table table-responsive table-hover ta-center" id="comments-table" style="font-size:25px;font-weight:bold;width:90%;margin:auto">
-            <button class="btn btn-sm" ng-click="showCommentInput = true" style="background:#cc6257;float:right;margin-top:10px">Add a Comment</button>
+            <button class="btn btn-lg" ng-click="showCommentInput = true" style="background:#cc6257;float:right;margin-top:10px">Add a Comment</button>
             <thead>
               <tr>
                 <th ng-click="sort('message')">Comments
@@ -68,13 +85,13 @@
             </thead>
 
             <tbody style="font-size:20px">
-              <tr dir-paginate="comment in commentsPhoto|orderBy:sortKey:reverse|itemsPerPage:10|reverse" pagination-id="comments">
+              <tr dir-paginate="comment in comments|orderBy:sortKey:reverse|itemsPerPage:10|reverse" pagination-id="comments">
                 <td>{{comment.message}}</td>
                 <td>{{comment.author}} <br>
                     <small><em>{{comment.email}}</em></small>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDeleteComment(itnAffiliate, comment)" data-toggle="tooltip" title="Delete Comment">
+                  <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDeleteComment(comment)" data-toggle="tooltip" title="Delete Comment">
                    <span class="glyphicon glyphicon-trash"></span>
                  </button>
                 </td>
@@ -98,9 +115,6 @@
 </div>
 
 <div class="back-btn-wrap">
-  <a ui-sref="affiliate({filter: itnAffiliate.name})" class="back-btn">
-    <h3>Back to Previous Page</h3>
-  </a>
   <a ui-sref="portal" class="back-btn">
     <h3>Back to Portal</h3>
   </a>

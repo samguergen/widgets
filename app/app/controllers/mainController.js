@@ -285,10 +285,8 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
         })
     };
 
-    $scope.askBeforeDeleteComment = function(affiliate, comment) {
-      console.log('aff is ', affiliate);
+    $scope.askBeforeDeleteComment = function(comment) {
       console.log('comment is ', comment);
-        $scope.affiliateToDelete = affiliate;
         $scope.commentToDelete = comment;
         $(document).ready(function() {
             $('#deleteAppModal').modal('show');
@@ -940,14 +938,6 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
     };
 
 
-    $scope.catchCommentParams = function(){
-      if ($stateParams.filter){
-        $scope.parseAffiliateNameToList($stateParams.filter);
-        $scope.getCommentsPerAffiliate($scope.itnAffiliate);
-      }
-    };
-
-
     $scope.generateRESTUrl = function(affiliate, routeName){
       var baseUrl = window.location.origin;
       var url = '/' + routeName + '?filter=' + affiliate.name;
@@ -1112,93 +1102,24 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
     };
     
 
-    $scope.getCommentsPhoto = function() {
+    $scope.getComments = function() {
       $scope.serverMessage = "Please wait a few seconds while the comments are loading.";
-        DataService.getCommentsPhoto().then(function(response){
-          $scope.commentsPhoto = response.data;
-          $scope.fileUploads = response.data;
+        DataService.getComments().then(function(response){
+          $scope.comments = response.data;
           $scope.serverMessage = "";
         });
     };
 
-    $scope.getCommentsPerAffiliate = function(affiliateName) {
-        $scope.hideLibrary = true;
-        $scope.serverMessage = "Please wait a few seconds while your files are loading on the page.";
-        DataService.fetchCommentsPerAffiliate(affiliateName).then(function(response){
-          // $scope.commentsPhoto = response.data;
-          if (response.data[0] && response.data[0].comments){
-            $scope.commentsPhoto = response.data[0].comments;
-            $scope.commentsPerAffiliate = response.data[0].comments;
-            $scope.serverMessage = "";
-          }
-          else {
-            $scope.commentsPhoto = [];
-            $scope.serverMessage = "There are no files uploaded yet in your library. Upload your first one!"
-          }
-          console.log('commentsphoto is ', $scope.commentsPhoto, Array.isArray($scope.commentsPhoto));
-          $scope.hideLibrary = false;
-        })
-    };
-
-    $scope.getCommentsPhotoPerAffiliate = function(affiliateName) {
-        $scope.hideLibrary = true;
-        $scope.serverMessage = "Please wait a few seconds while your files are loading on the page.";
-        DataService.fetchImages(affiliateName).then(function(response){
-          $scope.commentsPhoto = response.data;
-          if (response.data[0] && response.data[0].fileUploads){
-              $scope.fileUploadsAffiliate = response.data[0].fileUploads;
-              $scope.serverMessage = "";
-          }
-          else {
-            $scope.fileUploadsAffiliate = [];
-            $scope.serverMessage = "There are no files uploaded yet in your library. Upload your first one!"
-          }
-          console.log('fileuploads aff var is ', $scope.fileUploadsAffiliate);
-          $scope.hideLibrary = false;
-        })
-    };
-
-    $scope.getGeneralInfoPerAffiliateOld = function(affiliateName) {
-        console.log('inside getGeneralInfoPerAffiliate, aff name is ', affiliateName);
-        $scope.hideLibrary = true;
-        $scope.serverMessage = "Please wait a few seconds while your files are loading on the page.";
-        DataService.fetchCommentsPerAffiliate(affiliateName).then(function(response){
-          // $scope.commentsPhoto = response.data;
-          if (response.data[0] && response.data[0].generalInfo){
-            $scope.generalInfo = response.data[0].generalInfo;
-            $scope.serverMessage = "";
-          }
-          // else {
-          //   $scope.commentsPhoto = [];
-          //   $scope.serverMessage = "There are no files uploaded yet in your library. Upload your first one!"
-          // }
-          console.log('generalInfo is ', $scope.generalInfo);
-          $scope.hideLibrary = false;
-        })
-    };
-
-    $scope.getGeneralInfoPerAffiliate = function(affiliateName) {
-        console.log('inside getGeneralInfoPerAffiliate, aff name is ', affiliateName);
-        DataService.fetchgeneralInfoPerAffiliate(affiliateName).then(function(response){
-          if (response.data){
-            $scope.generalInfo = response.data;
-          } else {
-            $scope.generalInfo = [];
-            $scope.serverMessage = "General info not found."
-          }
-          console.log('generalInfo is ', $scope.generalInfo);
-        })
-    };
-
-    $scope.addComment = function (affiliate) {
-      console.log('inside add comment, content is', $scope.commentData, 'affiliate is ', affiliate, 'comments array is ', $scope.commentsPhoto);
+    $scope.addComment = function () {
+      console.log('inside add comment, content is', $scope.commentData);
       $scope.serverMessage = "Posting comment. Please wait.";
-      DataService.fetchComment($scope.commentData, affiliate).then(function(data){
+      DataService.addComment($scope.commentData)
+      .then(function(data){
         //email the affiliate or dept in question
-        $scope.emailCommentAsync(affiliate).then(function(response){
+        $scope.emailCommentAsync().then(function(response){
           //async add for immediate update in page
-          $scope.commentsPhoto.push($scope.commentData);
-          console.log('commentsPhoto is ', $scope.commentsPhoto);
+          $scope.comments.push($scope.commentData);
+          console.log('commentsPhoto is ', $scope.comments);
           $scope.showCommentInput = false;
           $timeout(function(){
             $scope.serverMessage = "";
@@ -1207,21 +1128,20 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
       })
     };
 
-    $scope.emailCommentAsync = function(affiliate) {
+    $scope.emailCommentAsync = function() {
       var deferred = $q.defer();
       var today = new Date();
       var formObj = {
-          from: '"ITNAmerica Staff Member" <donotreply@itnamerica.com>',
-          to: affiliate.email,
-          subject: "New message from ITN Staff",
+          from: '"Samanthics Web User" <donotreply@samanthics.com>',
+          to: $scope.commentData.emailContact,
+          subject: "New message from Samanthics Portfolio App",
           text: $scope.commentData,
           date: today,
           html: "<p><strong>Message</strong>: " + $scope.commentData.message + "</p> " +
                 "<p><strong>Sender</strong>: " + $scope.commentData.author + "</p>\n " +
-                "<p><strong>Sender contact</strong>: " + $scope.commentData.email + "</p>\n ",
-          formType: affiliate
+                "<p><strong>Sender contact</strong>: " + $scope.commentData.email + "</p>\n "
       };
-      FormService.fetchMail(affiliate, formObj).then(function(response){
+      FormService.sendMail(formObj).then(function(response){
         console.log('data returned from sendmail is ', response);
         $scope.serverMessage = response.serverMessage;
         $scope.loading = response.loading;
@@ -1234,13 +1154,13 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
 
     $scope.deleteComment = function() {
       $scope.serverMessage = "Loading. Please wait.";
-      DataService.deleteComment($scope.commentToDelete, $scope.affiliateToDelete)
+      DataService.deleteComment($scope.commentToDelete)
         .then(function(data){
           //async delete for immediate update in page
-            for (var key in $scope.commentsPhoto) {
-              if ($scope.commentsPhoto.hasOwnProperty(key)) {
-                if ( ($scope.commentToDelete.message === $scope.commentsPhoto[key].message) &&  ($scope.commentToDelete.author === $scope.commentsPhoto[key].author)) {
-                  $scope.commentsPhoto.splice(key, 1);
+            for (var key in $scope.comments) {
+              if ($scope.comments.hasOwnProperty(key)) {
+                if ( ($scope.commentToDelete.message === $scope.comments[key].message) &&  ($scope.commentToDelete.author === $scope.comments[key].author)) {
+                  $scope.comments.splice(key, 1);
                 }
               }
             }
