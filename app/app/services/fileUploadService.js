@@ -12,7 +12,7 @@ myApp.service('FileUploadService', ['$http','$q','$rootScope', function ($http, 
       })
    };
    this.uploadFileToDB = function(fd){
-      $http.post('/uploadFiles', fd, {
+      return $http.post('/uploadFiles', fd, {
         headers: {'Content-Type': undefined}
       })
       .then(function(data){
@@ -43,25 +43,20 @@ myApp.service('FileUploadService', ['$http','$q','$rootScope', function ($http, 
        return error;
      })
    };
-   this.addCategory = function(file, tableName, category){
-     console.log('file is ', file, 'category is ', category, 'table is ', tableName);
-     return $http.get('/updateCategory', {
-       params: {
+   this.addCategory = function(file, category){
+     console.log('category is ', category.dbName, 'file id is ', file._id);
+     return $http.put('/updateCategory', {
          fileName: file.name,
-         tableName: tableName,
-         categoryName: category.name
-       }
+         categoryDbName: category.dbName,
+         fileId: file._id
      })
      .then(function(data){
        if (data.status === 200){
-         // $rootScope.$broadcast('add category ok', data);
          return data;
        } else {
-         // $rootScope.$broadcast('add category error', data);
          return data;
        }
      }).catch(function(error){
-       // $rootScope.$broadcast('add category error', error);
        return error;
      })
    };

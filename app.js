@@ -98,6 +98,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     theFile.data = binaryData
     theFile.name = fileName;
     theFile.category = 'all';
+    theFile.categoryGeneral = 'all';
     var tableName = req.query.tableName;
           console.log('theFile is ', theFile);
           
@@ -106,7 +107,6 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
       console.log('doc saved to database');
       res.send(result);
     })
-    res.send();
   });
   
   
@@ -118,9 +118,26 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
       console.log('file has been removed, i think');
       res.send(result);
     });
-  }); // end of /removeFile get request
+  }); // end of /removeFile delete request
+
   
-  
+  app.put('/updateCategory', function (req,res) {
+    var fileName = req.body.fileName;
+    var categoryDbName = req.body.categoryDbName;
+    var fileId = req.body.fileId;
+    console.log('file name is ', fileName, 'categoryDbName ', categoryDbName, 'fileId ', fileId);
+    var myQuery = {_id: new mongo.ObjectId(fileId)};
+    var newValues = {
+      $set: {
+        category: categoryDbName
+      } 
+    };
+    db.collection('documents').findAndModify(myQuery, [['_id','asc']], newValues, {}, function(err, result){
+        if (err) { throw new Error('No record found. ', err) };
+        console.log('record has been updated, i think');
+        res.send(result);
+      });
+  }); // end of /updateCategory put request
   
 
 

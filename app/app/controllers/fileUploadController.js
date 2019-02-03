@@ -1,20 +1,23 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window', 'FormService', '$sce', 'DataService', '$q', 'FileUploadService', 'Upload', 'LongVariablesService', 'ParseVariablesService', function($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope, $window, FormService, $sce, DataService, $q, FileUploadService, Upload, LongVariablesService, ParseVariablesService) {
+myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window', 'FormService', '$sce', 'DataService', '$q', 'FileUploadService', 'Upload', 'LongVariablesService', 'ParseVariablesService', '$filter', function($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope, $window, FormService, $sce, DataService, $q, FileUploadService, Upload, LongVariablesService, ParseVariablesService, $filter) {
     console.log('inside file upload controller', $stateParams);
+    $scope.filePathArray = [];
     
     $scope.getDocuments = function() {
       $scope.serverMessage = "Please wait a few seconds while the comments are loading.";
         DataService.getDocuments().then(function(response){
           console.log('response file uploads get ', response)
           $scope.fileUploads = response.data;
+          $scope.fileUploads2 = response.data;
+          $scope.displayThumbnailImgs(); // once files retrieves, display their thumbnails imgs
           $scope.serverMessage = "";
         });
     };
 
     // upload on file select or drop
     $scope.upload = function (file) {
-            console.log('about to upload ', file, 'file name is ', file.name);
+            console.log('about to upload ', file, 'file name is ', file.name, 'file format is ', typeof(file));
       $scope.serverMessage = "Your file is being uploaded. Please wait.";
       $scope.hideLibrary = true;
       var fd = new FormData();
@@ -25,31 +28,11 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
       $rootScope.$on('file upload ok', function(){
         console.log('file upload success');
         $scope.hideLibrary = true;
-        $scope.serverMessage = "Your file was succesfully uploaded. Reloading page.";
-        // $scope.reloadWithParams();
-        window.location.href;
+        $scope.serverMessage = "Your file was successfully uploaded. Reloading page.";
+        location.reload();
       });
     };
 
-    $scope.reloadWithParams = function(){
-      var urlWithParam;
-      var absUrl = $location.absUrl();
-      var paramIdx = absUrl.indexOf('?');
-      if (!paramIdx){
-        console.log('short, param idx is ', paramIdx);
-        absUrl = absUrl.slice(paramIdx);
-        urlWithParam = absUrl;
-      } else {
-        console.log('long, param idx is ', paramIdx);
-        if ($stateParams.filter){
-          urlWithParam = absUrl;
-        } else {
-          urlWithParam = absUrl + '?' + 'filter=' + $scope.docFilter;
-        }
-      }
-      // console.log('url with param is ', urlWithParam);
-      return window.location.href = urlWithParam;
-    }
 
     $scope.removeFile = function(file){
             console.log('inside removeFile func, file is ', file, file.name);
@@ -62,9 +45,8 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
                   console.log('file delete success');
             $scope.hideLibrary = true;
             $timeout(function(){
-              $scope.serverMessage = "Your file was succesfully removed. Reloading page.";
-              // location.reload();
-              $scope.reloadWithParams();
+              $scope.serverMessage = "Your file was successfully removed. Reloading page.";
+              location.reload();
             }, 5000);
           } else {
             $scope.serverMessage = "There was an error removing your file. Please try again.";
@@ -74,19 +56,18 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
         })
     };
 
-    $scope.addCategory = function(file, tableName, category){
-            console.log('category is ', category, 'file is ', file, 'tablename is ', tableName);
+    $scope.addCategory = function(file, category){
+            console.log('category is ', category, 'file is ', file);
       $scope.serverMessage = "The category is being updated. Please wait.";
-      FileUploadService.addCategory(file, tableName, category)
+      FileUploadService.addCategory(file, category)
       .then(function(response){
         $scope.hideLibrary = false;
         if (response.status === 200){
           console.log('update category success, response is ', response);
           $scope.hideLibrary = true;
           $timeout(function(){
-            $scope.serverMessage = "Your file's category has been succesfully updated.";
-            // location.reload();
-            $scope.reloadWithParams();
+            $scope.serverMessage = "Your file's category has been successfully updated.";
+            location.reload();
           }, 5000);
         } else {
           $scope.serverMessage = "There was an error updating the category. Please try again.";
@@ -96,9 +77,38 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
       })
     };
 
+
+    $scope.fileUploads2 = angular.copy($scope.fileUploads);
+    
     $scope.assignFileCategoryFilter = function(category){
-      $scope.fileCategoryFilter = category;
+      $scope.fileCategoryFilter = category.dbName;
+      console.log('inside assignFileCategoryFilter, cat filtered is ', $scope.fileCategoryFilter);
+      $scope.fileUploads = $filter('filter')($scope.fileUploads2, {category: $scope.fileCategoryFilter});
     };
+    
+    // $scope.fileCategoryFilter = "pdf";
+    // $scope.filtered = false;
+    // 
+    // $scope.assignFileCategoryFilter = function(category){
+    //   $scope.filtered = true;
+    //   console.log('inside assignFileCategoryFilter');
+    //   $scope.fileCategoryFilter = category.dbName;
+    //   console.log('category filtered is ', $scope.fileCategoryFilter);
+    // };
+    // 
+    // 
+    // $scope.filterCategory2 = function(file){
+    //   console.log('inside filterCategory');
+    //   // console.log('file cat is ', file.category, 'fileCatFilter is ', $scope.fileCategoryFilter);
+    //   if (($scope.fileCategoryFilter === file.category)){
+    //     console.log('if');
+    //     return file;
+    //   } 
+    //   else {
+    //     console.log('else');
+    //     // return $scope.fileUploads;
+    //   }
+    // };
 
     $scope.findFileMimeType = function(file){
       var fileFormat = file.name.substr(file.name.length - 3);
@@ -121,6 +131,7 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
     };
 
     $scope.base64ToImgSrc = function(base64){
+      // console.log("base64 file is ", base64);
       if (base64 && $scope.fileMimeType){
         var newImgUrl;
         if ($scope.fileMimeType === 'png'){
@@ -131,6 +142,22 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
         return newImgUrl;
      }
    };
+   
+   $scope.displayThumbnailImgs = function(){
+     var filePath;
+     for (var i=0; i < $scope.fileUploads.length; i++){
+       var file = $scope.fileUploads[i];
+       $scope.fileMimeType = $scope.findFileMimeType(file);
+       if ($scope.fileMimeType === 'png'){ //replace icon with thumnail of that img
+         filePath = $scope.base64ToImgSrc(file.data);
+       } else { //replace with icon of that file format
+         filePath = $scope.assetsPath + '/images/icons/' + $scope.fileMimeType + '-icon.png';
+       }
+       file.thumbnailUrlNew = filePath;
+       $scope.filePathArray.push(filePath);
+     };
+     // console.log("file path array is ", $scope.filePathArray);
+   };
 
    $scope.displayThumbnailImg = function(file){
      $scope.fileMimeType = $scope.findFileMimeType(file);
@@ -140,6 +167,8 @@ myApp.controller('FileUploadCtrl', ['$scope', '$transitions', '$http', '$anchorS
        $scope.filePath = $scope.assetsPath + '/images/icons/' + $scope.fileMimeType + '-icon.png';
      }
      $scope.filePathArray.push($scope.filePath);
+     console.log('new filePath is ', $scope.filePath);
+     console.log('updated file path array ', $scope.filePathArray);
      return $scope.filePath;
    };
 
