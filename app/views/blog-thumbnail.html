@@ -8,8 +8,9 @@
     <h5>1) Add the URL to your Wordpress website.</h5>
     <h5>2) Your Wordpress website should contain a list of your Wordpress blog articles.</h5>
     <h5>3) Your blog articles should preferably have an image</h5>
+    <h5><em>Example: http://blog.itnamerica.org</em></h5>
     
-    <div class="form-group mt-50" style="width:60%;display:flex">
+    <div class="form-group mt-50 mb-50" style="width:60%;display:flex">
       <input type="text" 
              class="form-control" 
              placeholder="Enter your Blog URL" 
@@ -22,22 +23,16 @@
               Send
       </button>
     </div>
-    {{blogUrl}}
     
-    <h3>Thumbnail carousel generated:</h3>
+    <h3 class="ta-center">Thumbnail Carousel Generated:</h3>
     
-    
-    <div class="jumbotron section itn-blogs">
-      <div class="container section-content">
-        <div class="row">
-          <div class="col-md-4 mt-25" ng-repeat="entry in blogEntries">
-            <div class="blog-thumbnail">
-              <a ng-href="{{entry.blogURL}}">
-                <img ng-src="{{entry.imgURL}}" alt="recent blog post thumbnail image"/>
-                <h4 style="text-align:center;color:black">{{entry.title}}</h4>
-              </a>
-            </div>
-          </div>
+    <div class="row itn-blogs">
+      <div class="col-md-4 mt-25" ng-repeat="entry in blogEntries">
+        <div class="blog-thumbnail">
+          <a ng-href="{{entry.blogURL}}">
+            <img ng-src="{{entry.imgURL}}" alt="recent blog post thumbnail image"/>
+            <h4 style="text-align:center;color:black">{{entry.title}}</h4>
+          </a>
         </div>
       </div>
     </div>
