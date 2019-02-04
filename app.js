@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler','/comments'];
+var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler','/comments','/blog-thumbnail'];
 
 
 MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662/widgets', function(err, client) {
@@ -235,27 +235,20 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
           transporter.close();
       });
 
-      // if (req.body && req.body.html) {
-      //   var contactObj = {
-      //     subject: req.body.text.subject,
-      //     messageBody: req.body.text.messageBody,
-      //     name: req.body.text.name,
-      //     email: req.body.text.email,
-      //     phone: req.body.text.phone,
-      //     date: req.body.text.date,
-      //   };
-      //   db.collection('contactform').save(contactObj, function(err, result){
-      //     if (err) { return console.log('connecting to db, but not saving obj', err);}
-      //     console.log('contact form saved to database', result);
-      //     // res.redirect('/');
-      //   })
-      // }
 
         console.log('after mongo block');
         res.end();
       }); 
     
     
+    
+      app.get('/getBlogContent', function(req, res) {
+        console.log('params are ', req.query)
+        request.get(req.query.blogURL, function(err,result,body) {
+          console.log('result is ', result)
+          res.send(result.body)
+        });
+      });
     
 
 

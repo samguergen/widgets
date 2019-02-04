@@ -303,7 +303,7 @@ nav .dropdown-menu li.divider{
 .homepage .rider-stories .rider-stories-text p {
   text-align:center;
 }
-.homepage .itn-blogs h1 a {
+.itn-blogs h1 a {
   color:black !important;
   font-size:50px;
   text-align:center;
@@ -1799,7 +1799,7 @@ form textarea.form-control {font-size:25px}
 }
 .portal h5 {
   color: #fc6f6d;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
 }
 .portal h6 {

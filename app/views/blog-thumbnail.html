@@ -1,0 +1,48 @@
+<div class="portal blog-thumbnail">
+  <div class="container">
+    <h2>Wordpress Blog Thumbnail Generator</h2>
+    
+    <h5 style="font-size:28px;margin-bottom:25px">
+      Directions: 
+    </h5>
+    <h5>1) Add the URL to your Wordpress website.</h5>
+    <h5>2) Your Wordpress website should contain a list of your Wordpress blog articles.</h5>
+    <h5>3) Your blog articles should preferably have an image</h5>
+    
+    <div class="form-group mt-50" style="width:60%;display:flex">
+      <input type="text" 
+             class="form-control" 
+             placeholder="Enter your Blog URL" 
+             ng-model="blogUrl" 
+             required/>
+             
+      <button class="btn btn-lg mt-25" 
+              style="margin-left:8%;margin-top:-5px !important" 
+              ng-click="fetchRecentBlogURLs(blogUrl)">
+              Send
+      </button>
+    </div>
+    {{blogUrl}}
+    
+    <h3>Thumbnail carousel generated:</h3>
+    
+    
+    <div class="jumbotron section itn-blogs">
+      <div class="container section-content">
+        <div class="row">
+          <div class="col-md-4 mt-25" ng-repeat="entry in blogEntries">
+            <div class="blog-thumbnail">
+              <a ng-href="{{entry.blogURL}}">
+                <img ng-src="{{entry.imgURL}}" alt="recent blog post thumbnail image"/>
+                <h4 style="text-align:center;color:black">{{entry.title}}</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+  </div>
+</div>

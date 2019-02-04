@@ -795,10 +795,12 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
      };
 
 
-    $scope.fetchRecentBlogURLs = function(){
+    $scope.fetchRecentBlogURLs = function(blogLink){
+      console.log('inside fetchRecentBlogURLs, blog link is ', blogLink);
+      console.log('inside fetchRecentBlogURLs, blog URL is ', $scope.blogUrl);
       $http.get('/getBlogContent', {
           params: {
-            blogURL: 'http://blog.itnamerica.org/'
+            blogURL: blogLink
           }
         }).then(function(response) {
             $scope.homepageBlogContent = response.data;
@@ -831,6 +833,7 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
     };
 
     $scope.getBlogContent = function(url){
+      console.log('inside getblogcontent');
       $http.get('/getBlogContent', {
           params: {
             blogURL: url
@@ -1119,7 +1122,7 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
         $scope.emailCommentAsync().then(function(response){
           //async add for immediate update in page
           $scope.comments.push($scope.commentData);
-          console.log('commentsPhoto is ', $scope.comments);
+          console.log('comments are ', $scope.comments);
           $scope.showCommentInput = false;
           $timeout(function(){
             $scope.serverMessage = "";

@@ -183,6 +183,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: viewsPath + 'shift-scheduler.html',
             controller: 'CalendarCtrl'
         })
+        .state('blog-thumbnail', {
+            url: '/blog-thumbnail',
+            templateUrl: viewsPath + 'blog-thumbnail.html'
+        })
 
     // default fall back route
     $urlRouterProvider.otherwise('/');
