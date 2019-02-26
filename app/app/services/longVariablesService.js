@@ -166,104 +166,44 @@ myApp.service('LongVariablesService', ['$http', function ($http) {
           url: viewsPath + '/home.html'
       },
       {
-          name: 'What We Do',
-          state: 'what-we-do',
-          url: viewsPath + '/what-we-do.html'
-      },
-      {
-          name: 'Our Organization',
-          state: 'organization',
-          url: viewsPath + '/organization.html'
-      },
-      {
-          name: 'Faces of our Members',
-          state: 'faces',
-          url: viewsPath + '/faces.html'
-      },
-      {
-          name: 'FAQ',
-          state: 'faq',
-          url: viewsPath + '/faq.html'
-      },
-      {
-          name: 'News',
-          state: 'news',
-          url: viewsPath + '/news.html'
-      },
-      {
           name: 'Contact Us',
           state: 'contact',
           url: viewsPath + '/contact.html'
       },
       {
-          name: 'Become a Member',
-          state: 'become-member',
-          url: viewsPath + '/become-member.html'
+          name: 'Timesheet',
+          state: 'timesheet',
+          url: viewsPath + '/timesheet.html'
       },
       {
-          name: 'Online Membership Application',
-          state: 'member-app',
-          url: viewsPath + '/member-app.html'
+          name: 'Timesheets',
+          state: 'timesheets',
+          url: viewsPath + '/timesheets.html'
       },
       {
-          name: 'Volunteer To Drive',
-          state: 'volunteer-to-drive',
-          url: viewsPath + '/volunteer-to-drive.html'
+          name: 'Agenda',
+          state: 'agenda',
+          url: viewsPath + '/agenda.html'
       },
       {
-          name: 'Online Volunteer Application',
-          state: 'volunteer-app',
-          url: viewsPath + '/volunteer-app.html'
+          name: 'Documents',
+          state: 'documents',
+          url: viewsPath + '/documents.html'
       },
       {
-          name: 'Family Involvement',
-          state: 'family',
-          url: viewsPath + '/family.html'
+          name: 'Blog Thumbnail',
+          state: 'blog-thumbnail',
+          url: viewsPath + '/blog-thumbnail.html'
       },
       {
-          name: 'Member Programs',
-          state: 'member-programs',
-          url: viewsPath + '/member-programs.html'
+          name: 'Announcements with Auto-generated Emails',
+          state: 'comments',
+          url: viewsPath + '/comments.html'
       },
       {
-          name: 'Pay Online',
-          state: 'pay-online',
-          url: viewsPath + '/pay-online.html'
-      },
-      {
-          name: 'Donate',
-          state: 'donate',
-          url: viewsPath + '/donate.html'
-      },
-      {
-          name: 'Corporate Partnership',
-          state: 'corporate',
-          url: viewsPath + '/corporate.html'
-      },
-      {
-          name: 'ITN Affiliates',
-          state: 'affiliates',
-          url: viewsPath + '/affiliates.html'
-      },
-      {
-          name: 'ITNAmerica',
-          state: 'itnamerica',
-          url: viewsPath + '/itnamerica.html'
-      },
-      {
-          name: 'Rides in Sight',
-          state: 'rides-in-sight',
-          url: viewsPath + '/rides-in-sight.html'
-      },
-      {
-          name: 'Miscellaneous',
-          state: 'other',
-          url: viewsPath + '/other.html'
-      },
-      {
-          name: 'ITN Operations',
-          state: 'itn-operations',
-          url: viewsPath + '/itn-operations.html'
+          name: 'Weekly Shift Scheduler',
+          state: 'shift-scheduler',
+          url: viewsPath + '/shift-scheduler.html'
       }
   ];
   this.fileCategories = [
