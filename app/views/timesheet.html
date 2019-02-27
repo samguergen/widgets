@@ -46,8 +46,8 @@
               Total daily Overtime: {{existingTimesheet.dailyOvertimeMins | isAbs}}mins - tabs highlighted
             </em></p>
 
-            <div class="each-shift" style="padding:5px">
-              <table class="table table-responsive">
+            <div class="each-shift table-responsive" style="padding:5px">
+              <table class="table">
                 <thead style="background:#595656">
                   <th style="15%">Shift #</th>
                   <th>Start</th>
@@ -154,8 +154,7 @@
           </p>
 
           <p class="mileage-data"><em style="text-align:left">
-            <!-- Total Mileage Refund: ${{tsData.totalMileageRefund | number: 3}} <br /> -->
-            Total Mileage Refund: ${{tsData}} <br />
+            Total Mileage Refund: ${{tsData.totalMileageRefund | number: 3}} <br />
             Total daily work time: {{tsData.dailyWorkTimeMins}}mins<br />
             Total daily Overtime: {{tsData.dailyOvertimeMins | isAbs}}mins - tabs highlighted
           </em></p>
