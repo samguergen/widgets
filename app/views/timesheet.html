@@ -45,8 +45,13 @@
               Total daily work time: {{existingTimesheet.dailyWorkTimeMins}}mins<br />
               Total daily Overtime: {{existingTimesheet.dailyOvertimeMins | isAbs}}mins - tabs highlighted
             </em></p>
+            
+            
+            <div class="notice-mobile">
+              <p>On mobile or table, please move the table horizontally to see the rest of the columns.</p>
+            </div>
 
-            <div class="each-shift table-responsive" style="padding:5px">
+            <div class="each-shift table-responsive" style="padding:5px;overflow-x: scroll;">
               <table class="table">
                 <thead style="background:#595656">
                   <th style="15%">Shift #</th>
@@ -158,9 +163,13 @@
             Total daily work time: {{tsData.dailyWorkTimeMins}}mins<br />
             Total daily Overtime: {{tsData.dailyOvertimeMins | isAbs}}mins - tabs highlighted
           </em></p>
+          
+          <div class="notice-mobile">
+            <p>On mobile or table, please move the table horizontally to see the rest of the columns.</p>
+          </div>
 
-          <div class="each-shift" style="padding:5px">
-            <table class="table table-responsive">
+          <div class="each-shift table-responsive" style="padding:5px;overflow-x: scroll;">
+            <table class="table">
               <thead style="background:#595656">
                 <th style="15%">Shift #</th>
                 <th>Start</th>
@@ -228,13 +237,9 @@
         </div><!--shifts-->
 
         <p class="warning-msg"><strong>{{warningMsg}}</strong></p>
-        
-        <div class="formBtns" style="margin-top:20px">
-          <button type="submit" ng-disabled="itnForm.$invalid || loading" class="btn btn-lg pull-right btn-danger" style="margin-left:2%">Submit</button>
-        </div>
 
+    </div><!--timesheet-card-->    
 
-    </div><!--timesheet-card-->
 
   </div><!--container-fluid-->
 

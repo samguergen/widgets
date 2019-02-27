@@ -2906,11 +2906,19 @@ h2,h3 {line-height:1.7}
 .timesheets-row {
   width:50%
 }
-
+.notice-mobile {
+  display:none;
+}
 
 
  @media (max-width: 750px) {
    .timesheets-row {
      width:100%
+   }
+   .notice-mobile {
+     display:block;
+     margin-top: 20px;
+     margin-left: 5%;
+     font-size: 18px;
    }
 }
