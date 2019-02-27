@@ -9,18 +9,17 @@
          </a>
 
 
-          <div class="row" ng-repeat="timesheet in timesheets | orderBy:true " style="width:70%">
+          <div class="row" ng-repeat="timesheet in timesheets | orderBy:true " style="width:60%">
             <div class="col-sm-6">
               <a ui-sref="timesheet({day: timesheet.day, timesheet: timesheet})"
-                 style="display:block">
+                 style="display:block;margin-left:15%">
                  Day {{timesheet.day}} | {{timesheet.date | date}}
               </a>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" style="padding:2%">
              <button type="button" 
                      ng-click="deleteTimesheetFromIndex(timesheet)" 
-                     class="btn btn-lg btn-primary pull-left itn-green-bg"  
-                     style="margin-left:2%;background:#e05944 !important">
+                     class="btn btn-lg btn-primary pull-left red-btn">
                      Delete Timesheet
              </button>
            </div>
@@ -30,15 +29,6 @@
 </div><!--timesheet-->
 
 
-
-<div class="back-btn-wrap">
-  <a ui-sref="affiliate({filter: itnAffiliate.name})" class="back-btn">
-    <h3>Back to Previous Page</h3>
-  </a>
-  <a ui-sref="portal" class="back-btn">
-    <h3>Back to Portal</h3>
-  </a>
-</div>
 
 
 
