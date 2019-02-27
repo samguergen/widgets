@@ -51,6 +51,7 @@ nav .navbar-header, nav .navbar-header .navbar-brand {
   /*overflow: hidden;*/
   height:100px;
   width:200px;
+  z-index: 9;
 }
 nav .navbar-header img {
   height: 85px;
@@ -89,6 +90,7 @@ nav .dropdown-menu {
   color:white;
   font-weight: bold;
   border-radius:5px;
+  z-index: 999;
 }
 nav .dropdown-menu li {
   padding:5px;
