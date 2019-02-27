@@ -4,19 +4,24 @@
 
         <a ui-sref="timesheet({viewNewTimesheet: true})"
            class="btn btn-lg"
-           style="margin-left:60%;">
+           style="margin-left:1%">
            Create New Timesheet
          </a>
 
 
-          <div class="row" ng-repeat="timesheet in timesheets | orderBy:true " style="width:60%">
-            <div class="col-sm-6">
+          <div class="row" 
+               ng-repeat="timesheet in timesheets | orderBy:true " 
+               style="width:50%;box-shadow: 0 24px 2px -24px white;margin-bottom: 15px;">
+            <div class="col-xs-1">
+              <img src="{{assetsPath}}/images/icons/timesheet.png" style="height:30px;margin-top:15px"/>
+            </div>
+            <div class="col-xs-7">
               <a ui-sref="timesheet({day: timesheet.day, timesheet: timesheet})"
-                 style="display:block;margin-left:15%">
+                 style="display:block;">
                  Day {{timesheet.day}} | {{timesheet.date | date}}
               </a>
             </div>
-            <div class="col-sm-6" style="padding:2%">
+            <div class="col-xs-4" style="padding:2%">
              <button type="button" 
                      ng-click="deleteTimesheetFromIndex(timesheet)" 
                      class="btn btn-lg btn-primary pull-left red-btn">
