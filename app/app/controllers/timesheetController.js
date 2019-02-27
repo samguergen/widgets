@@ -94,14 +94,12 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
       } else {
         swal("Oops","You cannot work on more than 5 shifts per day.","error");
       }
-      console.log('after add, shifts are ', $scope.tsData.shifts);
       $scope.highlightOvertimeShift($scope.tsData.shifts.length);
     };
 
 
     $scope.removeShift = function(shiftSelected, shiftIdx){
       $scope.tsData.shifts.splice(shiftIdx, 1);
-      console.log('after remove, shifts are ', $scope.tsData.shifts);
     };
 
 
@@ -119,7 +117,6 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
 
 
     $scope.updateStartTime = function(timeSelected, shiftSelected, shiftIdx){
-            console.log('shift idx is ', 0, 'selected and time ', shiftSelected, timeSelected);
       var startTimeObj = $scope.adjustTimeForCalendar(timeSelected);
       if (shiftIdx > 0){ //check for all, except first shift
         var laterThanPrevious = $scope.checkIfShiftLaterThanPrevious(shiftIdx, startTimeObj);
@@ -131,12 +128,10 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
       shiftSelected.startTimeObj = startTimeObj;
       shiftSelected.idx = shiftIdx;
       $scope.tsData.shifts[shiftIdx] = shiftSelected;
-      console.log('updated shift times after update start is ', $scope.tsData.shifts[shiftIdx]);
     };
 
 
     $scope.updateEndTime = function(timeSelected, shiftSelected, shiftIdx){
-            console.log('shift idx is ', 0, 'selected and time ', shiftSelected, timeSelected);
       var endTimeObj = $scope.adjustTimeForCalendar(timeSelected);
       //before assigning new end time to shift obj, need to check that endtime is later than startTime
       var timeSelectedIsOK = $scope.lockCellIfEarlierThanStartTime(shiftSelected, shiftIdx, endTimeObj);
@@ -148,13 +143,11 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
       shiftSelected.endTimeObj = endTimeObj;
       shiftSelected.idx = shiftIdx;
       $scope.tsData.shifts[shiftIdx] = shiftSelected;
-      console.log('updated shift times after update end is ', $scope.tsData.shifts[shiftIdx]);
     };
 
 
     $scope.lockCellIfEarlierThanStartTime = function(shiftSelected, shiftIdx, endTimeObj){
       var timeDiffMins = $scope.calculateTimeDiffMins(shiftSelected.startTimeObj, endTimeObj);
-      console.log('time diff mins is ', timeDiffMins);
       if (timeDiffMins === Math.abs(timeDiffMins)){ //if val negative, endTime is earlier so alert user
         return true
       } else {
@@ -176,12 +169,13 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
       $scope.calculateTotalWorkTime(shiftIdx); //calculates work time and work overtime
       $scope.calculateOvertime();
       console.log('new shift saved is ', $scope.tsData.shifts[shiftIdx]);
-      console.log('after record, shifts are ', $scope.tsData.shifts)
     };
 
 
     $scope.calculateMileageRefund = function(shiftIdx){
+      console.log('inside calculate mileage refund');
       var mileageRefund = $scope.tsData.rates.mileageRate * $scope.tsData.shifts[shiftIdx].milesPerShift;
+      console.log('miler per shift ', $scope.tsData.shifts[shiftIdx].milesPerShift, 'mileage rate ', $scope.tsData.rates.mileageRate, 'mileage refund for shift', mileageRefund);
       return mileageRefund;
     };
 
@@ -219,7 +213,6 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
       } else {
         $scope.tsData.dailyWorkTimeMins = $scope.tsData.dailyWorkTimeMins + 30
       }
-      console.log('updated deduct lunch time is ', $scope.tsData.dailyWorkTimeMins);
     };
 
 
@@ -234,12 +227,10 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
       console.log('timesheet to be saved in ', $scope.tsData);
       DataService.addTimesheet($scope.tsData)
       .then(function(data){
-        console.log('returned from save ', data);
         swal("Timesheet added","Your timesheet was succesfully saved to the database.","success");
         var domain = window.location.host;
         var pathname = '/timesheets';
         var url = domain + pathname;
-        console.log('url is ', url);
         $scope.backToTimesheet = true
       }).catch(function(error){
         swal("Error","There was an error saving your timesheet. Please try again or contact Customer Support","error");
@@ -249,8 +240,6 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
     
     $scope.parseAffiliateNameToList = function(affiliate){
       if ($stateParams.filter){   //if comments page loaded directly from browser with filter params
-        console.log('affiliate param in parseAffiliate is ', affiliate);
-        // $scope.getCommentsPerAffiliate(affiliate);
         var affiliate = {};
         affiliate.name = $stateParams.filter;
         for (var eachAffiliate in $scope.affiliateList){
@@ -267,14 +256,11 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
           }
         }
       }
-      console.log('$scope.itnAffiliate in parseAffiliate is ', $scope.itnAffiliate);
     };
     
     
     $scope.parseAffiliateNameToList = function(affiliate){
       if ($stateParams.filter){   //if comments page loaded directly from browser with filter params
-        console.log('affiliate param in parseAffiliate is ', affiliate);
-        // $scope.getCommentsPerAffiliate(affiliate);
         var affiliate = {};
         affiliate.name = $stateParams.filter;
         for (var eachAffiliate in $scope.affiliateList){
@@ -291,23 +277,16 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
           }
         }
       }
-      console.log('$scope.itnAffiliate in parseAffiliate is ', $scope.itnAffiliate);
     };
 
     $scope.parseDayAndAffiliateParams = function(){
-      console.log('stateparams are ', $stateParams);
       var params = $stateParams.filter;
       if ($stateParams.filter && ($stateParams.filter.indexOf('?day=') !== -1)){
-        console.log('filter is ', params);
         $scope.tsData.day = params.substr(params.indexOf('=') + 1);
-        console.log('day is ', $scope.tsData.day);
         $scope.tsData.affiliate = params.substr(0, params.indexOf('?'));
-        console.log('affiliate is ', $scope.tsData.affiliate);
       } else if ($stateParams.filter){
-        console.log('filter, only aff is ', params);
         $scope.tsData.affiliate = $stateParams.filter;
       }
-      console.log('just created affiliate var is ', $scope.tsData.affiliate);
     };
 
     $scope.parseParamsIfTimesheet = function(){
@@ -318,22 +297,17 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
     }
 
     $scope.getTimesheets = function(){
-      console.log('in ctrl, getting ts from affiliate ', $scope.tsData.affiliate);
       var affiliateName = $scope.tsData.affiliate;
       DataService.getTimesheets()
       .then(function(data){
-        console.log('data from ctrl is ', data.data);
         $scope.timesheets = data.data;
-        console.log('timesheets are', $scope.timesheets);
       })
     };
 
 
     $scope.deleteTimesheet = function(){
-      console.log('timesheet to delete is ', $scope.tsData);
       DataService.deleteTimesheet($scope.tsData)
       .then(function(data){
-        console.log('returned from delete ', data);
         swal("Timesheet deleted","Your timesheet was succesfully deleted from the database.","success");
         $scope.backToTimesheet = true
       }).catch(function(error){
@@ -342,10 +316,8 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
     };
     
     $scope.deleteTimesheetFromIndex = function(timesheet){
-      console.log('timesheet to delete is ', timesheet);
       DataService.deleteTimesheet(timesheet)
       .then(function(data){
-        console.log('returned from delete ', data);
         swal("Timesheet deleted","Your timesheet was succesfully deleted from the database.","success");
         $scope.getTimesheets();
       }).catch(function(error){
@@ -357,7 +329,6 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
     $scope.editTimesheet = function(){
       DataService.editTimesheet($scope.tsData)
       .then(function(data){
-        console.log('returned from edit ', data);
         swal("Timesheet deleted","Your timesheet was succesfully updated.","success");
       }).catch(function(error){
         swal("Error","There was an error updating your timesheet. Please try again or contact Customer Support","error");
@@ -367,13 +338,11 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
 
     $scope.isNewTimesheet = function(){
       $scope.viewNewTimesheet = $stateParams.viewNewTimesheet;
-      console.log('viewNewTimesheet is ', $scope.viewNewTimesheet);
     };
     
     
     $scope.calculateDayOfPeriod = function(){
       var day = $scope.tsData.date.getDate();
-      console.log('day of month is ', day);
       var range1 = 15; var range2 = 31;
       var period1 = []; var period2 = [];
       for (var i = 1; i <= range1; i++) { period1.push(i)}
@@ -390,7 +359,6 @@ myApp.controller('TimesheetCtrl', ['$scope', '$transitions', '$http', '$location
             $scope.tsData.day = idx + 1;
           }
       }
-      console.log('day of period is ', $scope.tsData.day)
     };
 
 }]);

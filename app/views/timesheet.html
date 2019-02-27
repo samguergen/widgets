@@ -1,11 +1,10 @@
 <div class="timesheet portal" ng-init="parseDayAndAffiliateParams();parseParamsIfTimesheet();isNewTimesheet()">
 
   <a ui-sref="timesheets({filter: tsData.affiliate})" 
-     ng-show="backToTimesheet"
      class="btn btn-lg">Timesheets Index</a>
 
 
-    <div class="current-timesheet container-fluid" style="width:95%" ng-hide="viewNewTimesheet" ng-show="!backToTimesheet">
+    <div class="current-timesheet container-fluid" style="width:95%;margin-top:-50px" ng-hide="viewNewTimesheet" ng-show="!backToTimesheet">
       <h2>Timesheet - Day {{existingTimesheetDay}}</h2>
 
       <div class="timesheet-card card">
@@ -42,9 +41,9 @@
             </p>
 
             <p class="mileage-data"><em style="text-align:left">
-              Total Mileage Refund: ${{tsData.totalMileageRefund | number: 3}} <br />
-              Total daily work time: {{tsData.dailyWorkTimeMins}}mins<br />
-              Total daily Overtime: {{tsData.dailyOvertimeMins | isAbs}}mins - tabs highlighted
+              Total Mileage Refund: ${{existingTimesheet.totalMileageRefund | number: 2}} <br />
+              Total daily work time: {{existingTimesheet.dailyWorkTimeMins}}mins<br />
+              Total daily Overtime: {{existingTimesheet.dailyOvertimeMins | isAbs}}mins - tabs highlighted
             </em></p>
 
             <div class="each-shift" style="padding:5px">
@@ -100,8 +99,8 @@
           <p class="warning-msg"><strong>{{warningMsg}}</strong></p>
 
           <div class="formBtns" style="margin-top:20px">
-            <button type="button" ng-click="editTimesheet()" class="btn btn-lg btn-primary pull-left itn-green-bg"  style="margin-left:2%">Edit Timesheet</button>
-            <button type="button" ng-click="deleteTimesheet()" class="btn btn-lg btn-primary pull-left itn-green-bg"  style="margin-left:2%;background:#e05944 !important">Delete Timesheet</button>
+            <!-- <button type="button" ng-click="editTimesheet()" class="btn btn-lg btn-primary pull-left itn-green-bg"  style="margin-left:2%">Edit Timesheet</button>
+            <button type="button" ng-click="deleteTimesheet()" class="btn btn-lg btn-primary pull-left itn-green-bg"  style="margin-left:2%;background:#e05944 !important">Delete Timesheet</button> -->
             <button type="submit" ng-disabled="itnForm.$invalid || loading" class="btn btn-lg pull-right btn-danger" style="margin-left:2%">Submit</button>
           </div>
 
@@ -155,7 +154,8 @@
           </p>
 
           <p class="mileage-data"><em style="text-align:left">
-            Total Mileage Refund: ${{tsData.totalMileageRefund | number: 3}} <br />
+            <!-- Total Mileage Refund: ${{tsData.totalMileageRefund | number: 3}} <br /> -->
+            Total Mileage Refund: ${{tsData}} <br />
             Total daily work time: {{tsData.dailyWorkTimeMins}}mins<br />
             Total daily Overtime: {{tsData.dailyOvertimeMins | isAbs}}mins - tabs highlighted
           </em></p>
@@ -234,6 +234,7 @@
           <button type="submit" ng-disabled="itnForm.$invalid || loading" class="btn btn-lg pull-right btn-danger" style="margin-left:2%">Submit</button>
         </div>
 
+
     </div><!--timesheet-card-->
 
   </div><!--container-fluid-->
@@ -243,11 +244,3 @@
 
 </div><!--timesheets-->
 
-
-
-<div class="back-btn-wrap">
-
-  <a ui-sref="portal" class="back-btn">
-    <h3>Back to Portal</h3>
-  </a>
-</div>
