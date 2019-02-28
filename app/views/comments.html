@@ -69,9 +69,13 @@
           </div><!--row-->
 
 
-
+          <div class="table-responsive">
           <table class="table table-responsive table-hover ta-center" id="comments-table" style="font-size:25px;font-weight:bold;width:90%;margin:auto">
-            <button class="btn btn-lg" ng-click="showCommentInput = true" style="background:#cc6257;float:right;margin-top:10px">Add a Comment</button>
+            <button class="btn btn-lg" 
+                    ng-click="showCommentInput = true" 
+                    style="background:#cc6257;float:right;margin-top:10px;margin-bottom: 50px;">
+                    Add a Comment
+           </button>
             <thead>
               <tr>
                 <th ng-click="sort('message')">Comments
@@ -98,6 +102,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
 
           <dir-pagination-controls
             pagination-id="comments"

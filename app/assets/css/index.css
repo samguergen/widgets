@@ -2920,6 +2920,13 @@ h2,h3 {line-height:1.7}
   display:none;
 }
 
+.calendar .loading-msg {
+  display:none
+}
+.blog-thumbnail img {
+  object-fit: contain;
+}
+
 /* 
 @media screen and (max-width: 767px) {
   .navbar-collapse.collapse {
@@ -2943,4 +2950,11 @@ h2,h3 {line-height:1.7}
    }
 }
 
-
+@media (max-width: 600px) {
+  #calendar-week {
+    display:none
+  }
+  .calendar loading-msg {
+    display:block
+  }
+}
