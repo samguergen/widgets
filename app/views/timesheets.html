@@ -13,7 +13,7 @@
                ng-repeat="timesheet in timesheets | orderBy:true " 
                style="box-shadow: 0 24px 2px -24px white;margin-bottom: 15px;">
             <div class="col-xs-1">
-              <img src="{{assetsPath}}/images/icons/timesheet.png" style="height:30px;margin-top:15px"/>
+              <img src="{{assetsPath}}/images/icons/timesheet.png" style="height:30px;margin-top:20px"/>
             </div>
             <div class="col-xs-7">
               <a ui-sref="timesheet({day: timesheet.day, timesheet: timesheet})"

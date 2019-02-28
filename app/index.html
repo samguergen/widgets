@@ -67,6 +67,24 @@
   <script src="app/controllers/calendarController.js"></script>
   <script src="app/controllers/fileUploadController.js"></script>
   <script src="app/controllers/timesheetController.js"></script>
+  
+  
+  
+  
+  <script type="text/javascript">
+  
+  $(document).ready(function(){
+    
+    $("#dropdown-toggle").click(function(){
+      console.log('opening navbar');
+      $(document).find("#bs-example-navbar-collapse-1").css("height", "800px");
+      // $(document).find("#bs-example-navbar-collapse-1").css("background", "red !important");
+    })
+    
+  });
+  
+  </script>
+
 
   <base href="/app">
 </head>
@@ -99,7 +117,7 @@
             </li>
 
              <li class="dropdown">
-              <a ui-sref="" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+              <a ui-sref="" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="glyphicon glyphicon-info-sign"></span>
                 MY WIDGETS
                <span class="caret"></span></a>
@@ -186,6 +204,8 @@
   </div><!-- END FOOTER -->
 
   </div>
+  
+
 
 
   <!--CDN alternatives-->
