@@ -2058,15 +2058,22 @@ form textarea.form-control {font-size:25px}
   margin-bottom:20px;
   font-size:20px;
 }
-
 .upload-doc {
   padding:3%;
+  display:block
+}
+.upload-docs button {
   float:right;
-  margin-top:-10%;
+}
+.documents .loading-msg {
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 .all-docs {
+  width: 90%;
   margin:auto;
-  margin-top:125px;
+  display:block
+  margin-top:25px;
   border-left:1px groove white;
   border-right:1px groove white;
 }
@@ -2145,6 +2152,7 @@ form textarea.form-control {font-size:25px}
   color:red;
   margin: 6%;
 }
+
 .swal2-popup.swal2-modal.swal2-show {
   font-size: 20px !important;
   padding: 3%;
@@ -2912,7 +2920,7 @@ h2,h3 {line-height:1.7}
   display:none;
 }
 
-
+/* 
 @media screen and (max-width: 767px) {
   .navbar-collapse.collapse {
     display: inline;
@@ -2920,7 +2928,7 @@ h2,h3 {line-height:1.7}
   .navbar .navbar-nav {
     margin-left: 26%;  
   }
-}
+} */
 
 
  @media (max-width: 750px) {

@@ -7,7 +7,10 @@
       <button type="button" class="btn btn-lg" ngf-select="upload($file)">Upload a Document</button>
     </div><!--upload-doc-->
 
-    <div ng-hide="fileUploadsAffiliate" class="loading-msg"><em>Please wait a few seconds while your files are loading on the page.</em></div>
+
+    <div ng-hide="fileUploadsAffiliate" class="loading-msg">
+      Please wait a few seconds while your files are loading on the page.
+    </div>
 
     <div class="all-docs">
       <h5 class="title">All Documents:</h5>
@@ -88,12 +91,3 @@
   </div><!--container-->
 </div><!--important-docs-->
 
-
-<div class="back-btn-wrap">
-  <a ui-sref="documents({filter: docFilter})" class="back-btn">
-    <h3 style="margin-left:65px">Back to Previous Page</h3>
-  </a>
-  <a ui-sref="portal" class="back-btn" style="margin-top:-5%">
-    <h3>Back to Portal</h3>
-  </a>
-</div>
