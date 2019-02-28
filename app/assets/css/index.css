@@ -2926,6 +2926,10 @@ h2,h3 {line-height:1.7}
 .blog-thumbnail img {
   object-fit: contain;
 }
+.blog-thumbnail .form-group {
+  width: 60%;
+  display:flex;
+}
 
 /* 
 @media screen and (max-width: 767px) {
@@ -2954,7 +2958,10 @@ h2,h3 {line-height:1.7}
   #calendar-week {
     display:none
   }
-  .calendar loading-msg {
+  .calendar .loading-msg {
     display:block
+  }
+  .blog-thumbnail .form-group {
+    width: 100%
   }
 }
