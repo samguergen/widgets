@@ -14,6 +14,33 @@ body {
   position:relative;
 }
 
+
+
+/* NAVBAR */
+
+.navbar {
+  background: #e99090 !important;
+}
+ul.navbar-nav {
+  margin:auto;
+}
+.navbar ul.dropdown-menu {
+  background: #e99090;
+}
+.navbar ul li a {
+    /* color: white !important; */
+    font-weight: bold;
+}
+
+
+
+
+/* END NAVBAR */
+
+
+
+
+
 .zoom {
   background: white;
   border: 2px solid black;
@@ -24,12 +51,6 @@ body {
   bottom:200px;
 }
 
-.navbar.navbar-default {
-  background-color: #99ccff;
-  border: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
 
 .jumbotron {margin-bottom: 0 !important;}
 
@@ -1238,14 +1259,6 @@ h2,h3 {line-height:1.7}
 
 
 
-/* NAVBAR */
-
-
-
-
-
-
-/* END NAVBAR */
 
 .dropdown:hover .dropdown-menu {
     display: block;
