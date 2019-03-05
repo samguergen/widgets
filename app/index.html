@@ -21,8 +21,10 @@
   <!--PROD-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!--Bootstrap-->
+  <script type="text/javascript" src="bower_components/bootstrap4/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap4/dist/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="assets/css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
@@ -75,55 +77,37 @@
 
 <body ng-controller="MainCtrl">
   <div class="wrapper" id="wrapper-content">
+    
 
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-
-      
-<!-- 
-          <ul class="nav navbar-nav">
-
-            <li>
-              <a ui-sref="home"><span class="glyphicon glyphicon-home"></span>
-                HOME
-              </a>
-            </li>
-
-             <li class="dropdown">
-              <a ui-sref="" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                MY WIDGETS
-               <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                 <li><a ui-sref="timesheets">Employee Timesheet</a></li>
-                 <li><a ui-sref="documents">Documents Library</a></li>
-                 <li><a ui-sref="comments">Comments Wall with Email</a></li>
-                 <li><a ui-sref="shift-scheduler">Weekly Shift Scheduler</a></li>
-                 <li><a ui-sref="blog-thumbnail">Wordpress Blog Thumbnail Generator</a></li>
-              </ul>
-            </li>
-
-        </ul> -->
-        
-        <div id="menuBackground">
-            <div id="menuContainer">
-                <label for="show-menu" class="show-menu">Show Menu</label>
-                <input type="checkbox" id="show-menu" role="button" />
-                <ul id="menu">
-                    <li><a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Widgets ￬</a>
-                        <ul class="hidden2">
-                          <li><a ui-sref="timesheets">Employee Timesheet</a></li>
-                          <li><a ui-sref="documents">Documents Library</a></li>
-                          <li><a ui-sref="comments">Comments Wall with Email</a></li>
-                          <li><a ui-sref="shift-scheduler">Weekly Shift Scheduler</a></li>
-                          <li><a ui-sref="blog-thumbnail">Wordpress Blog Thumbnail Generator</a></li>
-                        </ul>
-                </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" ui-sref="home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" ui-sref="timesheets">Employee Timesheet</a>
+              <a class="dropdown-item" ui-sref="documents">Documents Library</a>
+              <a class="dropdown-item" ui-sref="comments">Comments Wall with Email</a>
+              <a class="dropdown-item" ui-sref="shift-scheduler">Weekly Shift Scheduler</a>
+              <a class="dropdown-item" ui-sref="blog-thumbnail">Wordpress Blog Thumbnail Generator</a>
             </div>
-        </div>
+          </li>
+
+      </div>
+    </nav>
 
 
 
