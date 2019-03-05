@@ -1326,102 +1326,134 @@ h2,h3 {line-height:1.7}
 
 
 /* NAVBAR */
+body {
+    margin:0
+}
+
+#menuBackground {
+    background:#2f3036;
+    width:100%;
+    height:50px;
+    text-align: center;
+}
+#menuContainer {
+    text-align: center;
+}
 /*Strip the ul of padding and list styling*/
-.main-nav ul {
+ul {
     list-style-type:none;
     margin:0;
     padding:0;
-    position: absolute;
 }
+
 /*Create a horizontal list with spacing*/
-.main-nav li {
+li {
     display:inline-block;
-    float: left;
-    margin-right: 1px;
+    vertical-align: top;
+    margin-right:1px;
 }
+
 /*Style for menu links*/
-.main-nav li a {
+li a {
     display:block;
     min-width:140px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #fff;
-    background: #2f3036;
-    text-decoration: none;
+    height:50px;
+    text-align:center;
+    line-height:50px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color:#fff;
+    background:#2f3036;
+    text-decoration:none;
+    font-size: 1rem;
 }
+
 /*Hover state for top level links*/
-.main-nav li:hover a {
-    background: #19c589;
+li:hover a {
+    background:#19c589
 }
+
 /*Style for dropdown links*/
-.main-nav li:hover ul a {
-    background: #f3f3f3;
-    color: #2f3036;
-    height: 40px;
-    line-height: 40px;
+li:hover ul a {
+    background:#f3f3f3;
+    color:#2f3036;
+    height:40px;
+    line-height:40px
 }
+
 /*Hover state for dropdown links*/
-.main-nav li:hover ul a:hover {
-    background: #19c589;
-    color: #fff;
+li:hover ul a:hover {
+    background:#19c589;
+    color:#fff
 }
+
 /*Hide dropdown links until they are needed*/
-.main-nav li ul {
-    display: none;
+li ul {
+    position: absolute;
+    display:none
 }
+
 /*Make dropdown links vertical*/
-.main-nav li ul li {
-    display: block;
-    float: none;
+li ul li {
+    display:block;
 }
+
 /*Prevent text wrapping*/
-.main-nav li ul li a {
-    width: auto;
-    min-width: 100px;
-    padding: 0 20px;
+li ul li a {
+    width:auto;
+    min-width:100px;
+    padding:0 20px
 }
+
 /*Display the dropdown on hover*/
-.main-nav ul li a:hover + .hidden2, .hidden2:hover {
-    display: block;
+ul li a:hover + .hidden2,.hidden2:hover {
+    display:block
 }
+
 /*Style 'show menu' label button and hide it by default*/
-.main-nav .show-menu {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-decoration: none;
-    color: #fff;
-    background: #19c589;
-    text-align: center;
-    padding: 10px 0;
-    display: none;
+.show-menu {
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-decoration:none;
+    color:#fff;
+    background:#19c589;
+    text-align:center;
+    padding:16px 0;
+    display:none;
+    width:100%!important
 }
+
 /*Hide checkbox*/
-.main-nav input[type=checkbox]{
-    display: none;
+input[type=checkbox] {
+    display:none
 }
+
 /*Show menu when invisible checkbox is checked*/
-.main-nav input[type=checkbox]:checked ~ #menu{
-    display: block;
+input[type=checkbox]:checked ~ #menu {
+    display:block;
+    margin:0 auto
 }
+
 /*Responsive Styles*/
-@media screen and (max-width : 760px){
+@media screen and (max-width : 760px) {
     /*Make dropdown links appear inline*/
-    .main-nav ul {
-        position: static;
-        display: none;
+    ul {
+        position:static;
+        display:none;
+        white-space: initial;
     }
+    
     /*Create vertical spacing*/
-    .main-nav li {
-        margin-bottom: 1px;
+    li {
+        margin-bottom:1px
     }
+    
     /*Make all menu links full width*/
-    .main-nav ul li, li a {
-        width: 100%;
+    ul li,li a , .hidden2{
+        width:100%
     }
+    
     /*Display 'show menu' link*/
-    .main-nav .show-menu {
-        display:block;
+    .show-menu {
+        display:block
     }
 }
 
