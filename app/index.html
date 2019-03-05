@@ -76,22 +76,11 @@
 <body ng-controller="MainCtrl">
   <div class="wrapper" id="wrapper-content">
 
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-left:-50%">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- <a class="navbar-brand" ui-sref="home"><img ng-src="{{assetsPath}}/images/sam-head.png" alt="main logo"/></a> -->
-        </div>
 
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+      
+<!-- 
           <ul class="nav navbar-nav">
 
             <li>
@@ -114,9 +103,34 @@
               </ul>
             </li>
 
+        </ul> -->
+        
+        <div class="main-nav container-fluid">
+        <label for="show-menu" class="show-menu">Show Menu</label>
+        <input type="checkbox" id="show-menu" role="button">
+            <ul id="menu">
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">About ￬</a>
+                <ul class="hidden2">
+                    <li><a href="#">Who We Are</a></li>
+                    <li><a href="#">What We Do</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio ￬</a>
+                <ul class="hidden2">
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Web & User Interface Design</a></li>
+                    <li><a href="#">Illustration</a></li>
+                </ul>
+            </li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
-      </div>
-    </div><!-- /.container-fluid -->
+        </div>
+
+
 
     <!--ZOOM BUTTONS-->
     <span style="margin-left:90%;position:absolute;margin-top:-100px !important;">
@@ -196,6 +210,58 @@
   <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script> -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.js"></script> -->
+
+<script>
+
+$(document).ready(function() {
+  $(".nav li a").each(function() {
+    if ($(this).next().length > 0) {
+      $(this).addClass("parent");
+    };
+  })
+
+  $(".toggleMenu").click(function(e) {
+    e.preventDefault();
+    $(this).toggleClass("active");
+    $(".nav").toggle();
+  });
+  adjustMenu();
+})
+
+$(window).bind('resize orientationchange', function() {
+  ww = document.body.clientWidth;
+  adjustMenu();
+});
+
+var adjustMenu = function() {
+  var ww = document.body.clientWidth;
+  if (ww < 768) {
+    $(".toggleMenu").css("display", "inline-block");
+    if (!$(".toggleMenu").hasClass("active")) {
+      $(".nav").hide();
+    } else {
+      $(".nav").show();
+    }
+    $(".nav li").unbind('mouseenter mouseleave');
+    $(".nav li a.parent").unbind('click').bind('click', function(e) {
+      // must be attached to anchor element to prevent bubbling
+      e.preventDefault();
+      $(this).parent("li").toggleClass("hover");
+    });
+  } 
+  else if (ww >= 768) {
+    $(".toggleMenu").css("display", "none");
+    $(".nav").show();
+    $(".nav li").removeClass("hover");
+    $(".nav li a").unbind('click');
+    $(".nav li").unbind('mouseenter mouseleave').bind('mouseenter mouseleave', function() {
+      // must be attached to li so that mouseleave is not triggered when hover over submenu
+      $(this).toggleClass('hover');
+    });
+  }
+}
+
+</script>
 
 
 
