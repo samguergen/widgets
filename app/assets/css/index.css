@@ -20,12 +20,30 @@ body {
 
 .navbar {
   background: #e99090 !important;
+  font-size: 2rem;
 }
 ul.navbar-nav {
   margin:auto;
 }
+.navbar .nav-item {
+    padding: 5px 20px;
+    margin: 0 15px;
+}
+.navbar .nav-item:hover {
+  border: 1px solid black;
+  border-radius: 5px;
+}
 .navbar ul.dropdown-menu {
   background: #e99090;
+  padding: 5%;
+}
+.navbar .dropdown-menu a.dropdown-item {
+  border-bottom: 1px solid;
+  margin: 5px 0;
+  font-size: 1.5rem;
+}
+.navbar .dropdown-menu a:last-of-type {
+    border: none;
 }
 .navbar ul li a {
     /* color: white !important; */
