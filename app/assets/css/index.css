@@ -1338,7 +1338,7 @@ h2,h3 {line-height:1.7}
 }
 .parallax-dark { 
   background-image: url('https://samanthics25.files.wordpress.com/2019/03/coffee-bg-img-2.png');
-  height: 600px; 
+  height: 700px; 
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -1362,8 +1362,7 @@ h2,h3 {line-height:1.7}
     width: 100%;
 }
 .bg-brown {
-  background: #93826c;
-  padding: 10% 6%;
+  background: linear-gradient(to top, #93826c, #93826c 34%, #28241e 100%, #544b40 75%);
   box-shadow:inset 0 42px 37px #2c282f96, 0 68px 49px black;
 }
 .bg-brown-img {
@@ -1381,12 +1380,16 @@ h2,h3 {line-height:1.7}
 .job-icons {
   text-shadow: 0 0 1px rgba(0,0,0,.3);
   font-weight: bold;
+  padding: 3% 15%;
+}
+.job-icons .row {
+  padding-top: 5%;
 }
 .job-icons .col-sm-6 {
   text-align:center
 }
 .job-icons img {
-  height: 200px;
+  height: 230px;
 }
 .job-icon-legend {
   background: white;
@@ -1404,14 +1407,15 @@ h2,h3 {line-height:1.7}
   background:beige;
 }
 .testimonials {
-  width: 50%;
+  width: 60%;
   text-align: center;
   margin: auto;
   font-size: 30px;
-  background: beige;
+  background: #c2bbab;
   padding: 3%;
   border-radius: 5px;
   font-style: italic;
+  box-shadow: 0 0 30px #fff;
 }
 .projects-section img {
   height:300px;
