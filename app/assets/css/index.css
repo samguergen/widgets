@@ -314,7 +314,6 @@ ul.navbar-nav {
   margin-left: 5%;
 }
 .contact .form-area {
-    background-color: #FAFAFA;
   	padding: 10px 40px 60px;
   	margin: 10px 0px 60px;
   	border: 1px solid GREY;
@@ -1337,22 +1336,27 @@ h2,h3 {line-height:1.7}
 }
 .parallax-dark { 
   background-image: url('https://samanthics25.files.wordpress.com/2019/03/coffee-bg-img-2.png');
-  height: 700px; 
+  height: 1000px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  float:left;
-  padding-top: 5%;
+  /* float:left; */
+  width:100%;
+  /* padding-top: 5%; */
 }
 .bg-black {
   background: rgba(0, 0, 0, 0.7411764705882353);
   color: white;
+}
+.intro-sam {
   font-weight: bold;
-  padding-left: 15%;
-  padding-right: 15%;
   text-align: center;
   line-height: 2.0;
+}
+.intro-sam p {
+  margin: 2% 15%;
+  
 }
 .title-sam {
     margin-top: 10%;
@@ -1378,10 +1382,17 @@ h2,h3 {line-height:1.7}
   padding: 2%;
   text-align: center;
 }
+.bg-black {
+  background: black;
+  text-align: center;
+  padding: 2%;
+}
 .job-icons {
   text-shadow: 0 0 1px rgba(0,0,0,.3);
   font-weight: bold;
-  padding: 3% 15%;
+}
+.job-icon .job-icons-inner {
+  margin: 3% 15%;
 }
 .job-icons .row {
   padding-top: 5%;
@@ -1406,7 +1417,25 @@ h2,h3 {line-height:1.7}
   padding:2%;
   text-align:center;
   background: #c9d9e9;
-  transform: rotate(-3deg);
+  transform: skewY(-3deg);
+  margin-top: -5rem;
+  margin-bottom: 2rem;
+}
+.section-title-short {
+  padding:2%;
+  text-align:center;
+  background: #c9d9e9;
+  transform: skewY(-3deg);
+  width:94%;
+  margin:auto;
+}
+.section-title-over {
+  float: left;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  z-index: 1000;
+  margin: 0 auto;
 }
 .blue-separator {
   background: #c9d9e9;

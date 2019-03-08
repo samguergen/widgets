@@ -14,11 +14,12 @@
 </div>
 
 
-<div class="section section-title">
-  <h3>About me</h3>
-</div>
 
-<div class="jumbotron section bg-black">
+<div class="jumbotron section bg-black intro-sam">
+  
+  <div class="section section-title">
+    <h3>About me</h3>
+  </div>
   
   <p>I’m a web developer living in Portland, ME, originally from France and with a background in Philosophy, Economics, Statistical Research, and Information Technology. On my free time I practice archery, watch futurist films, and compose music on guitar and piano.</p>
 </div>
@@ -29,46 +30,48 @@
 <div class="parallax"></div>
 
 
-<div class="section section section-title">
-  <h3>What I Do</h3>
-</div>
 
 <div class="jumbotron section bg-brown job-icons">
-  
-  <div class="row">
-      <div class="col-sm-6 job-icon">
-        <img src="https://samanthics25.files.wordpress.com/2019/03/responsive.png"/>
-        <div class="job-icon-legend">Web Design</div>
-      </div>
-      
-      <div class="col-sm-6 job-icon">
-        <img src="https://samanthics25.files.wordpress.com/2019/03/coding.png"/>
-        <div class="job-icon-legend">Web Application Development</div>
-      </div>
-    </div>
-      
-    <div class="row">
-      <div class="col-sm-6 job-icon">
-        <img src="https://samanthics25.files.wordpress.com/2019/03/seo-1.png"/>
-        <div class="job-icon-legend">Marketing & SEO</div>
-      </div>
-      
-      <div class="col-sm-6 job-icon">
-        <img src="https://samanthics25.files.wordpress.com/2019/03/man.png"/>
-        <div class="job-icon-legend">Translation in French & Spanish</div>
-      </div>
+
+  <div class="section-title">
+    <h3>What I Do</h3>
   </div>
+
+  <!-- <div class="job-icons-inner"> -->
+    <div class="row">
+        <div class="col-sm-6 job-icon">
+          <img src="https://samanthics25.files.wordpress.com/2019/03/responsive.png"/>
+          <div class="job-icon-legend">Web Design</div>
+        </div>
+        
+        <div class="col-sm-6 job-icon">
+          <img src="https://samanthics25.files.wordpress.com/2019/03/coding.png"/>
+          <div class="job-icon-legend">Web Application Development</div>
+        </div>
+      </div>
+        
+      <div class="row">
+        <div class="col-sm-6 job-icon">
+          <img src="https://samanthics25.files.wordpress.com/2019/03/seo-1.png"/>
+          <div class="job-icon-legend">Marketing & SEO</div>
+        </div>
+        
+        <div class="col-sm-6 job-icon">
+          <img src="https://samanthics25.files.wordpress.com/2019/03/man.png"/>
+          <div class="job-icon-legend">Translation in French & Spanish</div>
+        </div>
+    </div>
+  <!-- </div> -->
   
 </div>
 
 
-
-
-<div class="section section-title">
-  <h3>Testimonials</h3>
-</div>
 
 <div class="parallax-dark">
+  
+  <div class="section-title-short">
+    <h3>Testimonials</h3>
+  </div>
   
     <div class="testimonials">
       <p>
@@ -83,11 +86,17 @@
 
 
 <div class="section projects-section">
+  
+  <div class="section-title-short section-title-over">
+    <h3>Projects</h3>
+  </div> 
+  
   <div class="row">
-    <div class="col-sm-6 bg-brown-img">
+    
+    <div class="col-sm-6 bg-brown-img" style="padding-top:10%">
       <img src="https://samanthics25.files.wordpress.com/2019/03/web-development-icon2.png"/>
     </div>
-    <div class="col-sm-6 bg-brpurple-img">
+    <div class="col-sm-6 bg-brpurple-img"  style="padding-top:10%">
       <img src="https://samanthics25.files.wordpress.com/2019/03/web-development-icon2.png"/>
     </div>
   </div>
@@ -101,10 +110,87 @@
     </div>
   </div>
 
+
+<div class="row" ng-show="noreProjects">
+  <div class="col-sm-6 bg-brown-img">
+    <img src="https://samanthics25.files.wordpress.com/2019/03/web-development-icon2.png"/>
+  </div>
+  <div class="col-sm-6 bg-brpurple-img">
+    <img src="https://samanthics25.files.wordpress.com/2019/03/web-development-icon2.png"/>
+  </div>
+
+</div>
+
+<div class="bg-black">
+  <button class="ta-center btn-lg" ng-click="moreProjects = true">Load More</button>
+</div>
   
 </div><!--projects-section-->
 
-<div class="parallax-dark"></div>
+<div class="parallax-dark" style="float:left">
+  
+  <div class="section-title-short section-title-over">
+    <h3>Contact me</h3>
+  </div> 
+  
+  <div class="contact"
+  
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+  
+      <div class="form-area"> 
+        <form name="itnForm" novalidate ng-submit="submitForm()" role="contact form" ng-model="formData">
+          <br style="clear:both">
+                  
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.name.$invalid && !itnForm.name.$pristine }">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.name" required>
+            <span ng-if="itnForm.name.$error.required && !itnForm.name.$pristine" class="help-block">{{errorMessages.required}}</span>
+            <span ng-if="itnForm.name.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+            <span ng-if="itnForm.name.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+          </div>
+        
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.email.$invalid && !itnForm.email.$pristine }">
+            <input type="text" class="form-control" id="email" name="email" ng-pattern="emailPattern" placeholder="Email" ng-model="formData.email" required>
+            <span ng-if="itnForm.email.$error.required && !itnForm.email.$pristine" class="help-block">{{errorMessages.required}}</span>
+            <span ng-if="itnForm.email.$error.pattern" class="help-block">{{errorMessages.email}}</span>
+          </div>
+        
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.mobile.$invalid && !itnForm.mobile.$pristine }">
+            <input type="text" class="form-control" id="mobile" name="mobile" ng-pattern="phonePattern" placeholder="Mobile Number (Not Required). Example: 617-344-9876" ng-model="formData.phone">
+            <span ng-if="itnForm.mobile.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
+          </div>
+          
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.subject.$invalid && !itnForm.subject.$pristine }">
+            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" ng-model="formData.subject" ng-minlength="minlength" ng-maxlength="maxlength" required>
+            <span ng-if="itnForm.subject.$error.required && !itnForm.subject.$pristine" class="help-block">{{errorMessages.required}}</span>
+            <span ng-if="itnForm.subject.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+            <span ng-if="itnForm.subject.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+          </div>
+          
+          <div class="form-group" ng-class="{ 'has-error' : itnForm.message.$invalid && !itnForm.message.$pristine }">
+            <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Message" maxlength="2000" rows="7" ng-minlength="minlength" ng-maxlength="maxMsgLength" ng-model="formData.messageBody" required></textarea>
+            <span ng-if="itnForm.message.$error.required && !itnForm.message.$pristine" class="help-block">{{errorMessages.required}}</span>
+            <span ng-if="itnForm.message.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+            <span ng-if="itnForm.message.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+              <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
+          </div>
+          
+          <p ng-if="loading"><em>Loading. Please wait</em></p>
+          <p style="color:red; margin-top:50px"><strong>{{serverMessage}}</strong></p>
+            
+          <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right itn-green-bg" value="Send" style="margin-left:2%">
+          <input type="button" ng-click="formData = {}" value="Reset Form" class="btn btn-lg pull-right itn-green-bg"  style="margin-left:2%">
+        
+        </form>
+      </div>
+      
+    </div>
+  </div><!--row-->
+  
+  </div><!--contact-->
+
+</div>
 
 
 
