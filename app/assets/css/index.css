@@ -6,6 +6,7 @@ body {
   width: 100%;
   margin: 0%;
   font-family: 'Lato', sans-serif;
+  font-family: "PT Sans", sans-serif;
   font-weight: 200;
 }
 
@@ -19,12 +20,11 @@ body {
 /* NAVBAR */
 
 .navbar {
-  /* background: rgba(0,0,0,.225); */
-  /* background: linear-gradient(to bottom, #292528 0%, rgba(41, 37, 40, 0.71) 100%) !important; */
-  /* background: linear-gradient(to bottom, rgba(41, 37, 40, 0.86) 5%, black 100%) !important; */
+  padding-left: 5%;
+  padding-right: 5%;
   box-shadow: 0 73px 72px rgba(0, 0, 0, 0.5);
   text-shadow: 0 0 4px rgba(0,0,0,.5);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 ul.navbar-nav {
   margin:auto;
@@ -46,7 +46,7 @@ ul.navbar-nav {
 }
 .navbar .dropdown-menu a.dropdown-item {
   border-bottom: 1px solid;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.7;
   margin-bottom: 15px;
 }
@@ -60,7 +60,7 @@ ul.navbar-nav {
 .navbar-bg {
   box-shadow: 0 73px 72px rgba(0, 0, 0, 0.5);
   text-shadow: 0 0 4px rgba(0,0,0,.5);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background-image: url(https://samanthics25.files.wordpress.com/2019/03/coffee-bg-dark.gif);
   background-image: url(https://samanthics25.files.wordpress.com/2019/03/coffee-bg-dark.gif), linear-gradient(black, white);
   background-attachment: fixed;
@@ -101,7 +101,6 @@ ul.navbar-nav {
   float: left;
   width: 100%;
   line-height: 1.7;
-  font-family: Lato;
 }
 
 .section-content {
@@ -1360,6 +1359,8 @@ h2,h3 {line-height:1.7}
     position: absolute;
     text-align: center;
     width: 100%;
+    color: #cbd9e8;
+    text-shadow: 2px 2px 2px #292528;
 }
 .bg-brown {
   background: linear-gradient(to top, #93826c, #93826c 34%, #28241e 100%, #544b40 75%);
@@ -1402,9 +1403,15 @@ h2,h3 {line-height:1.7}
   line-height: 1.5;
 }
 .section-title {
-  padding:1%;
+  padding:2%;
   text-align:center;
-  background:beige;
+  background: #c9d9e9;
+  transform: rotate(-3deg);
+}
+.blue-separator {
+  background: #c9d9e9;
+  height: 200px;
+  width:100%;
 }
 .testimonials {
   width: 60%;
