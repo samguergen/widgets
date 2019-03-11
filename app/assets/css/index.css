@@ -992,8 +992,7 @@ form textarea.form-control {font-size:25px}
     position:absolute;
     bottom:0;
     left:0;
-    /* background: #e99090; */
-    background: #e99090;
+    background: #c9d9e9;
     font-size:20px;
 }
 #footer ul li a {color:white}
@@ -1001,19 +1000,18 @@ form textarea.form-control {font-size:25px}
   list-style-type: none;
 }
 
-#footer .container {
+#footer .container, #footer .container-fluid {
   width: 100%;
   margin: auto;
   margin-bottom: 10px;
   color:white;
-  /* background: #e99090; */
-  background: #e99090;
+  background: #c9d9e9;
 }
-#footer .container .col-sm-4{
+#footer  .col-sm-4{
   margin-top:30px;
 }
 
-#footer .container hr {
+#footer hr {
   height: 1px;
   border-color: #e05944;
   background-color: #e05944;
@@ -1022,21 +1020,25 @@ form textarea.form-control {font-size:25px}
   margin-left: 0;
 }
 
-#footer .container .footer-title {
+#footer .footer-title {
   margin-bottom:2%;
 }
 
-#footer .container input {
-  width: 300px;
+#footer .search .row {
+  width:80%;
+  margin-top:3%;
+}
+#footer .search input {
   height: 50px;
 }
+
 
 .social-icons i {
   font-size: 25px;
   margin-left:20%;
 }
 
-.social-icon-border {
+/* .social-icon-border {
   border-radius: 100%;
   padding: 10px;
   border: 1px solid blue;
@@ -1045,7 +1047,7 @@ form textarea.form-control {font-size:25px}
   margin-left:auto;
   margin-right:auto;
   margin:2%;
-}
+} */
 
 .fb {
   border: 2px solid #3a5795;
@@ -1061,7 +1063,7 @@ form textarea.form-control {font-size:25px}
 }
 
 .tw {
-  border: 2px solid #cf3427;
+  /* border: 2px solid #cf3427; */
 }
 .tw:hover {
   background: #cf3427;
@@ -1102,7 +1104,7 @@ form textarea.form-control {font-size:25px}
     margin-left: 8% !important;
 }
 
-#footer .container .btn-search {
+#footer .btn-search {
   border: none;
   margin-left: -200%;
   margin-top: 10px;
@@ -1432,6 +1434,9 @@ h2,h3 {line-height:1.7}
   width:94%;
   margin:auto;
 }
+.bg-lightblue {
+  background: #c9d9e9 !important;
+}
 .section-title h3, .section-title-short h3 {
   color:white;
   font-weight:bold;
@@ -1473,6 +1478,9 @@ h2,h3 {line-height:1.7}
 .resume img {
   display:block;
   margin:auto;
+}
+.help-block {
+  color:white;
 }
 
 

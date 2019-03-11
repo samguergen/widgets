@@ -136,8 +136,9 @@
   </div><!--MAIN-->
 
   <div id="footer">
-    <div class="container">
-        <div class="col-sm-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
           <div class="footer-title">MY INFO</div>
           <hr>
           <ul>
@@ -147,7 +148,7 @@
           </ul>
         </div>
 
-        <div class="col-sm-4 social-icons">
+        <div class="col-md-4 social-icons">
           <div class="footer-title">SOCIAL MEDIA</div>
           <hr>
           <div class="row">
@@ -166,7 +167,7 @@
           </div>
         </div>
 
-        <div class="col-sm-4 search">
+        <div class="col-md-4 search">
           <div class="footer-title">SEARCH</div>
           <hr>
           <form class="navbar-form navbar-left" style="margin-top:-25px;">
@@ -175,7 +176,7 @@
                 <input type="text" class="form-control" ng-model="keyword" placeholder="Search">
               </div>
               <div class="col-sm-2">
-                <button type="button" ng-click="searchKeywordInApp()" class="btn btn-default btn-search">
+                <button type="button" ng-click="searchKeywordInApp()" >
                   <i class="fa fa-search"></i>
                 </button>
               </div>
@@ -184,7 +185,7 @@
 
         </div>
 
-      <!-- </div> -->
+      </div><!--row-->
     </div>
   </div><!-- END FOOTER -->
 

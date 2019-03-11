@@ -67,7 +67,7 @@
 
 
 
-<div class="parallax-dark" style="float:left;height:700px">
+<div class="parallax-dark" style="float:left;height:900px">
   
   <div class="section-title-short">
     <h3>Testimonials</h3>
@@ -157,7 +157,7 @@
           </div>
         
           <div class="form-group" ng-class="{ 'has-error' : itnForm.mobile.$invalid && !itnForm.mobile.$pristine }">
-            <input type="text" class="form-control" id="mobile" name="mobile" ng-pattern="phonePattern" placeholder="Mobile Number (Not Required). Example: 617-344-9876" ng-model="formData.phone">
+            <input type="text" class="form-control" id="mobile" name="mobile" ng-pattern="phonePattern" placeholder="Mobile Number (Not Required)." ng-model="formData.phone">
             <span ng-if="itnForm.mobile.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
           </div>
           
@@ -179,8 +179,8 @@
           <p ng-if="loading"><em>Loading. Please wait</em></p>
           <p style="color:red; margin-top:50px"><strong>{{serverMessage}}</strong></p>
             
-          <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right itn-green-bg" value="Send" style="margin-left:2%">
-          <input type="button" ng-click="formData = {}" value="Reset Form" class="btn btn-lg pull-right itn-green-bg"  style="margin-left:2%">
+          <input type="submit" id="submit" class="btn btn-lg btn-primary pull-right bg-lightblue" value="Send" style="margin-left:2%">
+          <input type="button" ng-click="formData = {}" value="Reset Form" class="btn btn-lg pull-right bg-lightblue"  style="margin-left:2%">
         
         </form>
       </div>
