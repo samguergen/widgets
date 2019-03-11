@@ -1483,7 +1483,7 @@ h2,h3 {line-height:1.7}
   color:white;
 }
 
-#icon-design #hidden-design, #icon-dev #hidden-dev, #icon-seo #hidden-seo, #icon-translation #hidden-translation{
+#icon-design #hidden-design, #icon-dev #hidden-dev, #icon-seo #hidden-seo, #icon-translation #hidden-translation {
   background-color: white;
   opacity: 0;
   transition: 1.2s;
@@ -1505,6 +1505,9 @@ h2,h3 {line-height:1.7}
   opacity:1;
 }
 
+
+#icon-design #hidden-design p, #icon-dev #hidden-dev p, #icon-seo #hidden-seo p, #icon-translation #hidden-translation p {transition: 2.3s;opacity:0}
+#icon-design:hover #hidden-design p, #icon-dev:hover #hidden-dev p, #icon-seo:hover #hidden-seo p, #icon-translation:hover #hidden-translation p{opacity: 1}
 
  @media (max-width: 750px) {
    .timesheets-row {
