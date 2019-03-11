@@ -1357,7 +1357,6 @@ h2,h3 {line-height:1.7}
 }
 .intro-sam p {
   margin: 2% 15%;
-  
 }
 .title-sam {
     margin-top: 10%;
@@ -1405,7 +1404,7 @@ h2,h3 {line-height:1.7}
   text-align:center
 }
 .job-icons img {
-  height: 270px;
+  height: 250px;
 }
 .job-icon-legend {
   background: white;
@@ -1460,6 +1459,10 @@ h2,h3 {line-height:1.7}
   border-radius: 5px;
   font-style: italic;
   box-shadow: 0 0 30px #fff;
+}
+.testimonials .fa {
+  font-size: 50px;
+  margin: 0 2%;
 }
 .projects-section img {
   height:300px;
