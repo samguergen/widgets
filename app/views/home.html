@@ -39,26 +39,42 @@
 
   <!-- <div class="job-icons-inner"> -->
     <div class="row">
-        <div class="col-sm-6 job-icon">
-          <img src="https://samanthics25.files.wordpress.com/2019/03/responsive.png"/>
+        <div class="col-sm-6 job-icon" id="icon-design">
+          <img id="img-design" src="https://samanthics25.files.wordpress.com/2019/03/responsive.png"/>
           <div class="job-icon-legend">Web Design</div>
+          
+          <div id="hidden-design">
+            blablablabalbalab
+          </div>
         </div>
         
-        <div class="col-sm-6 job-icon">
+        <div class="col-sm-6 job-icon icon-dev">
           <img src="https://samanthics25.files.wordpress.com/2019/03/coding.png"/>
           <div class="job-icon-legend">Web Application Development</div>
+          
+          <div class="hidden-dev">
+            blablablabalbalab
+          </div>
         </div>
       </div>
         
       <div class="row">
-        <div class="col-sm-6 job-icon">
+        <div class="col-sm-6 job-icon icon-seo">
           <img src="https://samanthics25.files.wordpress.com/2019/03/seo-1.png"/>
           <div class="job-icon-legend">Marketing & SEO</div>
+          
+          <div class="hidden hidden-seo">
+            blablablabalbalab
+          </div>
         </div>
         
-        <div class="col-sm-6 job-icon">
+        <div class="col-sm-6 job-icon icon-translation">
           <img src="https://samanthics25.files.wordpress.com/2019/03/man.png"/>
           <div class="job-icon-legend">Translation in French & Spanish</div>
+          
+          <div class="hidden hidden-translation">
+            blablablabalbalab
+          </div>
         </div>
     </div>
   <!-- </div> -->
@@ -199,41 +215,30 @@
 
 
 <script type="text/javascript">
-  new WOW().init();
+  
 
   $(document).ready(function() {
-    $('.carousel').carousel({
-      interval: 3500
-    })
-
-    // setTimeout(function(){
-    //     $('#myModal').modal('show');
-    // }, 20000);
-
-    var firstTime = true;
-    $(window).scroll(function() {
-       var hT = $('#progress').offset().top,
-           hH = $('#progress').outerHeight(),
-           wH = $(window).height(),
-           wS = $(this).scrollTop();
-       if (wS > (hT+hH-wH)){
-         if (firstTime){
-           $('.numbers').each(function () {
-               $(this).prop('Counter',0).animate({
-                   Counter: $(this).text()
-               }, {
-                   duration: 4000,
-                   easing: 'swing',
-                   step: function (now) {
-                       $(this).text(Math.ceil(now));
-                   }
-               });
-           });
-           firstTime = false;
-         }
-       }
-    });
-
+    new WOW().init();
+  // 
+  //   console.log('inside jquery');
+    // $("#img-design").mouseenter(function (){
+    //   console.log('mouseover');
+    //   $(this).css('cursor', 'pointer');
+    //   $("#hidden-design").css('display','block');
+    // });
+    // $("div.icon-design.hover").mouseout(function (){
+    //   console.log('mouseout');
+    //   $(this).css('cursor', 'default');
+    //   $("div.hidden-design").css('display','none');
+    // });
+  
+  // 
+  // 
+  //   $('.carousel').carousel({
+  //     interval: 3500
+  //   })
+  // 
+  // 
 
 
   });
