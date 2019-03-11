@@ -1398,12 +1398,14 @@ h2,h3 {line-height:1.7}
 }
 .job-icons .row {
   padding-top: 5%;
+  width: 80%;
+  margin: auto;
 }
 .job-icons .col-sm-6 {
   text-align:center
 }
 .job-icons img {
-  height: 230px;
+  height: 270px;
 }
 .job-icon-legend {
   background: white;
@@ -1464,6 +1466,10 @@ h2,h3 {line-height:1.7}
 }
 .contact {
   padding-top: 10%;
+}
+.resume img {
+  display:block;
+  margin:auto;
 }
 
 

@@ -15,6 +15,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/',
             templateUrl: viewsPath + 'home.html'
         })
+        .state('resume', {
+            url: '/resume',
+            templateUrl: viewsPath + 'resume.html'
+        })
         .state('contact', {
             url: '/contact',
             templateUrl: viewsPath + 'contact.html',
@@ -55,80 +59,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/backup-pdf',
             templateUrl: viewsPath + 'backup-pdf.html'
         })
-        .state('itnamerica', {
-            url: '/itnamerica',
-            templateUrl: viewsPath + 'itnamerica.html'
-        })
-        .state('itn-operations', {
-            url: '/itn-operations',
-            templateUrl: viewsPath + 'itn-operations.html'
-        })
-        .state('other', {
-            url: '/other',
-            templateUrl: viewsPath + 'other.html'
-        })
-        .state('nda', {
-            url: '/nda2018xyz',
-            templateUrl: viewsPath + 'nda.html'
-        })
-        .state('rides', {
-            url: '/rides',
-            templateUrl: viewsPath + 'rides.html'
-        })
-        .state('calendar', {
-            url: '/calendar',
-            controller: 'CalendarCtrl',
-            templateUrl: viewsPath + 'calendar.html'
-        })
-        .state('agenda', {
-            url: '/agenda',
-            controller: 'CalendarCtrl',
-            templateUrl: viewsPath + 'agenda.html',
-            params: {
-              selectedEventDate: today.toISOString()
-            }
-        })
-        .state('important-docs', {
-            url: '/important-docs',
-            templateUrl: viewsPath + 'important-docs.html',
-            controller: 'FileUploadCtrl',
-            params: {
-              filter: null
-            }
-        })
         .state('important-docs-landing', {
             url: '/important-docs-landing',
             templateUrl: viewsPath + 'important-docs-landing.html',
             controller: 'FileUploadCtrl'
-        })
-        .state('employee-profiles', {
-            url: '/employee-profiles',
-            templateUrl: viewsPath + 'employee-profiles.html'
-        })
-        .state('dept-report', {
-            url: '/dept-report',
-            templateUrl: viewsPath + 'dept-report.html'
-        })
-        .state('hr-tickets', {
-            url: '/hr-tickets',
-            templateUrl: viewsPath + 'hr-tickets.html'
-        })
-        .state('calendar-ris', {
-            url: '/calendar-ris',
-            templateUrl: viewsPath + 'calendar-ris.html',
-            controller: 'CalendarCtrl'
-        })
-        .state('human-resources', {
-            url: '/human-resources',
-            templateUrl: viewsPath + 'human-resources.html'
-        })
-        .state('affiliate', {
-            url: '/affiliate?filter',
-            templateUrl: viewsPath + 'affiliate.html',
-            params : {
-              name: 'Lanier',
-              gaViewCode: 89470158,
-            }
         })
         .state('comments', {
             url: '/comments?filter',
@@ -152,10 +86,6 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             params: {
               filter: null
             }
-        })
-        .state('rides-data', {
-            url: '/rides-data?filter',
-            templateUrl: viewsPath + 'rides-data.html'
         })
         .state('timesheet', {
             url: '/timesheet?day',

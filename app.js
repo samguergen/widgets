@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler','/comments','/blog-thumbnail'];
+var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler','/comments','/blog-thumbnail', '/resume'];
 
 
 MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662/widgets', function(err, client) {
