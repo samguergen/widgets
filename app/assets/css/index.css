@@ -1490,10 +1490,15 @@ h2,h3 {line-height:1.7}
   position: absolute;
   z-index: 100;
   top: 0;
-  height: 100%;
+  /* height: 100%; */
+  height:auto;
   width: 100%;
   border-radius: 15px;
-  padding:1%;
+  padding:4%;
+}
+
+.hidden-div p {
+  font-size:20px;
 }
 
 #icon-design:hover #hidden-design, #icon-dev:hover #hidden-dev, #icon-seo:hover #hidden-seo, #icon-translation:hover #hidden-translation {
