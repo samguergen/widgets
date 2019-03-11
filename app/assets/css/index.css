@@ -1483,26 +1483,22 @@ h2,h3 {line-height:1.7}
   color:white;
 }
 
-#icon-design #hidden-design {
-  background-color:white; 
-  display:none; 
-  position:absolute; 
-  z-index:100; 
+#icon-design #hidden-design, #icon-dev #hidden-dev, #icon-seo #hidden-seo, #icon-translation #hidden-translation{
+  background-color: white;
+  opacity: 0;
+  transition: 1.2s;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  padding:1%;
 }
 
-#icon-design:hover #hidden-design {
-  display:block;
+#icon-design:hover #hidden-design, #icon-dev:hover #hidden-dev, #icon-seo:hover #hidden-seo, #icon-translation:hover #hidden-translation {
+  opacity:1;
 }
-
-/* .icon-design .hidden-design { 
-  background-color:white; 
-  display:none; 
-  position:absolute; 
-  z-index:100; 
-}
-.icon-design:hover .hidden-design {
-  display:block
-} */
 
 
  @media (max-width: 750px) {
