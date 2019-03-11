@@ -40,10 +40,10 @@ ul.navbar-nav {
 .navbar .nav-item:hover {
   background: black;
 }
-.navbar ul.dropdown-menu {
-  background: black;
+.navbar .dropdown-menu {
   padding: 15%;
   background: black;
+  border: 2px solid white;
 }
 .navbar .dropdown-menu a.dropdown-item {
   border-bottom: 1px solid;
