@@ -1007,6 +1007,9 @@ form textarea.form-control {font-size:25px}
   color:white;
   background: #c9d9e9;
 }
+#footer .row {
+  margin-top: 2%;
+}
 #footer  .col-sm-4{
   margin-top:30px;
 }
@@ -1026,7 +1029,6 @@ form textarea.form-control {font-size:25px}
 
 #footer .search .row {
   width:80%;
-  margin-top:3%;
 }
 #footer .search input {
   height: 50px;
