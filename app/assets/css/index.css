@@ -1521,15 +1521,15 @@ h2,h3 {line-height:1.7}
 .projects-section .overlay-txt .screenshot {
   border: 3px ridge;
   z-index:1;
+  height:200px;
 }
 .projects-section .overlay-txt .logo {
   height:60px;
 }
 
 
-#itn {
+#itn, #shift-scheduler, #doc-library, #timesheet {
   background-color: white;
-  /* opacity: 0; */
   height: 0;
   transition: 1.2s;
   position: absolute;
@@ -1537,15 +1537,13 @@ h2,h3 {line-height:1.7}
   top: 0;
   left:0;
   width: 100%;
-  /* height:100%; */
-  padding: 4%;
+  /* padding: 4%; */
   font-weight: bold;
   font-size: 1rem;
-  border: 10px ridge;
+  /* border: 10px ridge; */
 }
 
-#project1:hover #itn {
-  opacity:1;
+#project1:hover #itn, #project2:hover #shift-scheduler, #project3:hover #doc-library, #project4:hover #timesheet {
   height:100%;
 }
 
