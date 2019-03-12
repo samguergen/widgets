@@ -1510,10 +1510,6 @@ h2,h3 {line-height:1.7}
 #icon-design:hover #hidden-design p, #icon-dev:hover #hidden-dev p, #icon-seo:hover #hidden-seo p, #icon-translation:hover #hidden-translation p{opacity: 1}
 
 
-
-.projects-section .description {
-  margin-top:3%;
-}
 .projects-section .overlay-txt {
   overflow: hidden;
   object-fit: contain;
@@ -1521,7 +1517,21 @@ h2,h3 {line-height:1.7}
 .projects-section .overlay-txt .screenshot {
   border: 3px ridge;
   z-index:1;
-  height:200px;
+  height: 100%;
+  width: 100%;
+  opacity: 0.4;
+}
+.projects-section .overlay-txt .description {
+  position: absolute;
+  z-index: 2;
+  /* margin-top: -13%; */
+  margin-top: -30%;
+  background: #cac0ca;
+  width:100%;
+}
+.projects-section .overlay-txt .description p a { 
+  color: black;
+  font-size: 0.8rem;
 }
 .projects-section .overlay-txt .logo {
   height:60px;
