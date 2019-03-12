@@ -1509,6 +1509,46 @@ h2,h3 {line-height:1.7}
 #icon-design #hidden-design p, #icon-dev #hidden-dev p, #icon-seo #hidden-seo p, #icon-translation #hidden-translation p {transition: 2.3s;opacity:0}
 #icon-design:hover #hidden-design p, #icon-dev:hover #hidden-dev p, #icon-seo:hover #hidden-seo p, #icon-translation:hover #hidden-translation p{opacity: 1}
 
+
+
+.projects-section .description {
+  margin-top:3%;
+}
+.projects-section .overlay-txt {
+  overflow: hidden;
+  object-fit: contain;
+}
+.projects-section .overlay-txt .screenshot {
+  border: 3px ridge;
+  z-index:1;
+}
+.projects-section .overlay-txt .logo {
+  height:60px;
+}
+
+
+#itn {
+  background-color: white;
+  /* opacity: 0; */
+  height: 0;
+  transition: 1.2s;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left:0;
+  width: 100%;
+  /* height:100%; */
+  padding: 4%;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 10px ridge;
+}
+
+#project1:hover #itn {
+  opacity:1;
+  height:100%;
+}
+
  @media (max-width: 750px) {
    .timesheets-row {
      width:100%
