@@ -21,8 +21,8 @@ var upload = multer({ dest: 'uploads/' })
 var multipart = require('connect-multiparty');
 var formidable = require('express-formidable');
 var fs = require('fs');
-var dotenv = require('dotenv');
-dotenv.config();
+//var dotenv = require('dotenv');
+//dotenv.config();
 
 
 app.use(function(req, res, next) {
@@ -44,13 +44,13 @@ var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents',
 
 
 MongoClient.connect(process.env.ATLAS_URI || env.ATLAS_URI, function(err, client) {
+  console.log('env is ', process.env);
   if (err) {
     console.log('db not connecting, but inside mongo block - 1', err);
   };
   db = client.db('widgets');
 
   console.log('inside first mongo block');
-  console.log('port is ', process.env.PORT);
 
   app.get('/getTimesheets', function (req,res) {
     db.collection('timesheets').find().toArray(function (err, result) {
