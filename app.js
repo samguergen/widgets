@@ -21,6 +21,8 @@ var upload = multer({ dest: 'uploads/' })
 var multipart = require('connect-multiparty');
 var formidable = require('express-formidable');
 var fs = require('fs');
+var dotenv = require('dotenv');
+dotenv.config();
 
 
 app.use(function(req, res, next) {
@@ -41,14 +43,15 @@ app.use(bodyParser.urlencoded({
 var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler','/comments','/blog-thumbnail', '/resume'];
 
 
-MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662/widgets', function(err, client) {
+MongoClient.connect(env.ATLAS_URI, function(err, client) {
   if (err) {
     console.log('db not connecting, but inside mongo block - 1', err);
   };
   db = client.db('widgets');
-  
+
   console.log('inside first mongo block');
-  
+  console.log('port is ', process.env.PORT);
+
   app.get('/getTimesheets', function (req,res) {
     db.collection('timesheets').find().toArray(function (err, result) {
       res.send(result);
@@ -66,8 +69,8 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
       res.send(result);
     })
   });
-  
-  
+
+
   app.delete('/deleteTimesheet', function (req,res) {
       var timesheetId = req.query.timesheetId;
       console.log('ts to be deleted, received from backend is ', timesheetId)
@@ -77,15 +80,15 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
         res.send(result);
       });
   }); // end of deleteagendaevent request
-  
-  
+
+
 
   app.get('/getDocuments', formidable(), function (req,res) {
     db.collection('documents').find().toArray(function (err, result) {
       res.send(result);
     })
   }); // end of /getRidesData get request
-  
+
 
   app.post('/uploadFiles', formidable(), function(req, res) {
           console.log('uploadFiles from backend is ', req.files);
@@ -100,15 +103,15 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     theFile.categoryGeneral = 'all';
     var tableName = req.query.tableName;
           console.log('theFile is ', theFile);
-          
+
     db.collection('documents').save(theFile, function(err, result){
       if (err) { return console.log('connecting to db, but not saving obj', err);}
       console.log('doc saved to database');
       res.send(result);
     })
   });
-  
-  
+
+
   app.delete('/removeFile', formidable(), function (req,res) {
         console.log('inside removeFile, queries are ', req.query.fileId);
     var fileId = req.query.fileId;
@@ -119,7 +122,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     });
   }); // end of /removeFile delete request
 
-  
+
   app.put('/updateCategory', function (req,res) {
     var fileName = req.body.fileName;
     var categoryDbName = req.body.categoryDbName;
@@ -129,7 +132,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     var newValues = {
       $set: {
         category: categoryDbName
-      } 
+      }
     };
     db.collection('documents').findAndModify(myQuery, [['_id','asc']], newValues, {}, function(err, result){
         if (err) { throw new Error('No record found. ', err) };
@@ -137,17 +140,17 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
         res.send(result);
       });
   }); // end of /updateCategory put request
-  
-  
-  
-  
+
+
+
+
     app.get('/viewWeeklyCalendarEvents', function (req,res) {
       db.collection('weekly-calendar').find().toArray(function (err, result) {
         res.send(result);
       })
     }); // end of /viewRISCalendarEvents get request
-    
-    
+
+
     app.post('/addWeeklyCalendarEvent', function (req,res) {
       var newEvent = req.body.newEvent;
       console.log('event to be saved, received from backend is ', newEvent);
@@ -157,8 +160,8 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
         res.send(result);
       })
     });
-    
-    
+
+
     app.delete('/deleteWeeklyCalendarEvent', function (req,res) {
         var eventId = req.query.eventId;
         console.log('event to be deleted, received from backend is ', eventId)
@@ -168,8 +171,8 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
           res.send(result);
         });
     }); // end of deleteagendaevent request
-    
-    
+
+
     app.get('/getComments', function (req,res) {
       db.collection('comments').find().toArray(function (err, result) {
         res.send(result);
@@ -177,7 +180,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
     }); // end of /getComments get request
 
 
-    
+
     app.post('/addComment', function (req,res) {
       var comment = req.body.comment;
       console.log('comment to be saved, received from backend is ', comment);
@@ -187,8 +190,8 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
         res.send(result);
       })
     });
-    
-    
+
+
     app.delete('/deleteComment', function (req,res) {
         var commentId = req.query.commentId;
         console.log('comment to be deleted, received from backend is ', commentId)
@@ -198,11 +201,11 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
           res.send(result);
         });
     }); // end of deleteagendaevent request
-    
-    
-    
-    
-    
+
+
+
+
+
     app.post('/sendmail', function(req, res){
       console.log('inside sendmail, post req', req.body);
       let mailOptions = {};
@@ -216,7 +219,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
             html: req.body.html // html body
         };
       }
-    
+
       let transporter = nodemailer.createTransport(smtpTransport({
            service: "Gmail",  // sets automatically host, port and connection security settings
            auth: {
@@ -225,7 +228,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
            }
         })
       )
-    
+
       // send mail with defined transport object
       transporter.sendMail(mailOptions, function(error, info) {
           if (error) {
@@ -238,10 +241,10 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
 
         console.log('after mongo block');
         res.end();
-      }); 
-    
-    
-    
+      });
+
+
+
       app.get('/getBlogContent', function(req, res) {
         console.log('params are ', req.query)
         request.get(req.query.blogURL, function(err,result,body) {
@@ -249,7 +252,7 @@ MongoClient.connect('mongodb://samguergen:samanthics2504@ds119662.mlab.com:19662
           res.send(result.body)
         });
       });
-    
+
 
 
 }); //end of main mongodb block

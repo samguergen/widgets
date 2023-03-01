@@ -41,6 +41,7 @@
     "connect-multiparty": "^2.2.0",
     "cookie-parser": "^1.4.3",
     "dom-to-image": "^2.6.0",
+    "dotenv": "^16.0.3",
     "express": "^4.13.4",
     "express-formidable": "^1.2.0",
     "express-session": "^1.15.6",

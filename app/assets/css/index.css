@@ -1297,7 +1297,7 @@ h2,h3 {line-height:1.7}
 }
 
 
-/* 
+/*
 
 .dropdown:hover .dropdown-menu {
     display: block;
@@ -1331,15 +1331,15 @@ h2,h3 {line-height:1.7}
 
 /* New homepage */
 
-.parallax { 
+.parallax {
   background-image: url('https://samanthics25.files.wordpress.com/2019/03/coffee-bg-img.jpg?w=800');
-  height: 600px; 
+  height: 600px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.parallax-dark { 
+.parallax-dark {
   background-image: url('https://samanthics25.files.wordpress.com/2019/03/coffee-bg-img-2.png');
   height: 1100px;
   background-attachment: fixed;
@@ -1526,14 +1526,17 @@ h2,h3 {line-height:1.7}
 .projects-section .overlay-txt .description {
   position: absolute;
   z-index: 2;
-  /* margin-top: -13%; */
   margin-top: -30%;
   background: #cac0ca;
-  width:100%;
+  width:90%;
 }
-.projects-section .overlay-txt .description p a { 
+.projects-section .overlay-txt .description p a {
   color: black;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.description p a {
+    /*font-size: 20px !important;*/
 }
 .projects-section .overlay-txt .logo {
   height:60px;
@@ -1582,12 +1585,3 @@ h2,h3 {line-height:1.7}
     width: 100%
   }
 }
-
-
-
-
-
-
-
-
-
