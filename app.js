@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({
 var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler','/comments','/blog-thumbnail', '/resume'];
 
 
-MongoClient.connect(env.ATLAS_URI, function(err, client) {
+MongoClient.connect(process.env.ATLAS_URI || env.ATLAS_URI, function(err, client) {
   if (err) {
     console.log('db not connecting, but inside mongo block - 1', err);
   };
