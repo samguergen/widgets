@@ -43,8 +43,14 @@ app.use(bodyParser.urlencoded({
 var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents','/shift-scheduler','/comments','/blog-thumbnail', '/resume'];
 
 
+setInterval(() => {
+  http.get("https://samanthics.herokuapp.com/");
+}, 25 * 60 * 1000); // every 25 minutes pings app to keep it alive
+
+
 MongoClient.connect(process.env.ATLAS_URI || env.ATLAS_URI, function(err, client) {
-  console.log('env is ', process.env);
+  console.log('process env is ', process.env);
+  console.log('env is ', env);
   if (err) {
     console.log('db not connecting, but inside mongo block - 1', err);
   };
