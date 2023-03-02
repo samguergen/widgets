@@ -7,11 +7,11 @@
 <head>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  
+
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sam Guergenenov's Portfolio</title>
+  <title>Sam Saint-Lo's Portfolio</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
@@ -69,7 +69,7 @@
   <script src="app/controllers/calendarController.js"></script>
   <script src="app/controllers/fileUploadController.js"></script>
   <script src="app/controllers/timesheetController.js"></script>
-  
+
 
 
   <base href="/app">
@@ -77,7 +77,7 @@
 
 <body ng-controller="MainCtrl">
   <div class="wrapper" id="wrapper-content">
-    
+
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-bg">
@@ -89,13 +89,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" ui-sref="home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" ui-sref="home({anchor: 'top'})">Home <span class="sr-only">(current)</span></a>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link" ui-sref="resume">Resume</a>
           </li>
-  
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Portfolio
@@ -109,23 +109,13 @@
               <a class="dropdown-item" ui-sref="blog-thumbnail">Microservices | Wordpress Blog Thumbnail Generator</a>
             </div>
           </li>
-          
+
           <li class="nav-item">
-            <a class="nav-link" ui-sref="contact">Contact</a>
+            <a class="nav-link" ui-sref="home({anchor: 'contact'})">Contact</a>
           </li>
 
       </div>
     </nav>
-
-
-
-    <!--ZOOM BUTTONS-->
-    <!-- <span style="margin-left:90%;position:absolute;margin-top:-100px !important;">
-      <img ng-src="{{assetsPath}}/images/icons/resize-large.png"/ ng-click="resizeText(0.1)">
-      <img ng-src="{{assetsPath}}/images/icons/resize-default.jpg" ng-click="resizeText()"/>
-      <img ng-src="{{assetsPath}}/images/icons/resize-small.png" ng-click="resizeText(-0.1)"/>
-    </span> -->
-
   </nav>
 
   <div class="main" id="main-content">
@@ -190,7 +180,7 @@
   </div><!-- END FOOTER -->
 
   </div>
-  
+
 
 
 
@@ -236,7 +226,7 @@ var adjustMenu = function() {
       e.preventDefault();
       $(this).parent("li").toggleClass("hover");
     });
-  } 
+  }
   else if (ww >= 768) {
     $(".toggleMenu").css("display", "none");
     $(".nav").show();

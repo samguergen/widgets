@@ -44,7 +44,7 @@ var allPages = ['/home','/portfolio', '/timesheets', '/timesheet', '/documents',
 
 
 setInterval(() => {
-  http.get("https://samanthics.herokuapp.com/");
+  http.get("http://samanthics.herokuapp.com/");
 }, 25 * 60 * 1000); // every 25 minutes pings app to keep it alive
 
 

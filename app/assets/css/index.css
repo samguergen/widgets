@@ -1358,6 +1358,7 @@ h2,h3 {line-height:1.7}
   font-weight: bold;
   text-align: center;
   line-height: 2.0;
+  margin-top: -15vh;
 }
 .intro-sam p {
   margin: 2% 15%;

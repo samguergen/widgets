@@ -13,7 +13,11 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: viewsPath + 'home.html'
+            templateUrl: viewsPath + 'home.html',
+            params: {
+              anchor: null,
+              dynamic: true
+            }
         })
         .state('resume', {
             url: '/resume',

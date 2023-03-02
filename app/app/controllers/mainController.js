@@ -118,6 +118,10 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
         $scope.scrollTo($stateParams.anchor);
     };
 
+    // $window.onscroll = function (){
+    //     if ($stateParams.anchor) $stateParams.anchor = null;
+    // };
+
     $scope.resetFormData = function() {
         $scope.formData = originalFormData;
         $scope.serverMessage = "";
@@ -1103,7 +1107,7 @@ myApp.controller('MainCtrl', ['$scope', '$transitions', '$http', '$anchorScroll'
       })
       $scope.selected = {};
     };
-    
+
 
     $scope.getComments = function() {
       $scope.serverMessage = "Please wait a few seconds while the comments are loading.";

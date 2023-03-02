@@ -1,4 +1,4 @@
-<div class="homepage" ui-view>
+<div class="homepage" id="top" ui-view ng-init="catchAnchor()">
 
 <div class="parallax">
 
@@ -162,16 +162,16 @@
         <div class="description">
           <p><a ui-sref="timesheets">Employee Timesheet Tracker<br>
             A set of timesheets that tracks timed employee shifts</a></p>
-          <p><a href="https://gist.github.com/samguergen/eeef5695adc8d1dc2f9fa6d72ffce32f"><em>HTML/CSS, AngularJS, JavaScript, jQuery, ExpressJS, NodeJS, MongoDB (MEAN)</em>
+          <p><a href="https://gist.github.com/samguergen/eeef5695adc8d1dc2f9fa6d72ffce32f"><em>HTML/CSS, AngularJS, JavaScript, jQuery, ExpressJS, NodeJS, MongoDB (MEAN)</em></a></p>
         </div>
       </div>
     </div>
   </div>
 
 
-<div class="bg-black">
-  <button class="ta-center btn-lg" style="cursor:default">Click on "Portfolio" in the navbar to more of my personal projects!</button>
-</div>
+<!-- <div class="bg-black">
+  <button class="ta-center btn-lg" style="cursor:default" ui-sref="">Click here to view some of my personal projects!</button>
+</div> -->
 
 </div><!--projects-section-->
 
@@ -181,7 +181,7 @@
     <h3>Contact me</h3>
   </div>
 
-  <div class="contact">
+  <div class="contact" id="contact">
 
   <div class="row">
     <div class="col-sm-2"></div>
@@ -242,36 +242,10 @@
 
 
 
-
-</div><!--home-->
-
-
 <script type="text/javascript">
 
 
   $(document).ready(function() {
     new WOW().init();
-  //
-  //   console.log('inside jquery');
-    // $("#img-design").mouseenter(function (){
-    //   console.log('mouseover');
-    //   $(this).css('cursor', 'pointer');
-    //   $("#hidden-design").css('display','block');
-    // });
-    // $("div.icon-design.hover").mouseout(function (){
-    //   console.log('mouseout');
-    //   $(this).css('cursor', 'default');
-    //   $("div.hidden-design").css('display','none');
-    // });
-
-  //
-  //
-  //   $('.carousel').carousel({
-  //     interval: 3500
-  //   })
-  //
-  //
-
-
   });
 </script>
