@@ -49,8 +49,8 @@ setInterval(() => {
 
 
 MongoClient.connect(process.env.ATLAS_URI || env.ATLAS_URI, function(err, client) {
-  console.log('process env is ', process.env);
-  console.log('env is ', env);
+  //console.log('process env is ', process.env);
+  //console.log('env is ', env);
   if (err) {
     console.log('db not connecting, but inside mongo block - 1', err);
   };
