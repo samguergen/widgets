@@ -48,9 +48,9 @@ setInterval(() => {
 }, 25 * 60 * 1000); // every 25 minutes pings app to keep it alive
 
 
-MongoClient.connect(process.env.ATLAS_URI || env.ATLAS_URI, function(err, client) {
+MongoClient.connect(env.ATLAS_URI, function(err, client) {
   //console.log('process env is ', process.env);
-  //console.log('env is ', env);
+  console.log('env is ', env);
   if (err) {
     console.log('db not connecting, but inside mongo block - 1', err);
   };
@@ -268,5 +268,7 @@ MongoClient.connect(process.env.ATLAS_URI || env.ATLAS_URI, function(err, client
   });
 
 
-
-app.listen(process.env.PORT || 13270);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});

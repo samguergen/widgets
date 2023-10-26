@@ -1,10 +1,13 @@
-FROM node:14 as builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
+FROM node:14
 
-FROM nginx:1.21-alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-EXPOSE 80
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "node", "app.js" ]
